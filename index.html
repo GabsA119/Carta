@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
-<meta name="theme-color" content="#0d2438">
+<meta name="theme-color" content="#fbfaf6">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Para ti</title>
@@ -21,22 +21,22 @@
    PALETA · noche bosque + papel amate, temática Pocahontas
    ============================================================ */
 :root{
-  --noche:#0d2438;
-  --tinta-clara:#f2ecd9;
-  --tinta-clara-suave:rgba(242,236,217,.68);
-  --rosa-luz:#5ec9bc;
-  --rosa-luz-suave:rgba(94,201,188,.35);
+  --noche:#fbfaf6;
+  --tinta-clara:#2b2318;
+  --tinta-clara-suave:rgba(43,35,24,.65);
+  --rosa-luz:#ff6a3d;
+  --rosa-luz-suave:rgba(255,106,61,.35);
 
-  --papel:#f3ecd9;
-  --papel-borde:#d9cca0;
+  --papel:#f7f0e2;
+  --papel-borde:#c9a877;
   --texto:#2b2318;
   --texto-suave:#6b5c42;
-  --acento:#1f8f86;
-  --acento-claro:#4fb8ac;
-  --renglon:rgba(31,143,134,.14);
+  --acento:#c4451c;
+  --acento-claro:#e0722f;
+  --renglon:rgba(196,69,28,.14);
 
-  --sobre:#e3d3a4;
-  --sobre-osc:#b8935f;
+  --sobre:#3a2a22;
+  --sobre-osc:#1f1712;
 
   --serif:'Cormorant Garamond', Georgia, 'Times New Roman', serif;
   --mano:'Dancing Script', 'Segoe Script', cursive;
@@ -89,7 +89,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
   position:fixed;left:50%;top:42%;
   width:min(140vw,900px);height:min(140vw,900px);
   transform:translate(-50%,-50%);
-  background:radial-gradient(circle, rgba(94,201,188,.16) 0%, rgba(47,156,147,.06) 38%, transparent 68%);
+  background:radial-gradient(circle, rgba(255,106,61,.14) 0%, rgba(196,69,28,.05) 38%, transparent 68%);
   z-index:1;pointer-events:none;
   animation:respirar 9s ease-in-out infinite;
 }
@@ -100,7 +100,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
 
 .velo{
   position:fixed;inset:0;z-index:2;
-  background:rgba(13,36,56,.55);
+  background:rgba(20,10,6,.6);
   opacity:0;pointer-events:none;
   transition:opacity 1.2s ease;
 }
@@ -199,6 +199,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
   position:absolute;inset:0;
   background:linear-gradient(160deg,var(--sobre) 0%, var(--sobre-osc) 100%);
   border-radius:5px;z-index:1;
+  box-shadow:inset 0 0 0 1px rgba(255,106,61,.28), inset 0 0 22px rgba(255,106,61,.1);
 }
 
 .hoja-mini{
@@ -214,33 +215,35 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
 .hoja-mini::before{
   content:'';position:absolute;inset:14% 13%;
   background:repeating-linear-gradient(to bottom,
-    rgba(31,143,134,.22) 0 1px, transparent 1px 10px);
+    rgba(196,69,28,.22) 0 1px, transparent 1px 10px);
   opacity:.55;
 }
 .sobre.abierto .hoja-mini{transform:translateY(-64%) scale(1.02);}
 
 .sobre-frente{
   position:absolute;inset:0;
-  background:linear-gradient(155deg,#ecdfb8 0%, #c8ab74 100%);
+  background:linear-gradient(155deg,#2e2018 0%, #170f0a 100%);
   clip-path:polygon(0 0, 50% 46%, 100% 0, 100% 100%, 0 100%);
   border-radius:5px;z-index:3;
+  box-shadow:inset 1px 0 0 rgba(255,106,61,.22);
 }
 .sobre-frente::after{
   content:'';position:absolute;inset:0;
-  background:linear-gradient(105deg, rgba(255,255,255,.4) 0%, transparent 45%);
-  opacity:.7;
+  background:linear-gradient(105deg, rgba(255,106,61,.16) 0%, transparent 45%);
+  opacity:.8;
 }
 
 .solapa{
   position:absolute;top:0;left:0;
   width:100%;height:46%;
-  background:linear-gradient(180deg,#efe4c0 0%, #cbb47e 100%);
+  background:linear-gradient(180deg,#332419 0%, #170f0a 100%);
   clip-path:polygon(0 0, 100% 0, 50% 100%);
   transform-origin:top center;
   transform:rotateX(0deg);
   transition:transform .85s cubic-bezier(.6,0,.3,1), z-index 0s .42s;
   z-index:5;border-radius:5px 5px 0 0;
   backface-visibility:hidden;
+  box-shadow:inset 0 1px 0 rgba(255,106,61,.25);
 }
 .sobre.abierto .solapa{transform:rotateX(-178deg);z-index:0;}
 
@@ -274,8 +277,8 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
 .pista{text-align:center;opacity:0;animation:aparecer 1.4s ease 2s forwards;}
 .pista .toca{
   font-size:.82rem;letter-spacing:.3em;text-transform:uppercase;
-  color:#fff;
-  text-shadow:0 0 18px rgba(94,201,188,.55);
+  color:var(--acento);
+  text-shadow:0 0 18px rgba(255,106,61,.35);
   display:inline-flex;align-items:center;gap:12px;
   animation:latir 3.4s ease-in-out infinite;
 }
@@ -295,9 +298,9 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
   animation:pulso 2.4s ease-out infinite;
 }
 @keyframes pulso{
-  0%{box-shadow:0 0 0 0 rgba(94,201,188,.45);}
-  70%{box-shadow:0 0 0 22px rgba(94,201,188,0);}
-  100%{box-shadow:0 0 0 0 rgba(94,201,188,0);}
+  0%{box-shadow:0 0 0 0 rgba(255,106,61,.45);}
+  70%{box-shadow:0 0 0 22px rgba(255,106,61,0);}
+  100%{box-shadow:0 0 0 0 rgba(255,106,61,0);}
 }
 #escena.abriendo .pista{opacity:0;transition:opacity .35s ease;animation:none;}
 
@@ -311,9 +314,15 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
   margin:calc(var(--safe-t) + 30px) auto calc(var(--safe-b) + 48px);
   padding:clamp(34px,8vw,64px) clamp(24px,7vw,58px) clamp(52px,11vw,80px);
 
+  /* las manchas radiales son quemaduras en las esquinas, como si se
+     hubiera prendido y apagado a tiempo */
   background:
-    linear-gradient(to bottom, transparent 32.8%, rgba(31,143,134,.07) 33%, transparent 33.2%),
-    linear-gradient(to bottom, transparent 66.3%, rgba(31,143,134,.055) 66.5%, transparent 66.7%),
+    radial-gradient(ellipse 46% 60px at 3% 0%, rgba(35,20,10,.4), transparent 70%),
+    radial-gradient(ellipse 34% 130px at 100% 6%, rgba(35,20,10,.3), transparent 72%),
+    radial-gradient(ellipse 42% 90px at 96% 100%, rgba(35,20,10,.32), transparent 70%),
+    radial-gradient(ellipse 30% 110px at 0% 96%, rgba(35,20,10,.26), transparent 70%),
+    linear-gradient(to bottom, transparent 32.8%, rgba(196,69,28,.07) 33%, transparent 33.2%),
+    linear-gradient(to bottom, transparent 66.3%, rgba(196,69,28,.055) 66.5%, transparent 66.7%),
     linear-gradient(168deg, #f7f2e2 0%, var(--papel) 42%, #ecdfb8 100%);
 
   color:var(--texto);
@@ -321,7 +330,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
   box-shadow:
     0 1px 0 rgba(255,255,255,.8) inset,
     0 34px 70px rgba(0,0,0,.5),
-    0 6px 18px rgba(12,38,35,.25);
+    0 6px 18px rgba(30,15,8,.3);
 
   opacity:0;
   transform:translateY(46px) scale(.78);
@@ -417,28 +426,6 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
 }
 .lista li:last-child{border-bottom:none;}
 
-.tarjetas{display:flex;flex-direction:column;gap:12px;}
-.tarjeta{
-  position:relative;
-  border:1px solid var(--renglon);
-  border-radius:16px;
-  padding:16px 18px;
-  background:linear-gradient(160deg, rgba(255,255,255,.65), rgba(94,201,188,.3));
-}
-.tarjeta .icono{
-  position:absolute;top:-14px;right:12px;width:34px;
-  animation:mecer 5s ease-in-out infinite;
-}
-.tarjeta .quien{
-  font-size:.58rem;letter-spacing:.24em;text-transform:uppercase;
-  color:var(--acento);margin-bottom:7px;padding-right:34px;
-}
-.tarjeta p{
-  font-family:var(--serif);
-  font-size:clamp(1.04rem,4.2vw,1.16rem);
-  line-height:1.62;color:var(--texto);
-}
-
 /* --- la hora mágica --- */
 .magica{
   position:relative;
@@ -447,7 +434,7 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
   padding:clamp(30px,7vw,46px) clamp(20px,5vw,32px);
   text-align:center;
   border-radius:22px;
-  background:linear-gradient(165deg, rgba(255,255,255,.72), rgba(94,201,188,.4));
+  background:linear-gradient(165deg, rgba(255,255,255,.8), rgba(224,114,47,.16));
   border:1px solid var(--renglon);
 }
 .magica::before{
@@ -456,7 +443,7 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
   left:50%;top:30%;
   width:min(70%,260px);aspect-ratio:1;
   transform:translate(-50%,-50%);
-  background:radial-gradient(circle, rgba(47,156,147,.22), transparent 66%);
+  background:radial-gradient(circle, rgba(196,69,28,.2), transparent 66%);
   animation:resplandor 4.5s ease-in-out infinite;
   pointer-events:none;
 }
@@ -485,8 +472,8 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
 }
 .magica .hora .chispa:last-child{animation-delay:1.4s;}
 @keyframes titilar{
-  0%,100%{opacity:.92;text-shadow:0 0 18px rgba(47,156,147,.25);}
-  50%{opacity:1;text-shadow:0 0 30px rgba(47,156,147,.5);}
+  0%,100%{opacity:.92;text-shadow:0 0 18px rgba(196,69,28,.25);}
+  50%{opacity:1;text-shadow:0 0 30px rgba(196,69,28,.5);}
 }
 @keyframes chispear{
   0%,100%{opacity:.4;transform:scale(.85) rotate(0deg);}
@@ -558,7 +545,7 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
 .firma .yo{
   font-family:var(--mano);
   font-size:clamp(2.2rem,10vw,2.9rem);
-  font-weight:600;color:#14746c;line-height:1.2;
+  font-weight:600;color:#c4451c;line-height:1.2;
 }
 .firma .raya{
   width:110px;height:1px;background:rgba(168,42,92,.35);
@@ -572,15 +559,15 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
 .btn{
   width:100%;max-width:18rem;
   padding:15px 24px;
-  border:1px solid rgba(31,143,134,.45);
+  border:1px solid rgba(196,69,28,.45);
   border-radius:100px;
   font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;
   color:var(--acento);text-align:center;text-decoration:none;
   transition:background .3s ease, transform .15s ease;
   display:block;
 }
-.btn:active{transform:scale(.97);background:rgba(31,143,134,.1);}
-.btn.principal{background:rgba(31,143,134,.12);border-color:rgba(31,143,134,.7);}
+.btn:active{transform:scale(.97);background:rgba(196,69,28,.1);}
+.btn.principal{background:rgba(196,69,28,.12);border-color:rgba(196,69,28,.7);}
 .btn.tenue{border-color:rgba(59,42,26,.16);color:var(--texto-suave);}
 
 .respuesta{
@@ -601,7 +588,7 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
   font-weight:600;
   line-height:1.15;
   color:var(--acento);
-  text-shadow:0 2px 14px rgba(47,156,147,.3);
+  text-shadow:0 2px 14px rgba(196,69,28,.3);
   margin-bottom:14px;
   opacity:0;
 }
@@ -665,11 +652,12 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
 .controles.ver{display:flex;}
 .ctrl{
   width:38px;height:38px;border-radius:50%;
-  border:1px solid rgba(242,236,217,.18);
-  background:rgba(13,36,56,.62);
+  border:1px solid rgba(43,35,24,.15);
+  background:rgba(255,255,255,.75);
   -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
   display:flex;align-items:center;justify-content:center;
-  font-size:.92rem;color:var(--tinta-clara-suave);
+  font-size:.92rem;color:var(--texto-suave);
+  box-shadow:0 4px 14px rgba(43,35,24,.1);
   transition:color .3s ease, border-color .3s ease, transform .15s ease;
 }
 .ctrl:active{transform:scale(.9);}
@@ -707,87 +695,43 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
 }
 
 /* ============================================================
-   APERTURA MÁGICA · el sobre se desintegra en pedazos, dan dos
-   vueltas en el aire y se reensamblan formando la hoja abierta
-   (no vuelven al sobre).
+   FUEGO · el sobre arde y se transforma en la hoja abierta; al
+   cerrar, la hoja arde y se transforma de vuelta en el sobre.
+   El fondo (canvas #cielo) hace de grietas/lava mientras arde.
    ============================================================ */
-.desintegra{
+.ardiendo{
+  animation:arder 1.15s ease-in forwards;
+}
+@keyframes arder{
+  0%{filter:brightness(1) saturate(1) contrast(1);}
+  35%{filter:brightness(1.3) saturate(1.8) sepia(.5) hue-rotate(-10deg) contrast(1.1);}
+  75%{filter:brightness(1.9) saturate(2.2) sepia(.85) hue-rotate(-14deg) contrast(1.2);opacity:.75;}
+  100%{filter:brightness(2.6) saturate(0) sepia(0);opacity:0;transform:scale(.82);}
+}
+@media (prefers-reduced-motion: reduce){
+  .ardiendo{animation:none;}
+}
+
+.brasas{
   position:fixed;inset:0;z-index:9;
   pointer-events:none;overflow:hidden;
 }
-.pedazo{
+.brasa{
   position:absolute;
   left:var(--x0);top:var(--y0);
-  width:var(--w);height:var(--h);
-  background:var(--c);
-  border-radius:1px;
+  width:var(--w);height:var(--w);
+  border-radius:50%;
+  background:radial-gradient(circle, var(--c) 0%, rgba(255,106,61,0) 75%);
   opacity:0;
-  transform:translate(-50%,-50%) rotate(0deg) scale(.3);
-  animation:pedazo-vuela var(--dur) cubic-bezier(.3,0,.22,1) forwards;
+  transform:translate(-50%,-50%) scale(.4);
+  animation:brasa-sube var(--dur) ease-out forwards;
   animation-delay:var(--del);
-  will-change:transform,opacity,left,top;
-  box-shadow:0 0 6px rgba(0,0,0,.25);
+  will-change:transform,opacity;
 }
-@keyframes pedazo-vuela{
-  0%{
-    left:var(--x0);top:var(--y0);
-    transform:translate(-50%,-50%) rotate(0deg) scale(.3);
-    opacity:0;
-  }
-  14%{
-    opacity:1;
-    transform:translate(-50%,-50%) rotate(160deg) scale(1);
-  }
-  48%{
-    left:var(--xm);top:var(--ym);
-    transform:translate(-50%,-50%) rotate(560deg) scale(1);
-    opacity:1;
-  }
-  100%{
-    left:var(--x1);top:var(--y1);
-    transform:translate(-50%,-50%) rotate(720deg) scale(.4);
-    opacity:0;
-  }
-}
-
-/* ============================================================
-   CIERRE MÁGICO · la hoja se desintegra, los pedazos forman las
-   palabras "Tú siempre eres mi 11:11" un par de segundos, se
-   vuelven a desintegrar y se reensamblan formando el sobre cerrado.
-   Reutiliza .pedazo, solo cambia el recorrido (más paradas).
-   ============================================================ */
-.pedazo.letra{
-  animation:letra-forma 4.8s cubic-bezier(.3,0,.2,1) var(--del,0s) forwards;
-}
-@keyframes letra-forma{
-  0%{
-    left:var(--x0);top:var(--y0);
-    transform:translate(-50%,-50%) rotate(0deg) scale(.3);
-    opacity:0;
-  }
-  6%{
-    opacity:1;
-  }
-  21%{
-    left:var(--xt);top:var(--yt);
-    transform:translate(-50%,-50%) rotate(380deg) scale(1);
-    opacity:1;
-  }
-  62%{
-    left:var(--xt);top:var(--yt);
-    transform:translate(-50%,-50%) rotate(380deg) scale(1);
-    opacity:1;
-  }
-  71%{
-    left:var(--xe);top:var(--ye);
-    transform:translate(-50%,-50%) rotate(680deg) scale(1);
-    opacity:1;
-  }
-  100%{
-    left:var(--x1);top:var(--y1);
-    transform:translate(-50%,-50%) rotate(1040deg) scale(.35);
-    opacity:0;
-  }
+@keyframes brasa-sube{
+  0%{transform:translate(-50%,-50%) scale(.4);opacity:0;}
+  14%{opacity:1;transform:translate(-50%,-50%) scale(1);}
+  100%{transform:translate(calc(-50% + var(--dx)), calc(-50% - var(--dy))) scale(.15);opacity:0;}
 }
 
 /* ============================================================
@@ -946,68 +890,46 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
   </div>
 
   <div class="sobre-zona">
-    <div class="guardia izq" id="guardia-izq" style="--dur:5.6s;--del:.2s"></div>
-    <div class="guardia der" id="guardia-der" style="--dur:6.4s;--del:1.1s"></div>
-
     <div class="sobre" id="sobre" role="button" tabindex="0" aria-label="Toca para abrir la carta">
       <div class="sobre-fondo"></div>
       <div class="hoja-mini"></div>
       <div class="sobre-frente"></div>
       <div class="solapa"></div>
 
-      <!-- sello de cera: una rosa roja con las iniciales -->
+      <!-- sello de cera: una llama, con las iniciales debajo -->
       <div class="sello" id="sello">
         <svg viewBox="0 0 100 100" aria-hidden="true">
           <defs>
-            <radialGradient id="petaloFuera" cx="50%" cy="72%" r="78%">
-              <stop offset="0%"   stop-color="#2fb0a3"/>
-              <stop offset="60%"  stop-color="#1f8f86"/>
-              <stop offset="100%" stop-color="#125550"/>
+            <radialGradient id="ceraFondo" cx="42%" cy="36%" r="72%">
+              <stop offset="0%"   stop-color="#3a2013"/>
+              <stop offset="55%"  stop-color="#20120a"/>
+              <stop offset="100%" stop-color="#0d0603"/>
             </radialGradient>
-            <radialGradient id="petaloMedio" cx="50%" cy="80%" r="80%">
-              <stop offset="0%"   stop-color="#5ec9bc"/>
-              <stop offset="65%"  stop-color="#3aa79c"/>
-              <stop offset="100%" stop-color="#1f6b64"/>
-            </radialGradient>
-            <radialGradient id="corazonRosa" cx="38%" cy="32%" r="76%">
-              <stop offset="0%"   stop-color="#8fe0d2"/>
-              <stop offset="55%"  stop-color="#5ec9bc"/>
-              <stop offset="100%" stop-color="#2f9c93"/>
-            </radialGradient>
+            <linearGradient id="llamaFuera" x1="0" y1="100%" x2="0" y2="0%">
+              <stop offset="0%"   stop-color="#7a1a00"/>
+              <stop offset="40%"  stop-color="#d9480c"/>
+              <stop offset="75%"  stop-color="#ff8c00"/>
+              <stop offset="100%" stop-color="#ffdd55"/>
+            </linearGradient>
+            <linearGradient id="llamaDentro" x1="0" y1="100%" x2="0" y2="0%">
+              <stop offset="0%"   stop-color="#ff7a00"/>
+              <stop offset="55%"  stop-color="#ffcf5c"/>
+              <stop offset="100%" stop-color="#fff3c4"/>
+            </linearGradient>
           </defs>
 
-          <!-- corona de fuera: 8 pétalos abiertos -->
-          <g fill="url(#petaloFuera)" stroke="#123f3a" stroke-width=".7" stroke-linejoin="round">
-            <path d="M50 34 C 33 29, 27 11, 50 3 C 73 11, 67 29, 50 34 Z"/>
-            <path d="M50 34 C 33 29, 27 11, 50 3 C 73 11, 67 29, 50 34 Z" transform="rotate(45 50 50)"/>
-            <path d="M50 34 C 33 29, 27 11, 50 3 C 73 11, 67 29, 50 34 Z" transform="rotate(90 50 50)"/>
-            <path d="M50 34 C 33 29, 27 11, 50 3 C 73 11, 67 29, 50 34 Z" transform="rotate(135 50 50)"/>
-            <path d="M50 34 C 33 29, 27 11, 50 3 C 73 11, 67 29, 50 34 Z" transform="rotate(180 50 50)"/>
-            <path d="M50 34 C 33 29, 27 11, 50 3 C 73 11, 67 29, 50 34 Z" transform="rotate(225 50 50)"/>
-            <path d="M50 34 C 33 29, 27 11, 50 3 C 73 11, 67 29, 50 34 Z" transform="rotate(270 50 50)"/>
-            <path d="M50 34 C 33 29, 27 11, 50 3 C 73 11, 67 29, 50 34 Z" transform="rotate(315 50 50)"/>
-          </g>
+          <circle cx="50" cy="50" r="47" fill="url(#ceraFondo)" stroke="#050201" stroke-width="1"/>
+          <ellipse cx="36" cy="28" rx="20" ry="11" fill="#fff" opacity=".05" transform="rotate(-25 36 28)"/>
 
-          <!-- corona de en medio: intercalada con la de fuera -->
-          <g fill="url(#petaloMedio)" stroke="#154743" stroke-width=".6" stroke-linejoin="round">
-            <path d="M50 40 C 38 36, 33 21, 50 13 C 67 21, 62 36, 50 40 Z" transform="rotate(22.5 50 50)"/>
-            <path d="M50 40 C 38 36, 33 21, 50 13 C 67 21, 62 36, 50 40 Z" transform="rotate(67.5 50 50)"/>
-            <path d="M50 40 C 38 36, 33 21, 50 13 C 67 21, 62 36, 50 40 Z" transform="rotate(112.5 50 50)"/>
-            <path d="M50 40 C 38 36, 33 21, 50 13 C 67 21, 62 36, 50 40 Z" transform="rotate(157.5 50 50)"/>
-            <path d="M50 40 C 38 36, 33 21, 50 13 C 67 21, 62 36, 50 40 Z" transform="rotate(202.5 50 50)"/>
-            <path d="M50 40 C 38 36, 33 21, 50 13 C 67 21, 62 36, 50 40 Z" transform="rotate(247.5 50 50)"/>
-            <path d="M50 40 C 38 36, 33 21, 50 13 C 67 21, 62 36, 50 40 Z" transform="rotate(292.5 50 50)"/>
-            <path d="M50 40 C 38 36, 33 21, 50 13 C 67 21, 62 36, 50 40 Z" transform="rotate(337.5 50 50)"/>
-          </g>
+          <path d="M50,20 C58,32 70,40 70,55 C70,70 60,82 50,82 C40,82 30,70 30,55 C30,47 34,41 40,37 C38,45 41,50 45,49 C43,40 45,30 50,20 Z"
+                fill="url(#llamaFuera)" stroke="#4a0f00" stroke-width=".6" stroke-linejoin="round"/>
+          <path d="M50,40 C55,48 61,54 60,63 C59,72 54,78 49,76 C44,74 41,69 43,63 C44,66 46,67 48,65 C46,58 47,49 50,40 Z"
+                fill="url(#llamaDentro)"/>
 
-          <!-- el capullo, donde van las iniciales -->
-          <circle cx="50" cy="50" r="19" fill="url(#corazonRosa)" stroke="#123f3a" stroke-width=".8"/>
-          <ellipse cx="43" cy="42" rx="9" ry="6" fill="#fff" opacity=".15" transform="rotate(-30 43 42)"/>
-
-          <text id="sello-texto" x="50" y="57" text-anchor="middle"
+          <text id="sello-texto" x="50" y="92" text-anchor="middle"
                 font-family="Cormorant Garamond, Georgia, serif"
-                font-size="20" font-weight="600" letter-spacing=".5"
-                fill="#f3ecd9">PH</text>
+                font-size="12" font-weight="600" letter-spacing="1"
+                fill="#e0722f">PH</text>
         </svg>
       </div>
     </div>
@@ -1035,13 +957,8 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
 
   <header class="encabezado">
     <svg class="mono" viewBox="0 0 100 58" aria-hidden="true">
-      <path d="M50 29 C 32 7, 9 11, 13 27 C 16 41, 37 37, 50 29 Z" fill="#2f9c93"/>
-      <path d="M50 29 C 68 7, 91 11, 87 27 C 84 41, 63 37, 50 29 Z" fill="#2f9c93"/>
-      <path d="M50 29 C 38 12, 18 15, 16 27 C 22 20, 38 20, 50 29 Z" fill="#8fe0d2"/>
-      <path d="M50 29 C 62 12, 82 15, 84 27 C 78 20, 62 20, 50 29 Z" fill="#8fe0d2"/>
-      <path d="M44 33 L 36 52 L 47 45 Z" fill="#4fb8ac"/>
-      <path d="M56 33 L 64 52 L 53 45 Z" fill="#4fb8ac"/>
-      <ellipse cx="50" cy="29" rx="8" ry="7" fill="#1f8f86"/>
+      <path d="M50,6 C58,15 70,21 70,32 C70,42 60,50 50,50 C40,50 30,42 30,32 C30,26 34,22 40,19 C38,25 41,29 45,28 C43,22 45,15 50,6 Z" fill="#c4451c"/>
+      <path d="M50,20 C55,26 61,30 60,37 C59,44 54,48 49,47 C44,46 41,42 43,37 C44,39 46,40 48,39 C46,33 47,26 50,20 Z" fill="#ffb347"/>
     </svg>
     <div class="fecha" id="fecha-hoy"></div>
     <h1 id="nombre-carta">Mi amor</h1>
@@ -1058,8 +975,6 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
   <ul class="lista" id="lista-cosas"></ul>
   <div class="punto" id="p3"></div>
 
-  <div class="titulo-seccion" id="titulo-tarjetas"></div>
-  <div class="tarjetas" id="tarjetas"></div>
   <div class="punto" id="p4"></div>
 
   <section class="magica">
@@ -1078,7 +993,7 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
   </div>
   <div class="punto" id="p5"></div>
 
-  <div class="separador"><span class="fig-sep" id="sep-fig"></span></div>
+  <div class="separador"></div>
 
   <div id="cuerpo-2"></div>
   <div class="punto" id="p6"></div>
@@ -1157,23 +1072,6 @@ const CARTA = {
     "Esa mirada que me lanzas cuando crees que no me doy cuenta.",
     "Que hasta un día normal se vuelva especial si estás tú.",
     "Lo fácil que es quererte, aunque a veces se me note torpe haciéndolo."
-  ],
-
-  // --- Sección de sus personajes ---
-  tituloTarjetas: "Tú, otra vez, en las cosas que te gustan",
-  tarjetas: [
-    { quien:"Hello Kitty", icono:"gato",
-      texto:"Hello Kitty no tiene mucha historia, solo existe y ya cae bien. A ti te pasa lo mismo: no necesitas hacer nada para gustarme, con existir me basta." },
-    { quien:"My Melody y Kuromi", icono:"conejo",
-      texto:"Un día eres dulce como My Melody y al otro sacas el carácter de Kuromi, y las dos versiones me encantan igual." },
-    { quien:"Pucca", icono:"corazon",
-      texto:"Pucca nunca se cansa de ir detrás de Garu. Yo tampoco me canso de ir detrás de ti, aunque a veces finjas que corres para que te alcance." },
-    { quien:"Mulán", icono:"flor",
-      texto:"Mulán no necesitó que nadie le diera permiso para ser fuerte. Tú tampoco, y eso es una de las cosas que más admiro de ti." },
-    { quien:"Pocahontas", icono:"arcoiris",
-      texto:"Pocahontas escuchaba cosas que otros ni notaban. Tú haces lo mismo conmigo: te fijas en detalles que ni yo sabía que estaba dando." },
-    { quien:"Barbie y las Bratz", icono:"estrella",
-      texto:"Barbie tiene un trabajo distinto para cada día. Tú también puedes ser lo que quieras, y de las Bratz ni hablamos, porque arreglada les ganas a todas." }
   ],
 
   // --- Segunda parte: seguir queriéndote ---
@@ -1456,47 +1354,9 @@ const CARTA = {
      (pluma, hoja, sol) van aquí con el mismo formato. */
   const CIELO = [];
 
-  /* --- las que se asoman por el borde del papel ---
-     Pocas y pequeñas: el borde es ahora sitio de los stickers. */
-  const BORDES = [
-    { fig:'lazo',     col:ROSA,  lado:'der', y:'16%', tam:40, rot:8,   dur:5.4, del:.9 },
-    { fig:'estrella', col:CREMA, lado:'izq', y:'44%', tam:30, rot:-12, dur:5.0, del:1.4 },
-    { fig:'corazon',  col:ROSA,  lado:'der', y:'59%', tam:28, rot:9,   dur:4.6, del:.7 },
-    { fig:'flor',     col:LILA,  lado:'izq', y:'72%', tam:34, rot:11,  dur:5.8, del:.5 }
-  ];
-
-  function montarDecoracion(){
-    const capa = $('#decor');
-
-    capa.innerHTML = CIELO.map(d =>
-      '<div class="fig" data-prof="' + d.prof + '" style="left:' + d.x + ';top:' + d.y +
-      ';width:' + d.tam + 'px">' +
-        '<span class="baila" style="--dur:' + d.dur + 's;--del:' + d.del + 's;--rot:' + d.rot + 'deg">' +
-          pieza(d.fig, d.col) +
-        '</span>' +
-      '</div>'
-    ).join('');
-
-    const hoja = $('#hoja');
-    BORDES.forEach(d => {
-      const el = document.createElement('div');
-      el.className = 'borde';
-      el.style.top = d.y;
-      el.style.width = d.tam + 'px';
-      if (d.lado === 'izq') el.style.left  = 'calc(-' + d.tam + 'px * 0.55)';
-      else                  el.style.right = 'calc(-' + d.tam + 'px * 0.55)';
-      el.innerHTML = '<span class="baila" style="--dur:' + d.dur + 's;--del:' + d.del +
-                     's;--rot:' + d.rot + 'deg">' + pieza(d.fig, d.col) + '</span>';
-      hoja.appendChild(el);
-    });
-
-    $('#guardia-izq').innerHTML = '<span class="baila" style="--dur:5.6s;--del:.2s;--rot:-9deg">' +
-                                  pieza('gato', BLANCO) + '</span>';
-    $('#guardia-der').innerHTML = '<span class="baila" style="--dur:6.4s;--del:1.1s;--rot:8deg">' +
-                                  pieza('conejo', ROSA) + '</span>';
-
-    $('#sep-fig').innerHTML = dibujo('lazo', ROSA);
-  }
+  // Ya no hay figuritas flotando (gato, conejo, moños...): no pegaban con
+  // el diseño nuevo. CIELO se deja vacío por si algún día se quiere poner
+  // algo ahí; dibujo()/pieza()/FIGURAS quedan sin usar por ahora.
 
   /* --- los stickers ---
      Vienen ya recortados y con su borde blanco, así que se ponen
@@ -1638,7 +1498,6 @@ const CARTA = {
   $('#cita-2').textContent          = CARTA.cita2;
   $('#btn-perdon').textContent      = CARTA.textoBoton;
   $('#respuesta').innerHTML         = CARTA.respuesta;
-  $('#titulo-tarjetas').textContent = CARTA.tituloTarjetas;
   $('#tiempo-pie').textContent      = CARTA.piePagina;
   $('#hora-magica').textContent     = CARTA.horaMagica;
   $('#hora-cumple').textContent     = CARTA.horaCumple;
@@ -1649,14 +1508,6 @@ const CARTA = {
   pintar('#cuerpo-3', CARTA.cuerpo3);
 
   $('#lista-cosas').innerHTML = CARTA.cosas.map(c => '<li>' + c + '</li>').join('');
-
-  const coloresIcono = [BLANCO, ROSA, '#4fb8ac', LILA, ROSA, CREMA];
-  $('#tarjetas').innerHTML = CARTA.tarjetas.map((t, i) =>
-    '<div class="tarjeta">' +
-      '<span class="icono">' + dibujo(t.icono || 'corazon', coloresIcono[i % coloresIcono.length]) + '</span>' +
-      '<div class="quien">' + t.quien + '</div><p>' + t.texto + '</p>' +
-    '</div>'
-  ).join('');
 
   const meses = ['enero','febrero','marzo','abril','mayo','junio','julio',
                  'agosto','septiembre','octubre','noviembre','diciembre'];
@@ -1695,15 +1546,41 @@ const CARTA = {
     a.style.display = 'block';
   }
 
-  montarDecoracion();
   montarStickers();
 
   /* ============================================================
-     3. CIELO ESTRELLADO
+     3. FONDO Y FUEGO
+     El canvas está en blanco casi siempre. Al abrir y cerrar, hace de
+     grietas de lava: el incendio nace del sobre o de la hoja, se
+     extiende y todo se vuelve fuego (rojo, naranja, negro) antes de
+     apagarse otra vez a blanco. Es el algoritmo clásico de "fuego"
+     (cada pixel hereda, con decaimiento y deriva al azar, el de abajo)
+     sobre un buffer chico que se agranda al pintar, por rendimiento.
      ============================================================ */
   const canvas = $('#cielo');
   const ctx = canvas.getContext('2d', { alpha: false });
-  let estrellas = [], fugaz = null, ancho = 0, alto = 0, altoLienzo = 0, animando = true;
+  let ancho = 0, alto = 0, altoLienzo = 0, animando = true;
+
+  const FW = 90;
+  let FH = 130;
+  let fuego = new Uint8Array(FW * FH);
+  const fuegoCv = document.createElement('canvas');
+  fuegoCv.width = FW;
+  const fuegoCx = fuegoCv.getContext('2d');
+
+  // de negro/transparente a blanco, pasando por los rojos/naranjas de la lava
+  const PALETA_FUEGO = [
+    [0,0,0,0], [60,10,0,64], [90,15,0,102], [120,20,0,140], [150,30,0,166],
+    [180,45,0,191], [204,60,0,209], [224,80,0,224], [240,105,0,235],
+    [255,130,0,242], [255,155,20,247], [255,175,50,255], [255,195,90,255],
+    [255,215,130,255], [255,232,170,255], [255,246,210,255], [255,255,255,255]
+  ];
+  const MAXI = PALETA_FUEGO.length - 1;
+  let bufferRGBA = new Uint8ClampedArray(FW * FH * 4);
+
+  let modoFuego = 'blanco';   // 'blanco' | 'ardiendo' | 'apagando'
+  let origenFraccion = 0.5;   // 0..1: de dónde nace el incendio, a lo ancho
+  let tFuego = 0;
 
   function dimensionar(){
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -1720,86 +1597,90 @@ const CARTA = {
     canvas.style.width  = ancho + 'px';
     canvas.style.height = altoLienzo + 'px';
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    crearEstrellas();
+
+    FH = Math.max(40, Math.round(FW * altoLienzo / ancho));
+    fuego = new Uint8Array(FW * FH);
+    bufferRGBA = new Uint8ClampedArray(FW * FH * 4);
+    fuegoCv.height = FH;
   }
 
-  function crearEstrellas(){
-    const cantidad = Math.round(Math.min(180, (ancho * altoLienzo) / 5600));
-    estrellas = [];
-    for (let i = 0; i < cantidad; i++){
-      estrellas.push({
-        x: Math.random() * ancho,
-        y: Math.random() * altoLienzo,
-        r: Math.random() * 1.25 + 0.25,
-        base: Math.random() * 0.5 + 0.25,
-        vel: Math.random() * 0.014 + 0.004,
-        fase: Math.random() * Math.PI * 2,
-        rosa: Math.random() > 0.72
-      });
+  // fraccionX: 0..1, dónde nace el incendio (la posición del sobre o la hoja)
+  function iniciarIncendio(fraccionX){
+    modoFuego = 'ardiendo';
+    origenFraccion = fraccionX;
+    tFuego = 0;
+    fuego.fill(0);
+  }
+  function apagarIncendio(){
+    modoFuego = 'apagando';
+    tFuego = 0;
+  }
+
+  function pasoFuego(){
+    tFuego++;
+
+    if (modoFuego === 'ardiendo'){
+      // la "semilla" empieza angosta, justo donde nace el fuego, y se
+      // ensancha rápido hasta cubrir todo el ancho: así se ve como si
+      // las grietas se extendieran desde el sobre/la hoja hacia afuera.
+      const colOrigen = Math.round(origenFraccion * FW);
+      const anchoSemilla = Math.min(FW, 4 + tFuego * 2.2);
+      const n = Math.round(anchoSemilla);
+      for (let i = 0; i < n; i++){
+        const x = colOrigen + Math.round((Math.random() - 0.5) * anchoSemilla);
+        if (x >= 0 && x < FW) fuego[(FH - 1) * FW + x] = MAXI;
+      }
+    }
+
+    for (let x = 0; x < FW; x++){
+      for (let y = 1; y < FH; y++){
+        const src = y * FW + x;
+        const decay = Math.floor(Math.random() * 3);
+        const val = Math.max(0, fuego[src] - decay);
+        const dx = Math.floor(Math.random() * 3) - 1;
+        const dstX = Math.min(FW - 1, Math.max(0, x + dx));
+        fuego[(y - 1) * FW + dstX] = val;
+      }
     }
   }
 
-  function lanzarFugaz(){
-    if (menosMovimiento) return;
-    fugaz = {
-      x: Math.random() * ancho * 0.75,
-      y: Math.random() * alto * 0.4,
-      largo: 90 + Math.random() * 80,
-      vel: 7 + Math.random() * 4,
-      vida: 1
-    };
+  function dibujarFuego(){
+    // el blanco de fondo se oscurece mientras arde, como si se hiciera
+    // ceniza, y se aclara de vuelta a blanco cuando se apaga.
+    const factor = modoFuego === 'ardiendo'
+      ? Math.min(1, tFuego / 40)
+      : Math.max(0, 1 - tFuego / 30);
+    const c = Math.round(251 - factor * 236);
+    ctx.fillStyle = 'rgb(' + c + ',' + Math.round(c * 0.94) + ',' + Math.round(c * 0.9) + ')';
+    ctx.fillRect(0, 0, ancho, altoLienzo);
+
+    for (let i = 0, n = FW * FH; i < n; i++){
+      const col = PALETA_FUEGO[fuego[i]];
+      const o = i * 4;
+      bufferRGBA[o] = col[0]; bufferRGBA[o + 1] = col[1]; bufferRGBA[o + 2] = col[2]; bufferRGBA[o + 3] = col[3];
+    }
+    fuegoCx.putImageData(new ImageData(bufferRGBA, FW, FH), 0, 0);
+    ctx.imageSmoothingEnabled = true;
+    ctx.drawImage(fuegoCv, 0, 0, FW, FH, 0, 0, ancho, altoLienzo);
+
+    if (modoFuego === 'apagando' && tFuego > 30) modoFuego = 'blanco';
   }
 
-  let t = 0;
   function dibujar(){
     if (!animando) return;
-    t += 0.016;
 
     // OJO: en iPhone, al deslizar, Safari esconde y saca la barra de direcciones
     // y eso cambia la altura de la ventana. Si redibujáramos por cada cambio,
-    // el cielo daría un tirón en cada scroll. Solo se rehace si gira el
+    // el fondo daría un tirón en cada scroll. Solo se rehace si gira el
     // teléfono (cambia el ancho) o si el alto cambia muchísimo.
     if (Math.abs(vw() - ancho) > 2 || Math.abs(vh() - alto) > 140) dimensionar();
 
-    const g = ctx.createLinearGradient(0, 0, 0, altoLienzo);
-    g.addColorStop(0, '#16404a');
-    g.addColorStop(0.55, '#0d2438');
-    g.addColorStop(1, '#071620');
-    ctx.fillStyle = g;
-    ctx.fillRect(0, 0, ancho, altoLienzo);
-
-    for (let i = 0; i < estrellas.length; i++){
-      const e = estrellas[i];
-      const brillo = e.base + Math.sin(t * e.vel * 60 + e.fase) * 0.32;
-      const a = Math.max(0.06, Math.min(1, brillo));
-      ctx.beginPath();
-      ctx.arc(e.x, e.y, e.r, 0, 6.2832);
-      ctx.fillStyle = e.rosa
-        ? 'rgba(120, 220, 205,' + a + ')'
-        : 'rgba(255, 255, 255,' + a + ')';
-      ctx.fill();
-    }
-
-    if (fugaz){
-      ctx.save();
-      const grad = ctx.createLinearGradient(
-        fugaz.x, fugaz.y, fugaz.x - fugaz.largo, fugaz.y + fugaz.largo * 0.5
-      );
-      grad.addColorStop(0, 'rgba(150,230,215,' + (0.9 * fugaz.vida) + ')');
-      grad.addColorStop(1, 'rgba(150,230,215,0)');
-      ctx.strokeStyle = grad;
-      ctx.lineWidth = 1.6;
-      ctx.lineCap = 'round';
-      ctx.beginPath();
-      ctx.moveTo(fugaz.x, fugaz.y);
-      ctx.lineTo(fugaz.x - fugaz.largo, fugaz.y + fugaz.largo * 0.5);
-      ctx.stroke();
-      ctx.restore();
-
-      fugaz.x += fugaz.vel;
-      fugaz.y -= fugaz.vel * 0.5;
-      fugaz.vida -= 0.012;
-      if (fugaz.vida <= 0 || fugaz.x > ancho + 200) fugaz = null;
+    if (modoFuego === 'blanco'){
+      ctx.fillStyle = '#fbfaf6';
+      ctx.fillRect(0, 0, ancho, altoLienzo);
+    } else {
+      pasoFuego();
+      dibujarFuego();
     }
 
     requestAnimationFrame(dibujar);
@@ -1808,14 +1689,10 @@ const CARTA = {
   dimensionar();
   dibujar();
 
-  // el mismo filtro que arriba: la barra de Safari también dispara "resize"
   window.addEventListener('resize', () => {
     if (Math.abs(vw() - ancho) > 2 || Math.abs(vh() - alto) > 140) dimensionar();
   });
   window.addEventListener('orientationchange', () => setTimeout(dimensionar, 250));
-
-  setInterval(() => { if (!fugaz && Math.random() > 0.45) lanzarFugaz(); }, 5200);
-  setTimeout(lanzarFugaz, 2600);
 
   document.addEventListener('visibilitychange', () => {
     if (document.hidden){ animando = false; }
@@ -1835,63 +1712,46 @@ const CARTA = {
     pendientes.push(setTimeout(fn, ms));
   }
 
-  /* --- LA APERTURA MÁGICA ---
-     En vez de abrir el sobre con la solapa, el sobre se desintegra en
-     pedazos que dan dos vueltas en el aire (720°) y se reensamblan,
-     pero no vuelven al sobre: convergen en el centro, donde aparece
-     la hoja ya abierta. */
-  function lanzarDesintegracion(origen, cb){
-    if (menosMovimiento){ cb(); return; }
+  /* --- BRASAS ---
+     Chispas que suben desde el sobre (o la hoja) mientras arden,
+     además del fuego del fondo. */
+  function lanzarBrasas(origen){
+    if (menosMovimiento) return;
 
     const capa = document.createElement('div');
-    capa.className = 'desintegra';
+    capa.className = 'brasas';
     document.body.appendChild(capa);
 
-    const x0 = origen.left + origen.width / 2;
-    const y0 = origen.top + origen.height / 2;
-    const x1 = vw() * 0.5;
-    const y1 = vh() * 0.4;
-
-    const colores = ['#5ec9bc', '#4fb8ac', '#1f8f86', '#f3ecd9', '#b8935f'];
-    const N = 130;
+    const colores = ['#ff6a3d', '#ffb347', '#ff3d1f', '#ffe08a', '#c4451c'];
+    const N = 70;
     let maxFin = 0;
 
     for (let i = 0; i < N; i++){
-      const p = document.createElement('span');
-      p.className = 'pedazo';
+      const b = document.createElement('span');
+      b.className = 'brasa';
 
-      // fase 1: estalla hacia afuera, en cualquier dirección
-      const ang = Math.random() * Math.PI * 2;
-      const radio = 70 + Math.random() * 190;
-      const xm = x0 + Math.cos(ang) * radio;
-      const ym = y0 + Math.sin(ang) * radio;
-
-      // fase 2: converge en el centro, con un poco de dispersión
-      const jx = (Math.random() - 0.5) * 90;
-      const jy = (Math.random() - 0.5) * 70;
-
-      const dur = 1.5 + Math.random() * 0.5;
-      const del = Math.random() * 0.28;
+      const x0 = origen.left + Math.random() * origen.width;
+      const y0 = origen.top + Math.random() * origen.height;
+      const dur = 0.9 + Math.random() * 0.6;
+      const del = Math.random() * 0.35;
       maxFin = Math.max(maxFin, dur + del);
 
-      p.style.setProperty('--x0', x0 + 'px');
-      p.style.setProperty('--y0', y0 + 'px');
-      p.style.setProperty('--xm', xm + 'px');
-      p.style.setProperty('--ym', ym + 'px');
-      p.style.setProperty('--x1', (x1 + jx) + 'px');
-      p.style.setProperty('--y1', (y1 + jy) + 'px');
-      p.style.setProperty('--w', (3 + Math.random() * 6) + 'px');
-      p.style.setProperty('--h', (3 + Math.random() * 6) + 'px');
-      p.style.setProperty('--c', colores[Math.floor(Math.random() * colores.length)]);
-      p.style.setProperty('--dur', dur + 's');
-      p.style.setProperty('--del', del + 's');
+      b.style.setProperty('--x0', x0 + 'px');
+      b.style.setProperty('--y0', y0 + 'px');
+      b.style.setProperty('--dx', ((Math.random() - 0.5) * 70) + 'px');
+      b.style.setProperty('--dy', (60 + Math.random() * 150) + 'px');
+      b.style.setProperty('--w', (4 + Math.random() * 7) + 'px');
+      b.style.setProperty('--c', colores[Math.floor(Math.random() * colores.length)]);
+      b.style.setProperty('--dur', dur + 's');
+      b.style.setProperty('--del', del + 's');
 
-      capa.appendChild(p);
+      capa.appendChild(b);
     }
 
-    setTimeout(() => { capa.remove(); cb(); }, maxFin * 1000 + 80);
+    setTimeout(() => capa.remove(), maxFin * 1000 + 150);
   }
 
+  /* --- ABRIR: el sobre arde y se transforma en la hoja --- */
   function abrir(){
     if (abierto) return;
     abierto = true;
@@ -1903,24 +1763,33 @@ const CARTA = {
     hoja.classList.remove('guardando');
     sobre.classList.remove('cerrando');
 
-    // se mide antes de que el sobre empiece a desvanecerse
+    // se mide antes de que el sobre empiece a arder
     const origenSobre = sobre.getBoundingClientRect();
+    const fraccionX = (origenSobre.left + origenSobre.width / 2) / vw();
 
-    escena.classList.add('abriendo', 'fuera');
-    $('#velo').classList.add('ver');
     vibrar(12);
 
     // El toque de ella es el gesto que iOS exige para dejar sonar el audio.
     // Cada vez que abre la carta, la canción empieza desde el principio.
     rebobinarCancion();
     arrancarMusica();
-    lanzarFugaz();
 
-    lanzarDesintegracion(origenSobre, () => {
+    escena.classList.add('abriendo');
+    sobre.classList.add('ardiendo');
+    lanzarBrasas(origenSobre);
+    if (!menosMovimiento) iniciarIncendio(fraccionX);
+
+    agendar(() => {
+      escena.classList.add('fuera');
+      $('#velo').classList.add('ver');
+    }, 550);
+
+    agendar(() => {
+      if (!menosMovimiento) apagarIncendio();
       vibrar(16);
       escena.style.display = 'none';
+      sobre.classList.remove('ardiendo');
       hoja.classList.add('abierta');
-      $('#decor').classList.add('ver');
       activarScroll();
       agendar(() => hoja.classList.add('ver'), 40);
       $('#controles').classList.add('ver');
@@ -1929,146 +1798,27 @@ const CARTA = {
       agendar(() => {
         vigilarNumeros();
         $('#baja').classList.add('ver');
-      }, 900);
-    });
+      }, 700);
+    }, 1150);
 
     // Red de seguridad: pase lo que pase, la hoja se ve.
     agendar(() => {
       hoja.classList.add('abierta', 'ver');
       activarScroll();
-      $('#decor').classList.add('ver');
       if (parseFloat(getComputedStyle(hoja).opacity) < 0.95){
         hoja.style.transition = 'none';
         hoja.style.opacity = '1';
         hoja.style.transform = 'none';
       }
-    }, 4500);
+    }, 3200);
   }
 
-  /* --- EL CIERRE MÁGICO ---
-     La hoja se desintegra en pedazos que forman "Tú siempre eres mi
-     11:11" un par de segundos, se vuelven a desintegrar y se
-     reensamblan formando el sobre cerrado. La música no se corta:
-     empieza a apagarse justo cuando arranca el tramo final (el sobre
-     formándose) y llega a silencio cuando termina. */
-  const DUR_CIERRE = 4800;          // ms, tiene que calzar con @keyframes letra-forma
-  const FRASE_CIERRE = 'Tú siempre eres mi 11:11';
-
-  function medirPuntosTexto(texto){
-    const escala = Math.max(2, Math.min(3, window.devicePixelRatio || 1) * 2);
-    const anchoMax = Math.min(vw() * 0.86, 620);
-    const cv = document.createElement('canvas');
-    const cx = cv.getContext('2d');
-
-    let fs = 42;
-    function preparar(){
-      cv.width  = Math.round(anchoMax * escala);
-      cv.height = Math.round(fs * 2.6 * escala);
-      cx.setTransform(escala, 0, 0, escala, 0, 0);
-      cx.font = '600 ' + fs + 'px "Cormorant Garamond", Georgia, serif';
-    }
-    preparar();
-    while (cx.measureText(texto).width > anchoMax - 16 && fs > 12){
-      fs -= 2;
-      preparar();
-    }
-
-    cx.textAlign = 'center';
-    cx.textBaseline = 'middle';
-    cx.fillStyle = '#fff';
-    cx.fillText(texto, anchoMax / 2, (fs * 2.6) / 2);
-
-    const w = cv.width, h = cv.height;
-    const datos = cx.getImageData(0, 0, w, h).data;
-    const puntos = [];
-    const paso = Math.max(1, Math.round(escala * 0.9));
-    for (let y = 0; y < h; y += paso){
-      for (let x = 0; x < w; x += paso){
-        if (datos[(y * w + x) * 4 + 3] > 128) puntos.push({ x: x / escala, y: y / escala });
-      }
-    }
-    return { puntos, ancho: w / escala, alto: h / escala };
-  }
-
-  function lanzarCierreMagico(origenHoja, destinoSobre, cb){
-    if (menosMovimiento){ cb(); return; }
-
-    const capa = document.createElement('div');
-    capa.className = 'desintegra';
-    document.body.appendChild(capa);
-
-    const { puntos, ancho, alto } = medirPuntosTexto(FRASE_CIERRE);
-    const centroX = vw() * 0.5;
-    const centroY = vh() * 0.46;
-    const offX = centroX - ancho / 2;
-    const offY = centroY - alto / 2;
-
-    // objetivo fijo de pedazos: si el texto midió más puntos que esto, se
-    // toman parejos por todo el muestreo (no solo los primeros, o solo se
-    // ve el borde de arriba de las letras); si midió menos, se repiten
-    // con jitter para que la frase se vea llena y no punteada.
-    const OBJETIVO_N = 950;
-    const coloresLetra = ['#f3ecd9', '#5ec9bc', '#ffffff', '#8fe0d2', '#e3d3a4'];
-
-    let base = puntos;
-    if (puntos.length > OBJETIVO_N){
-      base = [];
-      const pasoSel = puntos.length / OBJETIVO_N;
-      for (let i = 0; i < OBJETIVO_N; i++) base.push(puntos[Math.floor(i * pasoSel)]);
-    }
-
-    const x1 = destinoSobre.left + destinoSobre.width / 2;
-    const y1 = destinoSobre.top + destinoSobre.height / 2;
-
-    for (let n = 0; n < OBJETIVO_N; n++){
-      const pt = base[n % base.length];
-      const p = document.createElement('span');
-      p.className = 'pedazo letra';
-
-      // fase 1: puntos repartidos por toda la hoja, de donde "salen" los pedazos
-      const x0 = origenHoja.left + Math.random() * origenHoja.width;
-      const y0 = origenHoja.top + Math.random() * origenHoja.height;
-
-      // fase 2: el punto exacto de la letra que le toca formar (con un
-      // jitter mínimo para que las repeticiones no queden exactas encima)
-      const xt = offX + pt.x + (Math.random() - 0.5) * 2;
-      const yt = offY + pt.y + (Math.random() - 0.5) * 2;
-
-      // fase 3: estalla otra vez antes de convertirse en el sobre
-      const ang = Math.random() * Math.PI * 2;
-      const radio = 60 + Math.random() * 160;
-      const xe = xt + Math.cos(ang) * radio;
-      const ye = yt + Math.sin(ang) * radio;
-
-      // fase 4: converge en el sobre, con un poco de dispersión
-      const jx = (Math.random() - 0.5) * 60;
-      const jy = (Math.random() - 0.5) * 46;
-
-      p.style.setProperty('--x0', x0 + 'px');
-      p.style.setProperty('--y0', y0 + 'px');
-      p.style.setProperty('--xt', xt + 'px');
-      p.style.setProperty('--yt', yt + 'px');
-      p.style.setProperty('--xe', xe + 'px');
-      p.style.setProperty('--ye', ye + 'px');
-      p.style.setProperty('--x1', (x1 + jx) + 'px');
-      p.style.setProperty('--y1', (y1 + jy) + 'px');
-      p.style.setProperty('--w', (3 + Math.random() * 3.5) + 'px');
-      p.style.setProperty('--h', (3 + Math.random() * 3.5) + 'px');
-      p.style.setProperty('--c', coloresLetra[Math.floor(Math.random() * coloresLetra.length)]);
-      p.style.setProperty('--del', (Math.random() * 0.15) + 's');
-
-      capa.appendChild(p);
-    }
-
-    setTimeout(() => { capa.remove(); cb(); }, DUR_CIERRE + 150);
-  }
-
-  /* --- cerrar la carta y dejar el sobre listo para abrirlo otra vez --- */
+  /* --- CERRAR: la hoja arde y se transforma de vuelta en el sobre.
+     La música se va apagando durante el mismo incendio, no de golpe. */
   function cerrar(){
     if (!abierto) return;
     abierto = false;
 
-    // cancelar lo que quedara a medias de la apertura
     pendientes.forEach(clearTimeout);
     pendientes = [];
     if (soltarNumeros) soltarNumeros();
@@ -2081,32 +1831,31 @@ const CARTA = {
     $('#controles').classList.remove('ver');
     $('#baja').classList.remove('ver');
     $('#respuesta').classList.remove('ver');
-    $('#decor').classList.remove('ver');
 
-    // se miden antes de tocar nada: la hoja (de donde salen los pedazos) y
-    // el sobre (adonde van a parar). La escena se hace visible-mas-invisible
-    // (display normal pero opacity 0 por la clase "fuera") solo para poder
-    // medir al sobre sin que se vea todavía.
+    // se mide antes de que la hoja empiece a arder
     const origenHoja = hoja.getBoundingClientRect();
+    const fraccionX = (origenHoja.left + origenHoja.width / 2) / vw();
+
+    // la escena queda lista (todavía invisible, por la clase "fuera")
+    // para que aparezca el sobre en cuanto termine el incendio
     escena.style.display = '';
-    const destinoSobre = sobre.getBoundingClientRect();
 
-    // la hoja se desvanece rápido: a partir de aquí la representan los pedazos
-    hoja.style.transition = 'opacity .18s ease';
-    hoja.style.opacity = '0';
+    hoja.classList.add('ardiendo');
+    lanzarBrasas(origenHoja);
+    if (!menosMovimiento) iniciarIncendio(fraccionX);
 
-    // la música no se corta de golpe: se empieza a apagar justo cuando
-    // arranca el tramo final (71% de la animación = cuando se está
-    // formando el sobre) y llega a silencio cuando termina.
-    if (!menosMovimiento) setTimeout(() => bajarVolumen(DUR_CIERRE * 0.29), DUR_CIERRE * 0.71);
+    if (!menosMovimiento) bajarVolumen(1100);
+    else pararMusica();
 
-    lanzarCierreMagico(origenHoja, destinoSobre, () => {
+    agendar(() => {
+      if (!menosMovimiento) apagarIncendio();
+
       hoja.style.transition = '';
       hoja.style.opacity = '';
       hoja.style.transform = '';
-      hoja.classList.remove('abierta', 'ver', 'guardando');
+      hoja.classList.remove('ardiendo', 'abierta', 'ver', 'guardando');
 
-      // el sobre "aparece" ya cerrado, justo cuando el último pedazo se apaga
+      // el sobre "aparece" ya cerrado, justo cuando termina el incendio
       escena.classList.remove('fuera', 'abriendo');
       sobre.classList.remove('abierto', 'cerrando');
 
@@ -2124,7 +1873,7 @@ const CARTA = {
         if (el) el.textContent = '0';
       });
       yaBajo = false;
-    });
+    }, 1150);
   }
 
   sobre.addEventListener('click', abrir);
@@ -2314,7 +2063,7 @@ const CARTA = {
       requestAnimationFrame(pintarFuegos);
     }
 
-    const colores = ['#5ec9bc', '#1f8f86', '#f3ecd9', '#ffffff', '#4fb8ac', '#b8935f', '#8fe0d2'];
+    const colores = ['#ff6a3d', '#c4451c', '#ffb347', '#ffffff', '#ff3d1f', '#e0722f', '#ffe08a'];
 
     // once explosiones, una detrás de otra, por toda la pantalla
     for (let k = 0; k < 11; k++){
@@ -2339,8 +2088,8 @@ const CARTA = {
   function lluviaDeCorazones(){
     if (menosMovimiento) return;
     const simbolos = ['♥','♡','✿','❥','✦'];
-    const colores = ['rgba(94,201,188,.95)','rgba(31,143,134,.9)',
-                     'rgba(255,255,255,.85)','rgba(184,147,95,.95)'];
+    const colores = ['rgba(255,106,61,.95)','rgba(196,69,28,.9)',
+                     'rgba(255,255,255,.85)','rgba(255,179,71,.95)'];
     for (let i = 0; i < 26; i++){
       setTimeout(() => {
         const c = document.createElement('div');
