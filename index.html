@@ -744,6 +744,46 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
 }
 
 /* ============================================================
+   CIERRE MÁGICO · la hoja se desintegra, los pedazos forman las
+   palabras "Tú siempre eres mi 11:11" un par de segundos, se
+   vuelven a desintegrar y se reensamblan formando el sobre cerrado.
+   Reutiliza .pedazo, solo cambia el recorrido (más paradas).
+   ============================================================ */
+.pedazo.letra{
+  animation:letra-forma 4.8s cubic-bezier(.3,0,.2,1) var(--del,0s) forwards;
+}
+@keyframes letra-forma{
+  0%{
+    left:var(--x0);top:var(--y0);
+    transform:translate(-50%,-50%) rotate(0deg) scale(.3);
+    opacity:0;
+  }
+  6%{
+    opacity:1;
+  }
+  21%{
+    left:var(--xt);top:var(--yt);
+    transform:translate(-50%,-50%) rotate(380deg) scale(1);
+    opacity:1;
+  }
+  62%{
+    left:var(--xt);top:var(--yt);
+    transform:translate(-50%,-50%) rotate(380deg) scale(1);
+    opacity:1;
+  }
+  71%{
+    left:var(--xe);top:var(--ye);
+    transform:translate(-50%,-50%) rotate(680deg) scale(1);
+    opacity:1;
+  }
+  100%{
+    left:var(--x1);top:var(--y1);
+    transform:translate(-50%,-50%) rotate(1040deg) scale(.35);
+    opacity:0;
+  }
+}
+
+/* ============================================================
    STICKERS · cada personaje, recortado de su viñeta
    El recorte se hace aquí, con la imagen dentro de una ventana
    redonda: no hace falta editar ninguna foto.
@@ -1904,6 +1944,113 @@ const CARTA = {
     }, 4500);
   }
 
+  /* --- EL CIERRE MÁGICO ---
+     La hoja se desintegra en pedazos que forman "Tú siempre eres mi
+     11:11" un par de segundos, se vuelven a desintegrar y se
+     reensamblan formando el sobre cerrado. La música no se corta:
+     empieza a apagarse justo cuando arranca el tramo final (el sobre
+     formándose) y llega a silencio cuando termina. */
+  const DUR_CIERRE = 4800;          // ms, tiene que calzar con @keyframes letra-forma
+  const FRASE_CIERRE = 'Tú siempre eres mi 11:11';
+
+  function medirPuntosTexto(texto){
+    const escala = Math.max(2, Math.min(3, window.devicePixelRatio || 1) * 2);
+    const anchoMax = Math.min(vw() * 0.86, 620);
+    const cv = document.createElement('canvas');
+    const cx = cv.getContext('2d');
+
+    let fs = 42;
+    function preparar(){
+      cv.width  = Math.round(anchoMax * escala);
+      cv.height = Math.round(fs * 2.6 * escala);
+      cx.setTransform(escala, 0, 0, escala, 0, 0);
+      cx.font = '600 ' + fs + 'px "Cormorant Garamond", Georgia, serif';
+    }
+    preparar();
+    while (cx.measureText(texto).width > anchoMax - 16 && fs > 12){
+      fs -= 2;
+      preparar();
+    }
+
+    cx.textAlign = 'center';
+    cx.textBaseline = 'middle';
+    cx.fillStyle = '#fff';
+    cx.fillText(texto, anchoMax / 2, (fs * 2.6) / 2);
+
+    const w = cv.width, h = cv.height;
+    const datos = cx.getImageData(0, 0, w, h).data;
+    const puntos = [];
+    const paso = Math.max(2, Math.round(escala * 1.5));
+    for (let y = 0; y < h; y += paso){
+      for (let x = 0; x < w; x += paso){
+        if (datos[(y * w + x) * 4 + 3] > 128) puntos.push({ x: x / escala, y: y / escala });
+      }
+    }
+    return { puntos, ancho: w / escala, alto: h / escala };
+  }
+
+  function lanzarCierreMagico(origenHoja, destinoSobre, cb){
+    if (menosMovimiento){ cb(); return; }
+
+    const capa = document.createElement('div');
+    capa.className = 'desintegra';
+    document.body.appendChild(capa);
+
+    const { puntos, ancho, alto } = medirPuntosTexto(FRASE_CIERRE);
+    const centroX = vw() * 0.5;
+    const centroY = vh() * 0.46;
+    const offX = centroX - ancho / 2;
+    const offY = centroY - alto / 2;
+
+    const N = Math.min(280, Math.max(60, puntos.length));
+    const stride = Math.max(1, Math.floor(puntos.length / N));
+    const elegidos = [];
+    for (let i = 0; i < puntos.length && elegidos.length < N; i += stride) elegidos.push(puntos[i]);
+
+    const x1 = destinoSobre.left + destinoSobre.width / 2;
+    const y1 = destinoSobre.top + destinoSobre.height / 2;
+
+    elegidos.forEach(pt => {
+      const p = document.createElement('span');
+      p.className = 'pedazo letra';
+
+      // fase 1: puntos repartidos por toda la hoja, de donde "salen" los pedazos
+      const x0 = origenHoja.left + Math.random() * origenHoja.width;
+      const y0 = origenHoja.top + Math.random() * origenHoja.height;
+
+      // fase 2: el punto exacto de la letra que le toca formar
+      const xt = offX + pt.x;
+      const yt = offY + pt.y;
+
+      // fase 3: estalla otra vez antes de convertirse en el sobre
+      const ang = Math.random() * Math.PI * 2;
+      const radio = 60 + Math.random() * 160;
+      const xe = xt + Math.cos(ang) * radio;
+      const ye = yt + Math.sin(ang) * radio;
+
+      // fase 4: converge en el sobre, con un poco de dispersión
+      const jx = (Math.random() - 0.5) * 60;
+      const jy = (Math.random() - 0.5) * 46;
+
+      p.style.setProperty('--x0', x0 + 'px');
+      p.style.setProperty('--y0', y0 + 'px');
+      p.style.setProperty('--xt', xt + 'px');
+      p.style.setProperty('--yt', yt + 'px');
+      p.style.setProperty('--xe', xe + 'px');
+      p.style.setProperty('--ye', ye + 'px');
+      p.style.setProperty('--x1', (x1 + jx) + 'px');
+      p.style.setProperty('--y1', (y1 + jy) + 'px');
+      p.style.setProperty('--w', (3 + Math.random() * 5) + 'px');
+      p.style.setProperty('--h', (3 + Math.random() * 5) + 'px');
+      p.style.setProperty('--c', ['#e8b74f', '#c97f3f', '#a8541f', '#f6ead2', '#5fa88f'][Math.floor(Math.random() * 5)]);
+      p.style.setProperty('--del', (Math.random() * 0.15) + 's');
+
+      capa.appendChild(p);
+    });
+
+    setTimeout(() => { capa.remove(); cb(); }, DUR_CIERRE + 150);
+  }
+
   /* --- cerrar la carta y dejar el sobre listo para abrirlo otra vez --- */
   function cerrar(){
     if (!abierto) return;
@@ -1914,10 +2061,6 @@ const CARTA = {
     pendientes = [];
     if (soltarNumeros) soltarNumeros();
 
-    // la canción se calla y vuelve al principio
-    pararMusica();
-    rebobinarCancion();
-
     vibrar(10);
     apagarFuegos();
     window.scrollTo(0, 0);
@@ -1926,37 +2069,41 @@ const CARTA = {
     $('#controles').classList.remove('ver');
     $('#baja').classList.remove('ver');
     $('#respuesta').classList.remove('ver');
+    $('#decor').classList.remove('ver');
 
-    // --- Se cierra al revés de como se abrió, como si la guardara ---
+    // se miden antes de tocar nada: la hoja (de donde salen los pedazos) y
+    // el sobre (adonde van a parar). La escena se hace visible-mas-invisible
+    // (display normal pero opacity 0 por la clase "fuera") solo para poder
+    // medir al sobre sin que se vea todavía.
+    const origenHoja = hoja.getBoundingClientRect();
+    escena.style.display = '';
+    const destinoSobre = sobre.getBoundingClientRect();
 
-    // 1) la hoja se encoge y baja, buscando el sobre
-    hoja.style.transition = '';
-    hoja.style.opacity = '';
-    hoja.style.transform = '';
-    hoja.classList.remove('ver');
-    hoja.classList.add('guardando');
+    // la hoja se desvanece rápido: a partir de aquí la representan los pedazos
+    hoja.style.transition = 'opacity .18s ease';
+    hoja.style.opacity = '0';
 
-    // 2) vuelve la escena, con el sobre todavía abierto y la hoja asomando
-    agendar(() => {
-      escena.style.display = '';
-      sobre.classList.add('abierto', 'cerrando');
-      void escena.offsetHeight;              // que registre el estado inicial
+    // la música no se corta de golpe: se empieza a apagar justo cuando
+    // arranca el tramo final (71% de la animación = cuando se está
+    // formando el sobre) y llega a silencio cuando termina.
+    if (!menosMovimiento) setTimeout(() => bajarVolumen(DUR_CIERRE * 0.29), DUR_CIERRE * 0.71);
+
+    lanzarCierreMagico(origenHoja, destinoSobre, () => {
+      hoja.style.transition = '';
+      hoja.style.opacity = '';
+      hoja.style.transform = '';
+      hoja.classList.remove('abierta', 'ver', 'guardando');
+
+      // el sobre "aparece" ya cerrado, justo cuando el último pedazo se apaga
       escena.classList.remove('fuera', 'abriendo');
-      $('#decor').classList.remove('ver');
-    }, 620);
+      sobre.classList.remove('abierto', 'cerrando');
 
-    // 3) el sobre se cierra: la hoja entra, la solapa baja y vuelve el sello
-    agendar(() => {
-      sobre.classList.remove('abierto');
-      vibrar(14);
-    }, 1500);
-
-    // 4) a limpiar, ya con el sobre cerrado
-    agendar(() => {
-      sobre.classList.remove('cerrando');
-      hoja.classList.remove('abierta', 'guardando');
       document.documentElement.classList.remove('leyendo');
       window.scrollTo(0, 0);
+      vibrar(14);
+
+      pararMusica();
+      rebobinarCancion();
 
       // los días vuelven a cero, para que se cuenten otra vez al reabrir
       numerosHechos = false;
@@ -1965,7 +2112,7 @@ const CARTA = {
         if (el) el.textContent = '0';
       });
       yaBajo = false;
-    }, 2500);
+    });
   }
 
   sobre.addEventListener('click', abrir);
@@ -2268,6 +2415,26 @@ const CARTA = {
   function pararMusica(){
     try { audio.pause(); } catch(e){}
     marcar(false);
+  }
+
+  // el reverso de subirVolumen: se usa al cerrar la carta, para que la
+  // música se vaya apagando en vez de cortarse de golpe. En iPhone el
+  // volumen no se puede cambiar por código (igual que en subirVolumen),
+  // así que ahí simplemente sigue sonando hasta que pararMusica() la corta.
+  function bajarVolumen(ms){
+    const v0 = audio.volume;
+    const pasos = Math.max(1, Math.round(ms / 80));
+    let i = 0;
+    const paso = setInterval(() => {
+      i++;
+      try { audio.volume = Math.max(0, v0 * (1 - i / pasos)); } catch(e){}
+      if (i >= pasos) clearInterval(paso);
+    }, ms / pasos);
+    setTimeout(() => {
+      clearInterval(paso);
+      pararMusica();
+      try { audio.volume = 1; } catch(e){}   // lista para la próxima vez que abra
+    }, ms + 40);
   }
 
   // deja la canción lista para volver a empezar desde el principio
