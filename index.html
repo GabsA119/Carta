@@ -512,6 +512,13 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
 }
 .magica p strong{font-weight:600;color:var(--acento);}
 .magica p em{font-style:italic;color:#241a1e;}
+.magica-foto{
+  display:block;
+  width:min(78%,260px);
+  margin:1.3em auto 0;
+  border-radius:14px;
+  box-shadow:0 12px 26px rgba(15,45,42,.4);
+}
 
 .tiempo{
   margin:clamp(34px,7vw,50px) 0;
@@ -1128,6 +1135,7 @@ const CARTA = {
     "Las 11:11 no son la hora mágica solo porque a ti te encante buscarlas. Son la hora mágica porque tú naciste un <strong>11 de noviembre</strong>. Once, once.",
     "<em>Tú</em> eres la hora mágica.",
     "Por eso eres la chica más increíble, más fantástica, más bella y más divina de todas. Eres la chica que cumple los deseos.",
+    "<img class=\"magica-foto\" src=\"img/foto-once-once.png\" alt=\"Once:Once, Jay Wheeler\">",
     "Y como dice la canción: Once Once, siempre te deseo."
   ],
 
@@ -1999,7 +2007,7 @@ const CARTA = {
     // toman parejos por todo el muestreo (no solo los primeros, o solo se
     // ve el borde de arriba de las letras); si midió menos, se repiten
     // con jitter para que la frase se vea llena y no punteada.
-    const OBJETIVO_N = 700;
+    const OBJETIVO_N = 950;
     const coloresLetra = ['#f3ecd9', '#5ec9bc', '#ffffff', '#8fe0d2', '#e3d3a4'];
 
     let base = puntos;
@@ -2044,8 +2052,8 @@ const CARTA = {
       p.style.setProperty('--ye', ye + 'px');
       p.style.setProperty('--x1', (x1 + jx) + 'px');
       p.style.setProperty('--y1', (y1 + jy) + 'px');
-      p.style.setProperty('--w', (1.6 + Math.random() * 1.8) + 'px');
-      p.style.setProperty('--h', (1.6 + Math.random() * 1.8) + 'px');
+      p.style.setProperty('--w', (3 + Math.random() * 3.5) + 'px');
+      p.style.setProperty('--h', (3 + Math.random() * 3.5) + 'px');
       p.style.setProperty('--c', coloresLetra[Math.floor(Math.random() * coloresLetra.length)]);
       p.style.setProperty('--del', (Math.random() * 0.15) + 's');
 
