@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
-<meta name="theme-color" content="#150a1c">
+<meta name="theme-color" content="#0f2a1f">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Para ti</title>
@@ -18,25 +18,25 @@
 
 <style>
 /* ============================================================
-   PALETA · noche malva + papel rosa
+   PALETA · noche bosque + papel amate, temática Pocahontas
    ============================================================ */
 :root{
-  --noche:#150a1c;
-  --tinta-clara:#f7eef3;
-  --tinta-clara-suave:rgba(247,238,243,.68);
-  --rosa-luz:#f9a8c9;
-  --rosa-luz-suave:rgba(249,168,201,.35);
+  --noche:#0f2a1f;
+  --tinta-clara:#f5ecd6;
+  --tinta-clara-suave:rgba(245,236,214,.68);
+  --rosa-luz:#e8b74f;
+  --rosa-luz-suave:rgba(232,183,79,.35);
 
-  --papel:#fdf3f7;
-  --papel-borde:#f6e2ea;
-  --texto:#3b2b33;
-  --texto-suave:#7c5f6b;
-  --acento:#c2447a;
-  --acento-claro:#e88aa8;
-  --renglon:rgba(194,68,122,.12);
+  --papel:#f6ead2;
+  --papel-borde:#e3cf9e;
+  --texto:#3b2a1a;
+  --texto-suave:#7a5f3f;
+  --acento:#a8541f;
+  --acento-claro:#c97f3f;
+  --renglon:rgba(168,84,31,.14);
 
-  --sobre:#f7dfe8;
-  --sobre-osc:#eec6d6;
+  --sobre:#e8c99a;
+  --sobre-osc:#cf9e5c;
 
   --serif:'Cormorant Garamond', Georgia, 'Times New Roman', serif;
   --mano:'Dancing Script', 'Segoe Script', cursive;
@@ -89,7 +89,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
   position:fixed;left:50%;top:42%;
   width:min(140vw,900px);height:min(140vw,900px);
   transform:translate(-50%,-50%);
-  background:radial-gradient(circle, rgba(249,168,201,.16) 0%, rgba(230,120,170,.06) 38%, transparent 68%);
+  background:radial-gradient(circle, rgba(232,183,79,.16) 0%, rgba(207,158,92,.06) 38%, transparent 68%);
   z-index:1;pointer-events:none;
   animation:respirar 9s ease-in-out infinite;
 }
@@ -100,7 +100,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
 
 .velo{
   position:fixed;inset:0;z-index:2;
-  background:rgba(12,5,17,.55);
+  background:rgba(8,26,19,.55);
   opacity:0;pointer-events:none;
   transition:opacity 1.2s ease;
 }
@@ -146,7 +146,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
   pointer-events:none;
 }
 .borde .baila{animation:flotar var(--dur,7s) ease-in-out infinite;animation-delay:var(--del,0s);display:block;}
-.borde svg{display:block;width:100%;height:auto;filter:drop-shadow(0 4px 9px rgba(120,30,70,.28));}
+.borde svg{display:block;width:100%;height:auto;filter:drop-shadow(0 4px 9px rgba(80,45,15,.28));}
 
 /* figuritas dentro del texto */
 .deco-linea{
@@ -204,7 +204,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
 .hoja-mini{
   position:absolute;left:6%;bottom:5%;
   width:88%;height:86%;
-  background:linear-gradient(175deg,#fffafc 0%, #f7e4ec 100%);
+  background:linear-gradient(175deg,#fbf3e0 0%, #f0dfb8 100%);
   border-radius:3px;z-index:2;
   transform:translateY(0);
   transition:transform 1.05s cubic-bezier(.34,1.15,.64,1) .5s;
@@ -214,14 +214,14 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
 .hoja-mini::before{
   content:'';position:absolute;inset:14% 13%;
   background:repeating-linear-gradient(to bottom,
-    rgba(194,68,122,.22) 0 1px, transparent 1px 10px);
+    rgba(168,84,31,.22) 0 1px, transparent 1px 10px);
   opacity:.55;
 }
 .sobre.abierto .hoja-mini{transform:translateY(-64%) scale(1.02);}
 
 .sobre-frente{
   position:absolute;inset:0;
-  background:linear-gradient(155deg,#fae7ee 0%, #edc4d5 100%);
+  background:linear-gradient(155deg,#f0dcae 0%, #d9b370 100%);
   clip-path:polygon(0 0, 50% 46%, 100% 0, 100% 100%, 0 100%);
   border-radius:5px;z-index:3;
 }
@@ -234,7 +234,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
 .solapa{
   position:absolute;top:0;left:0;
   width:100%;height:46%;
-  background:linear-gradient(180deg,#fbeaf1 0%, #eec9d8 100%);
+  background:linear-gradient(180deg,#f3e2b8 0%, #ddb877 100%);
   clip-path:polygon(0 0, 100% 0, 50% 100%);
   transform-origin:top center;
   transform:rotateX(0deg);
@@ -275,7 +275,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
 .pista .toca{
   font-size:.82rem;letter-spacing:.3em;text-transform:uppercase;
   color:#fff;
-  text-shadow:0 0 18px rgba(249,168,201,.55);
+  text-shadow:0 0 18px rgba(232,183,79,.55);
   display:inline-flex;align-items:center;gap:12px;
   animation:latir 3.4s ease-in-out infinite;
 }
@@ -295,9 +295,9 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
   animation:pulso 2.4s ease-out infinite;
 }
 @keyframes pulso{
-  0%{box-shadow:0 0 0 0 rgba(249,168,201,.45);}
-  70%{box-shadow:0 0 0 22px rgba(249,168,201,0);}
-  100%{box-shadow:0 0 0 0 rgba(249,168,201,0);}
+  0%{box-shadow:0 0 0 0 rgba(232,183,79,.45);}
+  70%{box-shadow:0 0 0 22px rgba(232,183,79,0);}
+  100%{box-shadow:0 0 0 0 rgba(232,183,79,0);}
 }
 #escena.abriendo .pista{opacity:0;transition:opacity .35s ease;animation:none;}
 
@@ -312,16 +312,16 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
   padding:clamp(34px,8vw,64px) clamp(24px,7vw,58px) clamp(52px,11vw,80px);
 
   background:
-    linear-gradient(to bottom, transparent 32.8%, rgba(194,68,122,.07) 33%, transparent 33.2%),
-    linear-gradient(to bottom, transparent 66.3%, rgba(194,68,122,.055) 66.5%, transparent 66.7%),
-    linear-gradient(168deg, #fffbfd 0%, var(--papel) 42%, #f8e6ee 100%);
+    linear-gradient(to bottom, transparent 32.8%, rgba(168,84,31,.07) 33%, transparent 33.2%),
+    linear-gradient(to bottom, transparent 66.3%, rgba(168,84,31,.055) 66.5%, transparent 66.7%),
+    linear-gradient(168deg, #fbf4e4 0%, var(--papel) 42%, #f0dcae 100%);
 
   color:var(--texto);
   border-radius:3px;
   box-shadow:
     0 1px 0 rgba(255,255,255,.8) inset,
     0 34px 70px rgba(0,0,0,.5),
-    0 6px 18px rgba(120,20,60,.25);
+    0 6px 18px rgba(70,40,10,.25);
 
   opacity:0;
   transform:translateY(46px) scale(.78);
@@ -423,7 +423,7 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
   border:1px solid var(--renglon);
   border-radius:16px;
   padding:16px 18px;
-  background:linear-gradient(160deg, rgba(255,255,255,.65), rgba(249,214,228,.3));
+  background:linear-gradient(160deg, rgba(255,255,255,.65), rgba(232,201,138,.3));
 }
 .tarjeta .icono{
   position:absolute;top:-14px;right:12px;width:34px;
@@ -447,7 +447,7 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
   padding:clamp(30px,7vw,46px) clamp(20px,5vw,32px);
   text-align:center;
   border-radius:22px;
-  background:linear-gradient(165deg, rgba(255,255,255,.72), rgba(249,214,228,.4));
+  background:linear-gradient(165deg, rgba(255,255,255,.72), rgba(232,201,138,.4));
   border:1px solid var(--renglon);
 }
 .magica::before{
@@ -456,7 +456,7 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
   left:50%;top:30%;
   width:min(70%,260px);aspect-ratio:1;
   transform:translate(-50%,-50%);
-  background:radial-gradient(circle, rgba(226,97,143,.2), transparent 66%);
+  background:radial-gradient(circle, rgba(216,153,58,.22), transparent 66%);
   animation:resplandor 4.5s ease-in-out infinite;
   pointer-events:none;
 }
@@ -485,8 +485,8 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
 }
 .magica .hora .chispa:last-child{animation-delay:1.4s;}
 @keyframes titilar{
-  0%,100%{opacity:.92;text-shadow:0 0 18px rgba(226,97,143,.25);}
-  50%{opacity:1;text-shadow:0 0 30px rgba(226,97,143,.5);}
+  0%,100%{opacity:.92;text-shadow:0 0 18px rgba(216,153,58,.25);}
+  50%{opacity:1;text-shadow:0 0 30px rgba(216,153,58,.5);}
 }
 @keyframes chispear{
   0%,100%{opacity:.4;transform:scale(.85) rotate(0deg);}
@@ -551,7 +551,7 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
 .firma .yo{
   font-family:var(--mano);
   font-size:clamp(2.2rem,10vw,2.9rem);
-  font-weight:600;color:#a82a5c;line-height:1.2;
+  font-weight:600;color:#8a4012;line-height:1.2;
 }
 .firma .raya{
   width:110px;height:1px;background:rgba(168,42,92,.35);
@@ -565,16 +565,16 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
 .btn{
   width:100%;max-width:18rem;
   padding:15px 24px;
-  border:1px solid rgba(194,68,122,.45);
+  border:1px solid rgba(168,84,31,.45);
   border-radius:100px;
   font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;
   color:var(--acento);text-align:center;text-decoration:none;
   transition:background .3s ease, transform .15s ease;
   display:block;
 }
-.btn:active{transform:scale(.97);background:rgba(194,68,122,.1);}
-.btn.principal{background:rgba(194,68,122,.12);border-color:rgba(194,68,122,.7);}
-.btn.tenue{border-color:rgba(59,43,51,.16);color:var(--texto-suave);}
+.btn:active{transform:scale(.97);background:rgba(168,84,31,.1);}
+.btn.principal{background:rgba(168,84,31,.12);border-color:rgba(168,84,31,.7);}
+.btn.tenue{border-color:rgba(59,42,26,.16);color:var(--texto-suave);}
 
 .respuesta{
   margin-top:28px;text-align:center;
@@ -594,7 +594,7 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
   font-weight:600;
   line-height:1.15;
   color:var(--acento);
-  text-shadow:0 2px 14px rgba(226,97,143,.3);
+  text-shadow:0 2px 14px rgba(216,153,58,.3);
   margin-bottom:14px;
   opacity:0;
 }
@@ -658,8 +658,8 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
 .controles.ver{display:flex;}
 .ctrl{
   width:38px;height:38px;border-radius:50%;
-  border:1px solid rgba(247,238,243,.18);
-  background:rgba(21,10,28,.62);
+  border:1px solid rgba(245,236,214,.18);
+  background:rgba(15,42,31,.62);
   -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
   display:flex;align-items:center;justify-content:center;
   font-size:.92rem;color:var(--tinta-clara-suave);
@@ -700,6 +700,50 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
 }
 
 /* ============================================================
+   APERTURA MÁGICA · el sobre se desintegra en pedazos, dan dos
+   vueltas en el aire y se reensamblan formando la hoja abierta
+   (no vuelven al sobre).
+   ============================================================ */
+.desintegra{
+  position:fixed;inset:0;z-index:9;
+  pointer-events:none;overflow:hidden;
+}
+.pedazo{
+  position:absolute;
+  left:var(--x0);top:var(--y0);
+  width:var(--w);height:var(--h);
+  background:var(--c);
+  border-radius:1px;
+  opacity:0;
+  transform:translate(-50%,-50%) rotate(0deg) scale(.3);
+  animation:pedazo-vuela var(--dur) cubic-bezier(.3,0,.22,1) forwards;
+  animation-delay:var(--del);
+  will-change:transform,opacity,left,top;
+  box-shadow:0 0 6px rgba(0,0,0,.25);
+}
+@keyframes pedazo-vuela{
+  0%{
+    left:var(--x0);top:var(--y0);
+    transform:translate(-50%,-50%) rotate(0deg) scale(.3);
+    opacity:0;
+  }
+  14%{
+    opacity:1;
+    transform:translate(-50%,-50%) rotate(160deg) scale(1);
+  }
+  48%{
+    left:var(--xm);top:var(--ym);
+    transform:translate(-50%,-50%) rotate(560deg) scale(1);
+    opacity:1;
+  }
+  100%{
+    left:var(--x1);top:var(--y1);
+    transform:translate(-50%,-50%) rotate(720deg) scale(.4);
+    opacity:0;
+  }
+}
+
+/* ============================================================
    STICKERS · cada personaje, recortado de su viñeta
    El recorte se hace aquí, con la imagen dentro de una ventana
    redonda: no hace falta editar ninguna foto.
@@ -713,7 +757,7 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
   display:block;
   width:100%;
   height:auto;
-  filter:drop-shadow(0 9px 18px rgba(120,30,70,.3));
+  filter:drop-shadow(0 9px 18px rgba(80,45,15,.3));
   opacity:0;
   transition:opacity .6s ease;
 }
@@ -725,7 +769,7 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
   background:#fff;
   padding:8px 8px 22px;
   border-radius:2px;
-  box-shadow:0 10px 22px rgba(120,30,70,.28), 0 1px 2px rgba(0,0,0,.12);
+  box-shadow:0 10px 22px rgba(80,45,15,.28), 0 1px 2px rgba(0,0,0,.12);
 }
 .sticker.foto img{
   filter:none;
@@ -869,24 +913,24 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
         <svg viewBox="0 0 100 100" aria-hidden="true">
           <defs>
             <radialGradient id="petaloFuera" cx="50%" cy="72%" r="78%">
-              <stop offset="0%"   stop-color="#c4173a"/>
-              <stop offset="60%"  stop-color="#a01029"/>
-              <stop offset="100%" stop-color="#6e0817"/>
+              <stop offset="0%"   stop-color="#d98a2a"/>
+              <stop offset="60%"  stop-color="#b5651f"/>
+              <stop offset="100%" stop-color="#7a4012"/>
             </radialGradient>
             <radialGradient id="petaloMedio" cx="50%" cy="80%" r="80%">
-              <stop offset="0%"   stop-color="#e04058"/>
-              <stop offset="65%"  stop-color="#bb1839"/>
-              <stop offset="100%" stop-color="#8a0e22"/>
+              <stop offset="0%"   stop-color="#e8a23f"/>
+              <stop offset="65%"  stop-color="#c9762a"/>
+              <stop offset="100%" stop-color="#8a4d16"/>
             </radialGradient>
             <radialGradient id="corazonRosa" cx="38%" cy="32%" r="76%">
-              <stop offset="0%"   stop-color="#ec5f74"/>
-              <stop offset="55%"  stop-color="#c01935"/>
-              <stop offset="100%" stop-color="#8c0f22"/>
+              <stop offset="0%"   stop-color="#f0b95a"/>
+              <stop offset="55%"  stop-color="#d4903a"/>
+              <stop offset="100%" stop-color="#96591c"/>
             </radialGradient>
           </defs>
 
           <!-- corona de fuera: 8 pétalos abiertos -->
-          <g fill="url(#petaloFuera)" stroke="#5f0714" stroke-width=".7" stroke-linejoin="round">
+          <g fill="url(#petaloFuera)" stroke="#5c3410" stroke-width=".7" stroke-linejoin="round">
             <path d="M50 34 C 33 29, 27 11, 50 3 C 73 11, 67 29, 50 34 Z"/>
             <path d="M50 34 C 33 29, 27 11, 50 3 C 73 11, 67 29, 50 34 Z" transform="rotate(45 50 50)"/>
             <path d="M50 34 C 33 29, 27 11, 50 3 C 73 11, 67 29, 50 34 Z" transform="rotate(90 50 50)"/>
@@ -898,7 +942,7 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
           </g>
 
           <!-- corona de en medio: intercalada con la de fuera -->
-          <g fill="url(#petaloMedio)" stroke="#6d0a1a" stroke-width=".6" stroke-linejoin="round">
+          <g fill="url(#petaloMedio)" stroke="#6b3a12" stroke-width=".6" stroke-linejoin="round">
             <path d="M50 40 C 38 36, 33 21, 50 13 C 67 21, 62 36, 50 40 Z" transform="rotate(22.5 50 50)"/>
             <path d="M50 40 C 38 36, 33 21, 50 13 C 67 21, 62 36, 50 40 Z" transform="rotate(67.5 50 50)"/>
             <path d="M50 40 C 38 36, 33 21, 50 13 C 67 21, 62 36, 50 40 Z" transform="rotate(112.5 50 50)"/>
@@ -910,7 +954,7 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
           </g>
 
           <!-- el capullo, donde van las iniciales -->
-          <circle cx="50" cy="50" r="19" fill="url(#corazonRosa)" stroke="#7d0c1e" stroke-width=".8"/>
+          <circle cx="50" cy="50" r="19" fill="url(#corazonRosa)" stroke="#5c3a12" stroke-width=".8"/>
           <ellipse cx="43" cy="42" rx="9" ry="6" fill="#fff" opacity=".15" transform="rotate(-30 43 42)"/>
 
           <text id="sello-texto" x="50" y="57" text-anchor="middle"
@@ -944,13 +988,13 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
 
   <header class="encabezado">
     <svg class="mono" viewBox="0 0 100 58" aria-hidden="true">
-      <path d="M50 29 C 32 7, 9 11, 13 27 C 16 41, 37 37, 50 29 Z" fill="#f2a7c3"/>
-      <path d="M50 29 C 68 7, 91 11, 87 27 C 84 41, 63 37, 50 29 Z" fill="#f2a7c3"/>
-      <path d="M50 29 C 38 12, 18 15, 16 27 C 22 20, 38 20, 50 29 Z" fill="#f8c6d9"/>
-      <path d="M50 29 C 62 12, 82 15, 84 27 C 78 20, 62 20, 50 29 Z" fill="#f8c6d9"/>
-      <path d="M44 33 L 36 52 L 47 45 Z" fill="#e88aa8"/>
-      <path d="M56 33 L 64 52 L 53 45 Z" fill="#e88aa8"/>
-      <ellipse cx="50" cy="29" rx="8" ry="7" fill="#d2447c"/>
+      <path d="M50 29 C 32 7, 9 11, 13 27 C 16 41, 37 37, 50 29 Z" fill="#7fa860"/>
+      <path d="M50 29 C 68 7, 91 11, 87 27 C 84 41, 63 37, 50 29 Z" fill="#7fa860"/>
+      <path d="M50 29 C 38 12, 18 15, 16 27 C 22 20, 38 20, 50 29 Z" fill="#a8c98a"/>
+      <path d="M50 29 C 62 12, 82 15, 84 27 C 78 20, 62 20, 50 29 Z" fill="#a8c98a"/>
+      <path d="M44 33 L 36 52 L 47 45 Z" fill="#c97f3f"/>
+      <path d="M56 33 L 64 52 L 53 45 Z" fill="#c97f3f"/>
+      <ellipse cx="50" cy="29" rx="8" ry="7" fill="#a8541f"/>
     </svg>
     <div class="fecha" id="fecha-hoy"></div>
     <h1 id="nombre-carta">Mi amor</h1>
@@ -1129,7 +1173,9 @@ const CARTA = {
           st-brinco, st-desliza, st-flotar o st-brilla.
      en:  "p1" a "p8" para que vaya entre el texto,
           "izq" o "der" para que se asome por el borde de la hoja
-          (con "y" a qué altura).
+          (con "y" a qué altura) — solo para personajes recortados,
+          nunca para foto:true: una foto/video cortado a la mitad en
+          el borde se ve mal, así que las fotos siempre van en "p1"-"p8".
      tam: el tamaño en píxeles.  giro: la inclinación.
      Para quitar uno, borra su línea. Para cambiarle el movimiento,
      cambia el nombre de "mov".                                        */
@@ -1152,10 +1198,10 @@ const CARTA = {
     { img:"img/foto-sonrisa.png",  foto:true, mov:"st-dormir", en:"p8", tam:160, giro: 3,
       quien:"Su sonrisa" },
 
-    // --- las pequeñas, asomándose por los bordes ---
-    { img:"img/foto-lentes.png",  foto:true, mov:"st-flotar", en:"der", y:"18%", tam:92, giro: 6,
+    // --- las pequeñas: también dentro de la hoja, nunca en el borde ---
+    { img:"img/foto-lentes.png",  foto:true, mov:"st-flotar", en:"p2", tam:92, giro: 6, lado:"izq",
       quien:"Ella con lentes, haciendo cara" },
-    { img:"img/foto-selfie.png",  foto:true, mov:"st-dormir", en:"izq", y:"55%", tam:92, giro:-6,
+    { img:"img/foto-selfie.png",  foto:true, mov:"st-dormir", en:"p6", tam:92, giro:-6, lado:"izq",
       quien:"Selfie con lentes" }
   ],
 
@@ -1195,22 +1241,22 @@ const CARTA = {
     gato: (c) => `<svg viewBox="0 0 64 64">
       <path d="M13 24 L16 7 L31 17 Z" fill="${c}"/>
       <path d="M51 24 L48 7 L33 17 Z" fill="${c}"/>
-      <path d="M15.5 21 L17.5 12 L26 18 Z" fill="#f7b8ce"/>
-      <path d="M48.5 21 L46.5 12 L38 18 Z" fill="#f7b8ce"/>
+      <path d="M15.5 21 L17.5 12 L26 18 Z" fill="#d9b98a"/>
+      <path d="M48.5 21 L46.5 12 L38 18 Z" fill="#d9b98a"/>
       <ellipse cx="32" cy="35" rx="23" ry="20" fill="${c}"/>
       <ellipse cx="24" cy="33" rx="2.5" ry="3" fill="#4a3038"/>
       <ellipse cx="40" cy="33" rx="2.5" ry="3" fill="#4a3038"/>
       <circle cx="24.9" cy="32" r=".8" fill="#fff"/>
       <circle cx="40.9" cy="32" r=".8" fill="#fff"/>
-      <ellipse cx="32" cy="39" rx="2.6" ry="1.9" fill="#e88aa8"/>
+      <ellipse cx="32" cy="39" rx="2.6" ry="1.9" fill="#c97f3f"/>
       <path d="M27.5 42.5 Q32 46.5 36.5 42.5" stroke="#4a3038" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-      <ellipse cx="16" cy="39" rx="3.6" ry="2.6" fill="#f9c2d8" opacity=".85"/>
-      <ellipse cx="48" cy="39" rx="3.6" ry="2.6" fill="#f9c2d8" opacity=".85"/>
+      <ellipse cx="16" cy="39" rx="3.6" ry="2.6" fill="#e8b48a" opacity=".85"/>
+      <ellipse cx="48" cy="39" rx="3.6" ry="2.6" fill="#e8b48a" opacity=".85"/>
       <path d="M8 33 L1 30 M8 36 L1 37 M56 33 L63 30 M56 36 L63 37"
-        stroke="#e0a9bf" stroke-width="1.2" stroke-linecap="round"/>
-      <path d="M49 16 l-8 -5 v10 z" fill="#e2618f"/>
-      <path d="M49 16 l8 -5 v10 z" fill="#e2618f"/>
-      <circle cx="49" cy="16" r="3" fill="#c2447a"/>
+        stroke="#c9a877" stroke-width="1.2" stroke-linecap="round"/>
+      <path d="M49 16 l-8 -5 v10 z" fill="#8a4520"/>
+      <path d="M49 16 l8 -5 v10 z" fill="#8a4520"/>
+      <circle cx="49" cy="16" r="3" fill="#a8541f"/>
     </svg>`,
 
     gatoDormido: (c) => `<svg viewBox="0 0 64 64">
@@ -1219,43 +1265,43 @@ const CARTA = {
       <ellipse cx="32" cy="36" rx="22" ry="19" fill="${c}"/>
       <path d="M20 34 Q24 30 28 34" stroke="#4a3038" stroke-width="1.6" fill="none" stroke-linecap="round"/>
       <path d="M36 34 Q40 30 44 34" stroke="#4a3038" stroke-width="1.6" fill="none" stroke-linecap="round"/>
-      <ellipse cx="32" cy="40" rx="2.4" ry="1.7" fill="#e88aa8"/>
-      <ellipse cx="15" cy="40" rx="3.4" ry="2.4" fill="#f9c2d8" opacity=".85"/>
-      <ellipse cx="49" cy="40" rx="3.4" ry="2.4" fill="#f9c2d8" opacity=".85"/>
-      <text x="47" y="16" font-size="11" fill="#f2a7c3" font-family="sans-serif">z</text>
-      <text x="54" y="9" font-size="8" fill="#f2a7c3" font-family="sans-serif">z</text>
+      <ellipse cx="32" cy="40" rx="2.4" ry="1.7" fill="#c97f3f"/>
+      <ellipse cx="15" cy="40" rx="3.4" ry="2.4" fill="#e8b48a" opacity=".85"/>
+      <ellipse cx="49" cy="40" rx="3.4" ry="2.4" fill="#e8b48a" opacity=".85"/>
+      <text x="47" y="16" font-size="11" fill="#7fa860" font-family="sans-serif">z</text>
+      <text x="54" y="9" font-size="8" fill="#7fa860" font-family="sans-serif">z</text>
     </svg>`,
 
     conejo: (c) => `<svg viewBox="0 0 64 64">
       <ellipse cx="23" cy="16" rx="6" ry="14" fill="${c}"/>
       <ellipse cx="41" cy="16" rx="6" ry="14" fill="${c}"/>
-      <ellipse cx="23" cy="17" rx="3" ry="9.5" fill="#f7b8ce"/>
-      <ellipse cx="41" cy="17" rx="3" ry="9.5" fill="#f7b8ce"/>
+      <ellipse cx="23" cy="17" rx="3" ry="9.5" fill="#d9b98a"/>
+      <ellipse cx="41" cy="17" rx="3" ry="9.5" fill="#d9b98a"/>
       <ellipse cx="32" cy="40" rx="20" ry="18" fill="${c}"/>
       <ellipse cx="25" cy="38" rx="2.4" ry="2.9" fill="#4a3038"/>
       <ellipse cx="39" cy="38" rx="2.4" ry="2.9" fill="#4a3038"/>
       <circle cx="25.8" cy="37" r=".8" fill="#fff"/>
       <circle cx="39.8" cy="37" r=".8" fill="#fff"/>
-      <path d="M32 43 l-2.6 -2.4 h5.2 z" fill="#e2618f"/>
+      <path d="M32 43 l-2.6 -2.4 h5.2 z" fill="#8a4520"/>
       <path d="M28 47 Q32 50 36 47" stroke="#4a3038" stroke-width="1.4" fill="none" stroke-linecap="round"/>
-      <ellipse cx="17" cy="44" rx="3.4" ry="2.4" fill="#f9c2d8" opacity=".85"/>
-      <ellipse cx="47" cy="44" rx="3.4" ry="2.4" fill="#f9c2d8" opacity=".85"/>
+      <ellipse cx="17" cy="44" rx="3.4" ry="2.4" fill="#e8b48a" opacity=".85"/>
+      <ellipse cx="47" cy="44" rx="3.4" ry="2.4" fill="#e8b48a" opacity=".85"/>
     </svg>`,
 
     oso: (c) => `<svg viewBox="0 0 64 64">
       <circle cx="17" cy="19" r="9" fill="${c}"/>
       <circle cx="47" cy="19" r="9" fill="${c}"/>
-      <circle cx="17" cy="19" r="4.6" fill="#f7b8ce"/>
-      <circle cx="47" cy="19" r="4.6" fill="#f7b8ce"/>
+      <circle cx="17" cy="19" r="4.6" fill="#d9b98a"/>
+      <circle cx="47" cy="19" r="4.6" fill="#d9b98a"/>
       <ellipse cx="32" cy="37" rx="21" ry="19" fill="${c}"/>
       <ellipse cx="24" cy="34" rx="2.4" ry="2.8" fill="#4a3038"/>
       <ellipse cx="40" cy="34" rx="2.4" ry="2.8" fill="#4a3038"/>
-      <ellipse cx="32" cy="43" rx="9" ry="7" fill="#fdeaf1"/>
+      <ellipse cx="32" cy="43" rx="9" ry="7" fill="#f0dfc0"/>
       <ellipse cx="32" cy="40" rx="3" ry="2.2" fill="#4a3038"/>
       <path d="M32 42 v3 M32 45 q-3 2.5 -5 .5 M32 45 q3 2.5 5 .5"
         stroke="#4a3038" stroke-width="1.3" fill="none" stroke-linecap="round"/>
-      <ellipse cx="15" cy="40" rx="3.4" ry="2.4" fill="#f9c2d8" opacity=".8"/>
-      <ellipse cx="49" cy="40" rx="3.4" ry="2.4" fill="#f9c2d8" opacity=".8"/>
+      <ellipse cx="15" cy="40" rx="3.4" ry="2.4" fill="#e8b48a" opacity=".8"/>
+      <ellipse cx="49" cy="40" rx="3.4" ry="2.4" fill="#e8b48a" opacity=".8"/>
     </svg>`,
 
     estrella: (c) => `<svg viewBox="0 0 64 64">
@@ -1263,8 +1309,8 @@ const CARTA = {
       <ellipse cx="26" cy="31" rx="2.1" ry="2.6" fill="#4a3038"/>
       <ellipse cx="38" cy="31" rx="2.1" ry="2.6" fill="#4a3038"/>
       <path d="M28 37 Q32 41 36 37" stroke="#4a3038" stroke-width="1.4" fill="none" stroke-linecap="round"/>
-      <ellipse cx="20" cy="36" rx="3" ry="2.1" fill="#f28cb1" opacity=".7"/>
-      <ellipse cx="44" cy="36" rx="3" ry="2.1" fill="#f28cb1" opacity=".7"/>
+      <ellipse cx="20" cy="36" rx="3" ry="2.1" fill="#d99a5a" opacity=".7"/>
+      <ellipse cx="44" cy="36" rx="3" ry="2.1" fill="#d99a5a" opacity=".7"/>
     </svg>`,
 
     corazon: (c) => `<svg viewBox="0 0 64 64">
@@ -1281,8 +1327,8 @@ const CARTA = {
       <ellipse cx="29" cy="28" rx="2.1" ry="2.6" fill="#4a3038"/>
       <ellipse cx="43" cy="28" rx="2.1" ry="2.6" fill="#4a3038"/>
       <path d="M32 33 Q36 36 40 33" stroke="#4a3038" stroke-width="1.3" fill="none" stroke-linecap="round"/>
-      <ellipse cx="23" cy="32" rx="3" ry="2" fill="#f6a9c6" opacity=".8"/>
-      <ellipse cx="49" cy="32" rx="3" ry="2" fill="#f6a9c6" opacity=".8"/>
+      <ellipse cx="23" cy="32" rx="3" ry="2" fill="#e0b06a" opacity=".8"/>
+      <ellipse cx="49" cy="32" rx="3" ry="2" fill="#e0b06a" opacity=".8"/>
     </svg>`,
 
     luna: (c) => `<svg viewBox="0 0 64 64">
@@ -1290,7 +1336,7 @@ const CARTA = {
       <ellipse cx="26" cy="27" rx="2.1" ry="2.6" fill="#4a3038"/>
       <ellipse cx="38" cy="27" rx="2.1" ry="2.6" fill="#4a3038"/>
       <path d="M28 34 Q32 37 36 34" stroke="#4a3038" stroke-width="1.3" fill="none" stroke-linecap="round"/>
-      <ellipse cx="21" cy="33" rx="2.8" ry="2" fill="#f28cb1" opacity=".65"/>
+      <ellipse cx="21" cy="33" rx="2.8" ry="2" fill="#d99a5a" opacity=".65"/>
     </svg>`,
 
     flor: (c) => `<svg viewBox="0 0 64 64">
@@ -1308,17 +1354,17 @@ const CARTA = {
     </svg>`,
 
     cupcake: (c) => `<svg viewBox="0 0 64 64">
-      <path d="M16 34 h32 l-4 24 h-24 Z" fill="#f8d9e6"/>
-      <path d="M20 34 l-1.5 24 M32 34 v24 M44 34 l1.5 24" stroke="#eebdd2" stroke-width="1.6"/>
+      <path d="M16 34 h32 l-4 24 h-24 Z" fill="#f0dcae"/>
+      <path d="M20 34 l-1.5 24 M32 34 v24 M44 34 l1.5 24" stroke="#dcc38a" stroke-width="1.6"/>
       <path d="M14 34 A18 15 0 0 1 50 34 Z" fill="${c}"/>
-      <circle cx="32" cy="14" r="4.5" fill="#e2618f"/>
+      <circle cx="32" cy="14" r="4.5" fill="#8a4520"/>
       <ellipse cx="26" cy="27" rx="2" ry="2.5" fill="#4a3038"/>
       <ellipse cx="38" cy="27" rx="2" ry="2.5" fill="#4a3038"/>
       <path d="M29 31 Q32 34 35 31" stroke="#4a3038" stroke-width="1.3" fill="none" stroke-linecap="round"/>
     </svg>`,
 
     arcoiris: () => `<svg viewBox="0 0 72 44">
-      <path d="M6 40 A30 30 0 0 1 66 40" stroke="#f2a7c3" stroke-width="6" fill="none" stroke-linecap="round"/>
+      <path d="M6 40 A30 30 0 0 1 66 40" stroke="#7fa860" stroke-width="6" fill="none" stroke-linecap="round"/>
       <path d="M13 40 A23 23 0 0 1 59 40" stroke="#f9c98a" stroke-width="6" fill="none" stroke-linecap="round"/>
       <path d="M20 40 A16 16 0 0 1 52 40" stroke="#bfe3c0" stroke-width="6" fill="none" stroke-linecap="round"/>
       <path d="M27 40 A9 9 0 0 1 45 40" stroke="#b7d4f2" stroke-width="6" fill="none" stroke-linecap="round"/>
@@ -1329,13 +1375,13 @@ const CARTA = {
     lazo: (c) => `<svg viewBox="0 0 64 40">
       <path d="M32 20 C 20 5, 5 8, 8 19 C 10 29, 24 26, 32 20 Z" fill="${c}"/>
       <path d="M32 20 C 44 5, 59 8, 56 19 C 54 29, 40 26, 32 20 Z" fill="${c}"/>
-      <path d="M28 23 L22 38 L31 32 Z" fill="#e2618f"/>
-      <path d="M36 23 L42 38 L33 32 Z" fill="#e2618f"/>
-      <ellipse cx="32" cy="20" rx="5.5" ry="5" fill="#c2447a"/>
+      <path d="M28 23 L22 38 L31 32 Z" fill="#8a4520"/>
+      <path d="M36 23 L42 38 L33 32 Z" fill="#8a4520"/>
+      <ellipse cx="32" cy="20" rx="5.5" ry="5" fill="#a8541f"/>
     </svg>`
   };
 
-  const BLANCO = '#fffafc', ROSA = '#f6b6d0', LILA = '#d9b8f0', CREMA = '#fde9c8';
+  const BLANCO = '#fdf6e8', ROSA = '#d98a52', LILA = '#5fa88f', CREMA = '#f0dba0';
 
   function dibujo(nombre, color){
     const f = FIGURAS[nombre];
@@ -1360,10 +1406,10 @@ const CARTA = {
     { fig:'gato',       col:BLANCO, x:'4%',  y:'10%', tam:62, prof:.10, rot:-8,  dur:6.5, del:0   },
     { fig:'estrella',   col:CREMA,  x:'84%', y:'7%',  tam:38, prof:.20, rot:10,  dur:5.2, del:.6  },
     { fig:'conejo',     col:BLANCO, x:'88%', y:'30%', tam:56, prof:.14, rot:6,   dur:7.1, del:1.2 },
-    { fig:'nube',       col:'#f9d3e4', x:'2%', y:'34%', tam:64, prof:.26, rot:-4, dur:8.0, del:.3  },
+    { fig:'nube',       col:'#e4ddc4', x:'2%', y:'34%', tam:64, prof:.26, rot:-4, dur:8.0, del:.3  },
     { fig:'corazon',    col:ROSA,   x:'92%', y:'54%', tam:32, prof:.30, rot:12,  dur:4.8, del:1.8 },
     { fig:'luna',       col:CREMA,  x:'6%',  y:'60%', tam:44, prof:.17, rot:-10, dur:6.8, del:.9  },
-    { fig:'oso',        col:'#f6dcc4', x:'86%', y:'76%', tam:54, prof:.12, rot:8, dur:7.6, del:1.5 },
+    { fig:'oso',        col:'#b8875a', x:'86%', y:'76%', tam:54, prof:.12, rot:8, dur:7.6, del:1.5 },
     { fig:'flor',       col:LILA,   x:'3%',  y:'82%', tam:40, prof:.24, rot:14,  dur:5.6, del:.4  },
     { fig:'gatoDormido',col:LILA,   x:'78%', y:'92%', tam:50, prof:.09, rot:-6,  dur:8.4, del:2.1 },
     { fig:'cupcake',    col:ROSA,   x:'10%', y:'96%', tam:42, prof:.22, rot:5,   dur:6.1, del:1.1 }
@@ -1563,7 +1609,7 @@ const CARTA = {
 
   $('#lista-cosas').innerHTML = CARTA.cosas.map(c => '<li>' + c + '</li>').join('');
 
-  const coloresIcono = [BLANCO, ROSA, '#f18cb0', LILA, ROSA, CREMA];
+  const coloresIcono = [BLANCO, ROSA, '#c97f3f', LILA, ROSA, CREMA];
   $('#tarjetas').innerHTML = CARTA.tarjetas.map((t, i) =>
     '<div class="tarjeta">' +
       '<span class="icono">' + dibujo(t.icono || 'corazon', coloresIcono[i % coloresIcono.length]) + '</span>' +
@@ -1675,9 +1721,9 @@ const CARTA = {
     if (Math.abs(vw() - ancho) > 2 || Math.abs(vh() - alto) > 140) dimensionar();
 
     const g = ctx.createLinearGradient(0, 0, 0, altoLienzo);
-    g.addColorStop(0, '#221033');
-    g.addColorStop(0.55, '#150a1c');
-    g.addColorStop(1, '#0d0512');
+    g.addColorStop(0, '#173c2c');
+    g.addColorStop(0.55, '#0f2a1f');
+    g.addColorStop(1, '#081a13');
     ctx.fillStyle = g;
     ctx.fillRect(0, 0, ancho, altoLienzo);
 
@@ -1688,7 +1734,7 @@ const CARTA = {
       ctx.beginPath();
       ctx.arc(e.x, e.y, e.r, 0, 6.2832);
       ctx.fillStyle = e.rosa
-        ? 'rgba(252, 180, 210,' + a + ')'
+        ? 'rgba(240, 200, 130,' + a + ')'
         : 'rgba(255, 255, 255,' + a + ')';
       ctx.fill();
     }
@@ -1698,8 +1744,8 @@ const CARTA = {
       const grad = ctx.createLinearGradient(
         fugaz.x, fugaz.y, fugaz.x - fugaz.largo, fugaz.y + fugaz.largo * 0.5
       );
-      grad.addColorStop(0, 'rgba(255,225,240,' + (0.9 * fugaz.vida) + ')');
-      grad.addColorStop(1, 'rgba(255,225,240,0)');
+      grad.addColorStop(0, 'rgba(245,220,170,' + (0.9 * fugaz.vida) + ')');
+      grad.addColorStop(1, 'rgba(245,220,170,0)');
       ctx.strokeStyle = grad;
       ctx.lineWidth = 1.6;
       ctx.lineCap = 'round';
@@ -1748,6 +1794,63 @@ const CARTA = {
     pendientes.push(setTimeout(fn, ms));
   }
 
+  /* --- LA APERTURA MÁGICA ---
+     En vez de abrir el sobre con la solapa, el sobre se desintegra en
+     pedazos que dan dos vueltas en el aire (720°) y se reensamblan,
+     pero no vuelven al sobre: convergen en el centro, donde aparece
+     la hoja ya abierta. */
+  function lanzarDesintegracion(origen, cb){
+    if (menosMovimiento){ cb(); return; }
+
+    const capa = document.createElement('div');
+    capa.className = 'desintegra';
+    document.body.appendChild(capa);
+
+    const x0 = origen.left + origen.width / 2;
+    const y0 = origen.top + origen.height / 2;
+    const x1 = vw() * 0.5;
+    const y1 = vh() * 0.4;
+
+    const colores = ['#e8b74f', '#c97f3f', '#a8541f', '#f6ead2', '#5fa88f'];
+    const N = 130;
+    let maxFin = 0;
+
+    for (let i = 0; i < N; i++){
+      const p = document.createElement('span');
+      p.className = 'pedazo';
+
+      // fase 1: estalla hacia afuera, en cualquier dirección
+      const ang = Math.random() * Math.PI * 2;
+      const radio = 70 + Math.random() * 190;
+      const xm = x0 + Math.cos(ang) * radio;
+      const ym = y0 + Math.sin(ang) * radio;
+
+      // fase 2: converge en el centro, con un poco de dispersión
+      const jx = (Math.random() - 0.5) * 90;
+      const jy = (Math.random() - 0.5) * 70;
+
+      const dur = 1.5 + Math.random() * 0.5;
+      const del = Math.random() * 0.28;
+      maxFin = Math.max(maxFin, dur + del);
+
+      p.style.setProperty('--x0', x0 + 'px');
+      p.style.setProperty('--y0', y0 + 'px');
+      p.style.setProperty('--xm', xm + 'px');
+      p.style.setProperty('--ym', ym + 'px');
+      p.style.setProperty('--x1', (x1 + jx) + 'px');
+      p.style.setProperty('--y1', (y1 + jy) + 'px');
+      p.style.setProperty('--w', (3 + Math.random() * 6) + 'px');
+      p.style.setProperty('--h', (3 + Math.random() * 6) + 'px');
+      p.style.setProperty('--c', colores[Math.floor(Math.random() * colores.length)]);
+      p.style.setProperty('--dur', dur + 's');
+      p.style.setProperty('--del', del + 's');
+
+      capa.appendChild(p);
+    }
+
+    setTimeout(() => { capa.remove(); cb(); }, maxFin * 1000 + 80);
+  }
+
   function abrir(){
     if (abierto) return;
     abierto = true;
@@ -1759,35 +1862,34 @@ const CARTA = {
     hoja.classList.remove('guardando');
     sobre.classList.remove('cerrando');
 
-    escena.classList.add('abriendo');
-    sobre.classList.add('abierto');
+    // se mide antes de que el sobre empiece a desvanecerse
+    const origenSobre = sobre.getBoundingClientRect();
+
+    escena.classList.add('abriendo', 'fuera');
+    $('#velo').classList.add('ver');
     vibrar(12);
 
     // El toque de ella es el gesto que iOS exige para dejar sonar el audio.
     // Cada vez que abre la carta, la canción empieza desde el principio.
     rebobinarCancion();
     arrancarMusica();
+    lanzarFugaz();
 
-    agendar(() => {
-      escena.classList.add('fuera');
-      $('#velo').classList.add('ver');
-      $('#decor').classList.add('ver');
-      lanzarFugaz();
-    }, 1450);
-
-    agendar(() => {
+    lanzarDesintegracion(origenSobre, () => {
+      vibrar(16);
+      escena.style.display = 'none';
       hoja.classList.add('abierta');
+      $('#decor').classList.add('ver');
       activarScroll();
       agendar(() => hoja.classList.add('ver'), 40);
       $('#controles').classList.add('ver');
       montarParallax();
-    }, 1900);
 
-    agendar(() => {
-      escena.style.display = 'none';
-      vigilarNumeros();
-      $('#baja').classList.add('ver');
-    }, 3100);
+      agendar(() => {
+        vigilarNumeros();
+        $('#baja').classList.add('ver');
+      }, 900);
+    });
 
     // Red de seguridad: pase lo que pase, la hoja se ve.
     agendar(() => {
@@ -2053,7 +2155,7 @@ const CARTA = {
       requestAnimationFrame(pintarFuegos);
     }
 
-    const colores = ['#f9a8c9', '#e2618f', '#ffd9a0', '#ffffff', '#d9b8f0', '#ff8fb1', '#ffc4dd'];
+    const colores = ['#e8b74f', '#8a4520', '#ffd9a0', '#ffffff', '#5fa88f', '#e0935a', '#f0dba0'];
 
     // once explosiones, una detrás de otra, por toda la pantalla
     for (let k = 0; k < 11; k++){
@@ -2078,8 +2180,8 @@ const CARTA = {
   function lluviaDeCorazones(){
     if (menosMovimiento) return;
     const simbolos = ['♥','♡','✿','❥','✦'];
-    const colores = ['rgba(242,167,195,.95)','rgba(210,68,124,.9)',
-                     'rgba(255,255,255,.85)','rgba(248,198,217,.95)'];
+    const colores = ['rgba(232,183,79,.95)','rgba(168,84,31,.9)',
+                     'rgba(255,255,255,.85)','rgba(95,168,143,.95)'];
     for (let i = 0; i < 26; i++){
       setTimeout(() => {
         const c = document.createElement('div');
