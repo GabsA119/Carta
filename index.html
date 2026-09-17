@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
-<meta name="theme-color" content="#0f2a1f">
+<meta name="theme-color" content="#0d2438">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Para ti</title>
@@ -21,22 +21,22 @@
    PALETA · noche bosque + papel amate, temática Pocahontas
    ============================================================ */
 :root{
-  --noche:#0f2a1f;
-  --tinta-clara:#f5ecd6;
-  --tinta-clara-suave:rgba(245,236,214,.68);
-  --rosa-luz:#e8b74f;
-  --rosa-luz-suave:rgba(232,183,79,.35);
+  --noche:#0d2438;
+  --tinta-clara:#f2ecd9;
+  --tinta-clara-suave:rgba(242,236,217,.68);
+  --rosa-luz:#5ec9bc;
+  --rosa-luz-suave:rgba(94,201,188,.35);
 
-  --papel:#f6ead2;
-  --papel-borde:#e3cf9e;
-  --texto:#3b2a1a;
-  --texto-suave:#7a5f3f;
-  --acento:#a8541f;
-  --acento-claro:#c97f3f;
-  --renglon:rgba(168,84,31,.14);
+  --papel:#f3ecd9;
+  --papel-borde:#d9cca0;
+  --texto:#2b2318;
+  --texto-suave:#6b5c42;
+  --acento:#1f8f86;
+  --acento-claro:#4fb8ac;
+  --renglon:rgba(31,143,134,.14);
 
-  --sobre:#e8c99a;
-  --sobre-osc:#cf9e5c;
+  --sobre:#e3d3a4;
+  --sobre-osc:#b8935f;
 
   --serif:'Cormorant Garamond', Georgia, 'Times New Roman', serif;
   --mano:'Dancing Script', 'Segoe Script', cursive;
@@ -89,7 +89,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
   position:fixed;left:50%;top:42%;
   width:min(140vw,900px);height:min(140vw,900px);
   transform:translate(-50%,-50%);
-  background:radial-gradient(circle, rgba(232,183,79,.16) 0%, rgba(207,158,92,.06) 38%, transparent 68%);
+  background:radial-gradient(circle, rgba(94,201,188,.16) 0%, rgba(47,156,147,.06) 38%, transparent 68%);
   z-index:1;pointer-events:none;
   animation:respirar 9s ease-in-out infinite;
 }
@@ -100,7 +100,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
 
 .velo{
   position:fixed;inset:0;z-index:2;
-  background:rgba(8,26,19,.55);
+  background:rgba(13,36,56,.55);
   opacity:0;pointer-events:none;
   transition:opacity 1.2s ease;
 }
@@ -146,7 +146,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
   pointer-events:none;
 }
 .borde .baila{animation:flotar var(--dur,7s) ease-in-out infinite;animation-delay:var(--del,0s);display:block;}
-.borde svg{display:block;width:100%;height:auto;filter:drop-shadow(0 4px 9px rgba(80,45,15,.28));}
+.borde svg{display:block;width:100%;height:auto;filter:drop-shadow(0 4px 9px rgba(15,45,42,.28));}
 
 /* figuritas dentro del texto */
 .deco-linea{
@@ -204,7 +204,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
 .hoja-mini{
   position:absolute;left:6%;bottom:5%;
   width:88%;height:86%;
-  background:linear-gradient(175deg,#fbf3e0 0%, #f0dfb8 100%);
+  background:linear-gradient(175deg,#f7f1de 0%, #e8dcb4 100%);
   border-radius:3px;z-index:2;
   transform:translateY(0);
   transition:transform 1.05s cubic-bezier(.34,1.15,.64,1) .5s;
@@ -214,14 +214,14 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
 .hoja-mini::before{
   content:'';position:absolute;inset:14% 13%;
   background:repeating-linear-gradient(to bottom,
-    rgba(168,84,31,.22) 0 1px, transparent 1px 10px);
+    rgba(31,143,134,.22) 0 1px, transparent 1px 10px);
   opacity:.55;
 }
 .sobre.abierto .hoja-mini{transform:translateY(-64%) scale(1.02);}
 
 .sobre-frente{
   position:absolute;inset:0;
-  background:linear-gradient(155deg,#f0dcae 0%, #d9b370 100%);
+  background:linear-gradient(155deg,#ecdfb8 0%, #c8ab74 100%);
   clip-path:polygon(0 0, 50% 46%, 100% 0, 100% 100%, 0 100%);
   border-radius:5px;z-index:3;
 }
@@ -234,7 +234,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
 .solapa{
   position:absolute;top:0;left:0;
   width:100%;height:46%;
-  background:linear-gradient(180deg,#f3e2b8 0%, #ddb877 100%);
+  background:linear-gradient(180deg,#efe4c0 0%, #cbb47e 100%);
   clip-path:polygon(0 0, 100% 0, 50% 100%);
   transform-origin:top center;
   transform:rotateX(0deg);
@@ -275,7 +275,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
 .pista .toca{
   font-size:.82rem;letter-spacing:.3em;text-transform:uppercase;
   color:#fff;
-  text-shadow:0 0 18px rgba(232,183,79,.55);
+  text-shadow:0 0 18px rgba(94,201,188,.55);
   display:inline-flex;align-items:center;gap:12px;
   animation:latir 3.4s ease-in-out infinite;
 }
@@ -295,9 +295,9 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
   animation:pulso 2.4s ease-out infinite;
 }
 @keyframes pulso{
-  0%{box-shadow:0 0 0 0 rgba(232,183,79,.45);}
-  70%{box-shadow:0 0 0 22px rgba(232,183,79,0);}
-  100%{box-shadow:0 0 0 0 rgba(232,183,79,0);}
+  0%{box-shadow:0 0 0 0 rgba(94,201,188,.45);}
+  70%{box-shadow:0 0 0 22px rgba(94,201,188,0);}
+  100%{box-shadow:0 0 0 0 rgba(94,201,188,0);}
 }
 #escena.abriendo .pista{opacity:0;transition:opacity .35s ease;animation:none;}
 
@@ -312,16 +312,16 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
   padding:clamp(34px,8vw,64px) clamp(24px,7vw,58px) clamp(52px,11vw,80px);
 
   background:
-    linear-gradient(to bottom, transparent 32.8%, rgba(168,84,31,.07) 33%, transparent 33.2%),
-    linear-gradient(to bottom, transparent 66.3%, rgba(168,84,31,.055) 66.5%, transparent 66.7%),
-    linear-gradient(168deg, #fbf4e4 0%, var(--papel) 42%, #f0dcae 100%);
+    linear-gradient(to bottom, transparent 32.8%, rgba(31,143,134,.07) 33%, transparent 33.2%),
+    linear-gradient(to bottom, transparent 66.3%, rgba(31,143,134,.055) 66.5%, transparent 66.7%),
+    linear-gradient(168deg, #f7f2e2 0%, var(--papel) 42%, #ecdfb8 100%);
 
   color:var(--texto);
   border-radius:3px;
   box-shadow:
     0 1px 0 rgba(255,255,255,.8) inset,
     0 34px 70px rgba(0,0,0,.5),
-    0 6px 18px rgba(70,40,10,.25);
+    0 6px 18px rgba(12,38,35,.25);
 
   opacity:0;
   transform:translateY(46px) scale(.78);
@@ -423,7 +423,7 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
   border:1px solid var(--renglon);
   border-radius:16px;
   padding:16px 18px;
-  background:linear-gradient(160deg, rgba(255,255,255,.65), rgba(232,201,138,.3));
+  background:linear-gradient(160deg, rgba(255,255,255,.65), rgba(94,201,188,.3));
 }
 .tarjeta .icono{
   position:absolute;top:-14px;right:12px;width:34px;
@@ -447,7 +447,7 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
   padding:clamp(30px,7vw,46px) clamp(20px,5vw,32px);
   text-align:center;
   border-radius:22px;
-  background:linear-gradient(165deg, rgba(255,255,255,.72), rgba(232,201,138,.4));
+  background:linear-gradient(165deg, rgba(255,255,255,.72), rgba(94,201,188,.4));
   border:1px solid var(--renglon);
 }
 .magica::before{
@@ -456,7 +456,7 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
   left:50%;top:30%;
   width:min(70%,260px);aspect-ratio:1;
   transform:translate(-50%,-50%);
-  background:radial-gradient(circle, rgba(216,153,58,.22), transparent 66%);
+  background:radial-gradient(circle, rgba(47,156,147,.22), transparent 66%);
   animation:resplandor 4.5s ease-in-out infinite;
   pointer-events:none;
 }
@@ -485,8 +485,8 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
 }
 .magica .hora .chispa:last-child{animation-delay:1.4s;}
 @keyframes titilar{
-  0%,100%{opacity:.92;text-shadow:0 0 18px rgba(216,153,58,.25);}
-  50%{opacity:1;text-shadow:0 0 30px rgba(216,153,58,.5);}
+  0%,100%{opacity:.92;text-shadow:0 0 18px rgba(47,156,147,.25);}
+  50%{opacity:1;text-shadow:0 0 30px rgba(47,156,147,.5);}
 }
 @keyframes chispear{
   0%,100%{opacity:.4;transform:scale(.85) rotate(0deg);}
@@ -551,7 +551,7 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
 .firma .yo{
   font-family:var(--mano);
   font-size:clamp(2.2rem,10vw,2.9rem);
-  font-weight:600;color:#8a4012;line-height:1.2;
+  font-weight:600;color:#14746c;line-height:1.2;
 }
 .firma .raya{
   width:110px;height:1px;background:rgba(168,42,92,.35);
@@ -565,15 +565,15 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
 .btn{
   width:100%;max-width:18rem;
   padding:15px 24px;
-  border:1px solid rgba(168,84,31,.45);
+  border:1px solid rgba(31,143,134,.45);
   border-radius:100px;
   font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;
   color:var(--acento);text-align:center;text-decoration:none;
   transition:background .3s ease, transform .15s ease;
   display:block;
 }
-.btn:active{transform:scale(.97);background:rgba(168,84,31,.1);}
-.btn.principal{background:rgba(168,84,31,.12);border-color:rgba(168,84,31,.7);}
+.btn:active{transform:scale(.97);background:rgba(31,143,134,.1);}
+.btn.principal{background:rgba(31,143,134,.12);border-color:rgba(31,143,134,.7);}
 .btn.tenue{border-color:rgba(59,42,26,.16);color:var(--texto-suave);}
 
 .respuesta{
@@ -594,7 +594,7 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
   font-weight:600;
   line-height:1.15;
   color:var(--acento);
-  text-shadow:0 2px 14px rgba(216,153,58,.3);
+  text-shadow:0 2px 14px rgba(47,156,147,.3);
   margin-bottom:14px;
   opacity:0;
 }
@@ -658,8 +658,8 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
 .controles.ver{display:flex;}
 .ctrl{
   width:38px;height:38px;border-radius:50%;
-  border:1px solid rgba(245,236,214,.18);
-  background:rgba(15,42,31,.62);
+  border:1px solid rgba(242,236,217,.18);
+  background:rgba(13,36,56,.62);
   -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
   display:flex;align-items:center;justify-content:center;
   font-size:.92rem;color:var(--tinta-clara-suave);
@@ -797,7 +797,7 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
   display:block;
   width:100%;
   height:auto;
-  filter:drop-shadow(0 9px 18px rgba(80,45,15,.3));
+  filter:drop-shadow(0 9px 18px rgba(15,45,42,.3));
   opacity:0;
   transition:opacity .6s ease;
 }
@@ -809,7 +809,7 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
   background:#fff;
   padding:8px 8px 22px;
   border-radius:2px;
-  box-shadow:0 10px 22px rgba(80,45,15,.28), 0 1px 2px rgba(0,0,0,.12);
+  box-shadow:0 10px 22px rgba(15,45,42,.28), 0 1px 2px rgba(0,0,0,.12);
 }
 .sticker.foto img{
   filter:none;
@@ -953,24 +953,24 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
         <svg viewBox="0 0 100 100" aria-hidden="true">
           <defs>
             <radialGradient id="petaloFuera" cx="50%" cy="72%" r="78%">
-              <stop offset="0%"   stop-color="#d98a2a"/>
-              <stop offset="60%"  stop-color="#b5651f"/>
-              <stop offset="100%" stop-color="#7a4012"/>
+              <stop offset="0%"   stop-color="#2fb0a3"/>
+              <stop offset="60%"  stop-color="#1f8f86"/>
+              <stop offset="100%" stop-color="#125550"/>
             </radialGradient>
             <radialGradient id="petaloMedio" cx="50%" cy="80%" r="80%">
-              <stop offset="0%"   stop-color="#e8a23f"/>
-              <stop offset="65%"  stop-color="#c9762a"/>
-              <stop offset="100%" stop-color="#8a4d16"/>
+              <stop offset="0%"   stop-color="#5ec9bc"/>
+              <stop offset="65%"  stop-color="#3aa79c"/>
+              <stop offset="100%" stop-color="#1f6b64"/>
             </radialGradient>
             <radialGradient id="corazonRosa" cx="38%" cy="32%" r="76%">
-              <stop offset="0%"   stop-color="#f0b95a"/>
-              <stop offset="55%"  stop-color="#d4903a"/>
-              <stop offset="100%" stop-color="#96591c"/>
+              <stop offset="0%"   stop-color="#8fe0d2"/>
+              <stop offset="55%"  stop-color="#5ec9bc"/>
+              <stop offset="100%" stop-color="#2f9c93"/>
             </radialGradient>
           </defs>
 
           <!-- corona de fuera: 8 pétalos abiertos -->
-          <g fill="url(#petaloFuera)" stroke="#5c3410" stroke-width=".7" stroke-linejoin="round">
+          <g fill="url(#petaloFuera)" stroke="#123f3a" stroke-width=".7" stroke-linejoin="round">
             <path d="M50 34 C 33 29, 27 11, 50 3 C 73 11, 67 29, 50 34 Z"/>
             <path d="M50 34 C 33 29, 27 11, 50 3 C 73 11, 67 29, 50 34 Z" transform="rotate(45 50 50)"/>
             <path d="M50 34 C 33 29, 27 11, 50 3 C 73 11, 67 29, 50 34 Z" transform="rotate(90 50 50)"/>
@@ -982,7 +982,7 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
           </g>
 
           <!-- corona de en medio: intercalada con la de fuera -->
-          <g fill="url(#petaloMedio)" stroke="#6b3a12" stroke-width=".6" stroke-linejoin="round">
+          <g fill="url(#petaloMedio)" stroke="#154743" stroke-width=".6" stroke-linejoin="round">
             <path d="M50 40 C 38 36, 33 21, 50 13 C 67 21, 62 36, 50 40 Z" transform="rotate(22.5 50 50)"/>
             <path d="M50 40 C 38 36, 33 21, 50 13 C 67 21, 62 36, 50 40 Z" transform="rotate(67.5 50 50)"/>
             <path d="M50 40 C 38 36, 33 21, 50 13 C 67 21, 62 36, 50 40 Z" transform="rotate(112.5 50 50)"/>
@@ -994,13 +994,13 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
           </g>
 
           <!-- el capullo, donde van las iniciales -->
-          <circle cx="50" cy="50" r="19" fill="url(#corazonRosa)" stroke="#5c3a12" stroke-width=".8"/>
+          <circle cx="50" cy="50" r="19" fill="url(#corazonRosa)" stroke="#123f3a" stroke-width=".8"/>
           <ellipse cx="43" cy="42" rx="9" ry="6" fill="#fff" opacity=".15" transform="rotate(-30 43 42)"/>
 
           <text id="sello-texto" x="50" y="57" text-anchor="middle"
                 font-family="Cormorant Garamond, Georgia, serif"
                 font-size="20" font-weight="600" letter-spacing=".5"
-                fill="#f8e3b6">PH</text>
+                fill="#f3ecd9">PH</text>
         </svg>
       </div>
     </div>
@@ -1028,13 +1028,13 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
 
   <header class="encabezado">
     <svg class="mono" viewBox="0 0 100 58" aria-hidden="true">
-      <path d="M50 29 C 32 7, 9 11, 13 27 C 16 41, 37 37, 50 29 Z" fill="#7fa860"/>
-      <path d="M50 29 C 68 7, 91 11, 87 27 C 84 41, 63 37, 50 29 Z" fill="#7fa860"/>
-      <path d="M50 29 C 38 12, 18 15, 16 27 C 22 20, 38 20, 50 29 Z" fill="#a8c98a"/>
-      <path d="M50 29 C 62 12, 82 15, 84 27 C 78 20, 62 20, 50 29 Z" fill="#a8c98a"/>
-      <path d="M44 33 L 36 52 L 47 45 Z" fill="#c97f3f"/>
-      <path d="M56 33 L 64 52 L 53 45 Z" fill="#c97f3f"/>
-      <ellipse cx="50" cy="29" rx="8" ry="7" fill="#a8541f"/>
+      <path d="M50 29 C 32 7, 9 11, 13 27 C 16 41, 37 37, 50 29 Z" fill="#2f9c93"/>
+      <path d="M50 29 C 68 7, 91 11, 87 27 C 84 41, 63 37, 50 29 Z" fill="#2f9c93"/>
+      <path d="M50 29 C 38 12, 18 15, 16 27 C 22 20, 38 20, 50 29 Z" fill="#8fe0d2"/>
+      <path d="M50 29 C 62 12, 82 15, 84 27 C 78 20, 62 20, 50 29 Z" fill="#8fe0d2"/>
+      <path d="M44 33 L 36 52 L 47 45 Z" fill="#4fb8ac"/>
+      <path d="M56 33 L 64 52 L 53 45 Z" fill="#4fb8ac"/>
+      <ellipse cx="50" cy="29" rx="8" ry="7" fill="#1f8f86"/>
     </svg>
     <div class="fecha" id="fecha-hoy"></div>
     <h1 id="nombre-carta">Mi amor</h1>
@@ -1288,7 +1288,7 @@ const CARTA = {
       <ellipse cx="40" cy="33" rx="2.5" ry="3" fill="#4a3038"/>
       <circle cx="24.9" cy="32" r=".8" fill="#fff"/>
       <circle cx="40.9" cy="32" r=".8" fill="#fff"/>
-      <ellipse cx="32" cy="39" rx="2.6" ry="1.9" fill="#c97f3f"/>
+      <ellipse cx="32" cy="39" rx="2.6" ry="1.9" fill="#4fb8ac"/>
       <path d="M27.5 42.5 Q32 46.5 36.5 42.5" stroke="#4a3038" stroke-width="1.5" fill="none" stroke-linecap="round"/>
       <ellipse cx="16" cy="39" rx="3.6" ry="2.6" fill="#e8b48a" opacity=".85"/>
       <ellipse cx="48" cy="39" rx="3.6" ry="2.6" fill="#e8b48a" opacity=".85"/>
@@ -1296,7 +1296,7 @@ const CARTA = {
         stroke="#c9a877" stroke-width="1.2" stroke-linecap="round"/>
       <path d="M49 16 l-8 -5 v10 z" fill="#8a4520"/>
       <path d="M49 16 l8 -5 v10 z" fill="#8a4520"/>
-      <circle cx="49" cy="16" r="3" fill="#a8541f"/>
+      <circle cx="49" cy="16" r="3" fill="#1f8f86"/>
     </svg>`,
 
     gatoDormido: (c) => `<svg viewBox="0 0 64 64">
@@ -1305,11 +1305,11 @@ const CARTA = {
       <ellipse cx="32" cy="36" rx="22" ry="19" fill="${c}"/>
       <path d="M20 34 Q24 30 28 34" stroke="#4a3038" stroke-width="1.6" fill="none" stroke-linecap="round"/>
       <path d="M36 34 Q40 30 44 34" stroke="#4a3038" stroke-width="1.6" fill="none" stroke-linecap="round"/>
-      <ellipse cx="32" cy="40" rx="2.4" ry="1.7" fill="#c97f3f"/>
+      <ellipse cx="32" cy="40" rx="2.4" ry="1.7" fill="#4fb8ac"/>
       <ellipse cx="15" cy="40" rx="3.4" ry="2.4" fill="#e8b48a" opacity=".85"/>
       <ellipse cx="49" cy="40" rx="3.4" ry="2.4" fill="#e8b48a" opacity=".85"/>
-      <text x="47" y="16" font-size="11" fill="#7fa860" font-family="sans-serif">z</text>
-      <text x="54" y="9" font-size="8" fill="#7fa860" font-family="sans-serif">z</text>
+      <text x="47" y="16" font-size="11" fill="#2f9c93" font-family="sans-serif">z</text>
+      <text x="54" y="9" font-size="8" fill="#2f9c93" font-family="sans-serif">z</text>
     </svg>`,
 
     conejo: (c) => `<svg viewBox="0 0 64 64">
@@ -1394,7 +1394,7 @@ const CARTA = {
     </svg>`,
 
     cupcake: (c) => `<svg viewBox="0 0 64 64">
-      <path d="M16 34 h32 l-4 24 h-24 Z" fill="#f0dcae"/>
+      <path d="M16 34 h32 l-4 24 h-24 Z" fill="#ecdfb8"/>
       <path d="M20 34 l-1.5 24 M32 34 v24 M44 34 l1.5 24" stroke="#dcc38a" stroke-width="1.6"/>
       <path d="M14 34 A18 15 0 0 1 50 34 Z" fill="${c}"/>
       <circle cx="32" cy="14" r="4.5" fill="#8a4520"/>
@@ -1404,7 +1404,7 @@ const CARTA = {
     </svg>`,
 
     arcoiris: () => `<svg viewBox="0 0 72 44">
-      <path d="M6 40 A30 30 0 0 1 66 40" stroke="#7fa860" stroke-width="6" fill="none" stroke-linecap="round"/>
+      <path d="M6 40 A30 30 0 0 1 66 40" stroke="#2f9c93" stroke-width="6" fill="none" stroke-linecap="round"/>
       <path d="M13 40 A23 23 0 0 1 59 40" stroke="#f9c98a" stroke-width="6" fill="none" stroke-linecap="round"/>
       <path d="M20 40 A16 16 0 0 1 52 40" stroke="#bfe3c0" stroke-width="6" fill="none" stroke-linecap="round"/>
       <path d="M27 40 A9 9 0 0 1 45 40" stroke="#b7d4f2" stroke-width="6" fill="none" stroke-linecap="round"/>
@@ -1417,11 +1417,11 @@ const CARTA = {
       <path d="M32 20 C 44 5, 59 8, 56 19 C 54 29, 40 26, 32 20 Z" fill="${c}"/>
       <path d="M28 23 L22 38 L31 32 Z" fill="#8a4520"/>
       <path d="M36 23 L42 38 L33 32 Z" fill="#8a4520"/>
-      <ellipse cx="32" cy="20" rx="5.5" ry="5" fill="#a8541f"/>
+      <ellipse cx="32" cy="20" rx="5.5" ry="5" fill="#1f8f86"/>
     </svg>`
   };
 
-  const BLANCO = '#fdf6e8', ROSA = '#d98a52', LILA = '#5fa88f', CREMA = '#f0dba0';
+  const BLANCO = '#fdf6e8', ROSA = '#b8935f', LILA = '#5ec9bc', CREMA = '#f0dba0';
 
   function dibujo(nombre, color){
     const f = FIGURAS[nombre];
@@ -1641,7 +1641,7 @@ const CARTA = {
 
   $('#lista-cosas').innerHTML = CARTA.cosas.map(c => '<li>' + c + '</li>').join('');
 
-  const coloresIcono = [BLANCO, ROSA, '#c97f3f', LILA, ROSA, CREMA];
+  const coloresIcono = [BLANCO, ROSA, '#4fb8ac', LILA, ROSA, CREMA];
   $('#tarjetas').innerHTML = CARTA.tarjetas.map((t, i) =>
     '<div class="tarjeta">' +
       '<span class="icono">' + dibujo(t.icono || 'corazon', coloresIcono[i % coloresIcono.length]) + '</span>' +
@@ -1753,9 +1753,9 @@ const CARTA = {
     if (Math.abs(vw() - ancho) > 2 || Math.abs(vh() - alto) > 140) dimensionar();
 
     const g = ctx.createLinearGradient(0, 0, 0, altoLienzo);
-    g.addColorStop(0, '#173c2c');
-    g.addColorStop(0.55, '#0f2a1f');
-    g.addColorStop(1, '#081a13');
+    g.addColorStop(0, '#16404a');
+    g.addColorStop(0.55, '#0d2438');
+    g.addColorStop(1, '#071620');
     ctx.fillStyle = g;
     ctx.fillRect(0, 0, ancho, altoLienzo);
 
@@ -1766,7 +1766,7 @@ const CARTA = {
       ctx.beginPath();
       ctx.arc(e.x, e.y, e.r, 0, 6.2832);
       ctx.fillStyle = e.rosa
-        ? 'rgba(240, 200, 130,' + a + ')'
+        ? 'rgba(120, 220, 205,' + a + ')'
         : 'rgba(255, 255, 255,' + a + ')';
       ctx.fill();
     }
@@ -1776,8 +1776,8 @@ const CARTA = {
       const grad = ctx.createLinearGradient(
         fugaz.x, fugaz.y, fugaz.x - fugaz.largo, fugaz.y + fugaz.largo * 0.5
       );
-      grad.addColorStop(0, 'rgba(245,220,170,' + (0.9 * fugaz.vida) + ')');
-      grad.addColorStop(1, 'rgba(245,220,170,0)');
+      grad.addColorStop(0, 'rgba(150,230,215,' + (0.9 * fugaz.vida) + ')');
+      grad.addColorStop(1, 'rgba(150,230,215,0)');
       ctx.strokeStyle = grad;
       ctx.lineWidth = 1.6;
       ctx.lineCap = 'round';
@@ -1843,7 +1843,7 @@ const CARTA = {
     const x1 = vw() * 0.5;
     const y1 = vh() * 0.4;
 
-    const colores = ['#e8b74f', '#c97f3f', '#a8541f', '#f6ead2', '#5fa88f'];
+    const colores = ['#5ec9bc', '#4fb8ac', '#1f8f86', '#f3ecd9', '#b8935f'];
     const N = 130;
     let maxFin = 0;
 
@@ -1998,7 +1998,7 @@ const CARTA = {
     // se reparten con repetición (con un poco de jitter cada uno) para
     // que la frase se vea llena y se lea bien, no punteada.
     const OBJETIVO_N = 700;
-    const coloresLetra = ['#f6ead2', '#e8b74f', '#ffe9b8', '#c97f3f', '#f0dba0'];
+    const coloresLetra = ['#f3ecd9', '#5ec9bc', '#ffffff', '#8fe0d2', '#e3d3a4'];
 
     const x1 = destinoSobre.left + destinoSobre.width / 2;
     const y1 = destinoSobre.top + destinoSobre.height / 2;
@@ -2297,7 +2297,7 @@ const CARTA = {
       requestAnimationFrame(pintarFuegos);
     }
 
-    const colores = ['#e8b74f', '#8a4520', '#ffd9a0', '#ffffff', '#5fa88f', '#e0935a', '#f0dba0'];
+    const colores = ['#5ec9bc', '#1f8f86', '#f3ecd9', '#ffffff', '#4fb8ac', '#b8935f', '#8fe0d2'];
 
     // once explosiones, una detrás de otra, por toda la pantalla
     for (let k = 0; k < 11; k++){
@@ -2322,8 +2322,8 @@ const CARTA = {
   function lluviaDeCorazones(){
     if (menosMovimiento) return;
     const simbolos = ['♥','♡','✿','❥','✦'];
-    const colores = ['rgba(232,183,79,.95)','rgba(168,84,31,.9)',
-                     'rgba(255,255,255,.85)','rgba(95,168,143,.95)'];
+    const colores = ['rgba(94,201,188,.95)','rgba(31,143,134,.9)',
+                     'rgba(255,255,255,.85)','rgba(184,147,95,.95)'];
     for (let i = 0; i < 26; i++){
       setTimeout(() => {
         const c = document.createElement('div');
