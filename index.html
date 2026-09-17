@@ -719,6 +719,21 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
 }
 .sticker img.puesta{opacity:1;}
 
+/* variante "foto": fotos reales con marco tipo polaroid, en vez del
+   recorte de personaje con blanco ya incluido en el PNG */
+.sticker.foto{
+  background:#fff;
+  padding:8px 8px 22px;
+  border-radius:2px;
+  box-shadow:0 10px 22px rgba(120,30,70,.28), 0 1px 2px rgba(0,0,0,.12);
+}
+.sticker.foto img{
+  filter:none;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  border-radius:1px;
+}
+
 /* los que van entre el texto */
 .sticker.centro{
   margin:clamp(26px,6vw,40px) auto;
@@ -1011,7 +1026,7 @@ const CARTA = {
 
   // La fecha que sale arriba de la carta, siempre la misma.
   // Si lo dejas vacío ("") pondrá la del día en que ella la abra.
-  fecha:       "25 de agosto de 2026",
+  fecha:       "",
 
   // --- Las fechas de ustedes ---
   // Los días se calculan solos hasta el día en que ella abra la carta. Mes: 1 = enero.
@@ -1020,7 +1035,7 @@ const CARTA = {
     { anio:2025, mes:10, dia:20, que:"desde que hablamos por primera vez" },
     { anio:2025, mes:11, dia:6,  que:"desde nuestra primera cita, el día que me le declaré" }
   ],
-  piePagina: "y cada uno de esos días me sigue pareciendo poco",
+  piePagina: "y sigo contando cada uno como si fuera el primero",
 
   /* --- LA HORA MÁGICA --- */
   horaMagica:  "11:11",
@@ -1033,68 +1048,67 @@ const CARTA = {
 
   // --- Primera parte: lo romántico ---
   cuerpo1: [
-    "Te escribo esto de noche, que es cuando pienso mejor y cuando más te extraño. No sé escribir cartas bonitas, pero sé exactamente lo que siento, y quería que lo tuvieras en algún lugar al que pudieras volver siempre que quieras.",
-    "Antes de ti mis días eran de un color aburrido. Llegaste tú y los pintaste de <strong>rosa</strong>, que es tu color, y ya no supe cómo devolverlos a como estaban. Ni quiero.",
-    "Me acostumbré a tu risa, a cómo dices mi nombre cuando estás contenta, a que me mandes cosas a media noche, a la forma en que ves el mundo y me obligas a verlo mejor. Eres lo más bonito que me ha pasado, y no lo digo como frase: lo digo como quien reconoce un hecho."
+    "Te vuelvo a escribir sin que sea ningún día especial, solo porque me dieron ganas de decirte cosas y no quería guardármelas. A veces el amor no necesita una fecha, solo un rato de silencio y la persona correcta en la cabeza.",
+    "Hoy pensé en lo fácil que se volvió todo desde que estás tú. No hablo de que la vida sea perfecta, sino de que contigo hasta lo complicado se siente manejable. Eso no me lo esperaba de nadie, y menos así, tan rápido.",
+    "Sigo aprendiendo cosas de ti que me gustan más de lo que ya te quería, y eso que pensé que no se podía querer más. Contigo se puede. Siempre se puede un poco más."
   ],
 
-  cita1: "Eres mi lugar favorito, incluso cuando estamos lejos.",
+  cita1: "No necesito una razón para quererte. Tú eres la razón.",
 
   // --- Lista: cosas que amas de ella ---
   cosas: [
     "Tu risa, sobre todo cuando se te escapa sin querer.",
-    "Lo terca que eres cuando tienes razón.",
-    "Cómo te emocionas con las cosas que te gustan, sin pena.",
-    "Que te preocupes por todos, incluso cuando nadie te lo pide.",
-    "La manera en que me miras cuando crees que no me doy cuenta.",
-    "Que contigo hasta lo aburrido se vuelve bonito.",
-    "Tu forma de perdonar, que es justo la que estoy necesitando hoy."
+    "Que sigas siendo terca aunque yo tenga razón, porque así te reconozco.",
+    "Cómo te ilusionas por las cosas pequeñas, sin que te dé pena.",
+    "Que cuides de todos antes de cuidarte a ti.",
+    "Esa mirada que me lanzas cuando crees que no me doy cuenta.",
+    "Que hasta un día normal se vuelva especial si estás tú.",
+    "Lo fácil que es quererte, aunque a veces se me note torpe haciéndolo."
   ],
 
   // --- Sección de sus personajes ---
-  tituloTarjetas: "Tú, en las cosas que te gustan",
+  tituloTarjetas: "Tú, otra vez, en las cosas que te gustan",
   tarjetas: [
     { quien:"Hello Kitty", icono:"gato",
-      texto:"A Hello Kitty nunca le dibujaron la boca y aun así se le entiende todo. A mí me pasa igual contigo: no necesitas decirme nada para que yo sepa exactamente cómo estás." },
+      texto:"Hello Kitty no tiene mucha historia, solo existe y ya cae bien. A ti te pasa lo mismo: no necesitas hacer nada para gustarme, con existir me basta." },
     { quien:"My Melody y Kuromi", icono:"conejo",
-      texto:"Tienes el corazón de My Melody y el carácter de Kuromi cuando alguien se mete con lo tuyo. Me gustan las dos. A las dos las quiero." },
+      texto:"Un día eres dulce como My Melody y al otro sacas el carácter de Kuromi, y las dos versiones me encantan igual." },
     { quien:"Pucca", icono:"corazon",
-      texto:"Si yo fuera Garu, tú me alcanzarías igual. Aunque, para ser sincero, yo tampoco correría muy rápido." },
+      texto:"Pucca nunca se cansa de ir detrás de Garu. Yo tampoco me canso de ir detrás de ti, aunque a veces finjas que corres para que te alcance." },
     { quien:"Mulán", icono:"flor",
-      texto:"Mulán se fue a la guerra por los suyos sin que nadie se lo pidiera. Tú haces lo mismo todos los días, sin espada y sin caballo, y nadie te lo aplaude lo suficiente." },
+      texto:"Mulán no necesitó que nadie le diera permiso para ser fuerte. Tú tampoco, y eso es una de las cosas que más admiro de ti." },
     { quien:"Pocahontas", icono:"arcoiris",
-      texto:"Pocahontas veía colores donde los demás solo veían árboles. Tú haces eso conmigo: me enseñas a ver cosas que yo solo no habría visto nunca." },
+      texto:"Pocahontas escuchaba cosas que otros ni notaban. Tú haces lo mismo conmigo: te fijas en detalles que ni yo sabía que estaba dando." },
     { quien:"Barbie y las Bratz", icono:"estrella",
-      texto:"Barbie puede ser lo que quiera. Tú también, y encima de verdad. Y arreglada no hay Bratz que te alcance." }
+      texto:"Barbie tiene un trabajo distinto para cada día. Tú también puedes ser lo que quieras, y de las Bratz ni hablamos, porque arreglada les ganas a todas." }
   ],
 
-  // --- Segunda parte: la disculpa ---
+  // --- Segunda parte: seguir queriéndote ---
   cuerpo2: [
-    "Y justo por todo eso, tengo que decirte otra cosa.",
-    "<strong>Perdóname.</strong> No quiero adornarlo ni buscar excusas, porque las excusas son para el que se quiere sentir mejor, y aquí la que importa eres tú. Me equivoqué. Te fallé. Y sé que dolió, porque conozco tu cara cuando algo te duele y no quiero volver a vérsela por culpa mía.",
-    "Tú eres la que le pone color a todo, y yo fui el que te apagó el día. Eso es lo que más me pesa.",
-    "No te pido que hagas como si nada. Te pido que me dejes demostrártelo con hechos, con tiempo, con paciencia. Estoy dispuesto a esperar lo que haga falta, porque tú vales eso y más."
+    "No tengo una ocasión para justificar esta carta, y eso me gusta. Significa que no la escribo porque deba algo, sino porque quiero.",
+    "Quiero seguir aprendiendo tus gestos, tus días buenos y los malos, lo que te hace reír y lo que te saca de quicio. Quiero seguir ahí para las dos cosas.",
+    "Si algún día se te olvida por qué estamos juntos, guarda esta carta. Aquí está la razón, escrita para que no se te olvide."
   ],
 
-  cita2: "No quiero tener la razón. Te quiero a ti.",
+  cita2: "Contigo no busco perfecto, busco siempre.",
 
   // --- Tercera parte: el cierre ---
   cuerpo3: [
-    "Si algo aprendí es que el amor no se mide en los días fáciles, sino en los que uno decide quedarse y arreglar lo que rompió.",
-    "Yo me quiero quedar. Contigo. Aunque me toque ganármelo otra vez desde el principio.",
-    "Te amo. Hoy más que ayer, y con mucho más cuidado que antes."
+    "No sé qué tan bien se escriban estas cosas, pero sé que las siento de verdad.",
+    "Gracias por dejarme quedarme en tu vida sin pedirme nada a cambio, más que ser honesto contigo.",
+    "Te amo, sin ocasión especial, solo porque hoy también te tocó ser el motivo."
   ],
 
-  despedida:   "Siempre tuyo,",
+  despedida:   "Tuyo, hoy y siempre,",
 
   textoBoton:  "Te amo",
 
   // Lo que sale al tocar el botón, junto con los fuegos artificiales
   respuesta:
     '<span class="rs-grande">Te amo, flaquita</span>' +
-    '<span class="rs-media">mi preciosa, hermosa</span>' +
+    '<span class="rs-media">mi bonita, mi persona favorita</span>' +
     '<span class="rs-nombre">Judith Alejandra<br>Arcoamarillo Soto</span>' +
-    '<span class="rs-cierre">Gracias por leerme hasta el final.</span>',
+    '<span class="rs-cierre">Gracias por leer hasta el final, otra vez.</span>',
 
   // --- Opcional: tu WhatsApp ---
   whatsapp:    "",
@@ -1105,7 +1119,7 @@ const CARTA = {
      desde que ella toca el sobre.
      Para cambiarla, mete otro MP3 en la carpeta y escribe aquí su nombre.
      Déjalo vacío ("") si prefieres que no haya música.  */
-  cancion: "img/FRANKY STYLE - PUCCA.mp3",
+  cancion: "img/Jay Wheeler - Once Once.mp3",
 
   /* --- LOS STICKERS ---
      Cada uno se mueve haciendo lo que hace en su dibujo:
@@ -1120,47 +1134,29 @@ const CARTA = {
      Para quitar uno, borra su línea. Para cambiarle el movimiento,
      cambia el nombre de "mov".                                        */
   stickers: [
-    // --- los grandes, entre el texto ---
-    { img:"img/kitty-ballet.png",         mov:"st-ballet",  en:"p1", tam:150, giro:-3,
-      quien:"Hello Kitty haciendo ballet" },
-    { img:"img/melody-cafe.png",          mov:"st-beber",   en:"p2", tam:130, giro: 4, lado:"der",
-      quien:"My Melody tomando su bebida de fresa" },
-    { img:"img/cinnamoroll-nube.png",     mov:"st-flotar",  en:"p3", tam:150, giro:-4, lado:"izq",
-      quien:"Cinnamoroll en su nube" },
-    { img:"img/pochacco-sandwich.png",    mov:"st-comer",   en:"p4", tam:140, giro: 3, lado:"der",
-      quien:"Pochacco comiéndose el sándwich" },
-    { img:"img/pompompurin-sabritas.png", mov:"st-cargar",  en:"p5", tam:135, giro:-3, lado:"izq",
-      quien:"Pompompurin cargando su pudding cake" },
-    { img:"img/keroppi-hotcakes.png",     mov:"st-saltar",  en:"p6", tam:140, giro: 3, lado:"der",
-      quien:"Keroppi con su hamburguesa" },
-    { img:"img/badtz-cafe.png",           mov:"st-desliza", en:"p7", tam:130, giro:-3, lado:"izq",
-      quien:"Badtz-Maru con su bubble tea" },
-    { img:"img/kitty-letra.png",          mov:"st-brilla",  en:"p8", tam:150, giro: 3,
-      quien:"Hello Kitty con la letra de diamantes" },
+    // --- las grandes, entre el texto: fotos reales con marco polaroid ---
+    { img:"img/foto-playa.png",    foto:true, mov:"st-flotar", en:"p1", tam:170, giro:-4,
+      quien:"Ustedes dos en la playa" },
+    { img:"img/foto-rosa.png",     foto:true, mov:"st-dormir", en:"p2", tam:150, giro: 3, lado:"der",
+      quien:"Ella con su suéter rosa" },
+    { img:"img/foto-vestido.png",  foto:true, mov:"st-flotar", en:"p3", tam:150, giro:-3, lado:"izq",
+      quien:"Ella con vestido vino tinto" },
+    { img:"img/foto-navidad.png",  foto:true, mov:"st-dormir", en:"p4", tam:150, giro: 4, lado:"der",
+      quien:"Ella en Navidad" },
+    { img:"img/foto-bebida.png",   foto:true, mov:"st-flotar", en:"p5", tam:150, giro:-3, lado:"izq",
+      quien:"Ella tomando su bebida" },
+    { img:"img/foto-call-1.png",   foto:true, mov:"st-dormir", en:"p6", tam:150, giro: 3, lado:"der",
+      quien:"Videollamada con filtro chistoso" },
+    { img:"img/foto-call-2.png",   foto:true, mov:"st-flotar", en:"p7", tam:150, giro:-4, lado:"izq",
+      quien:"Otra videollamada, tomando una Coca" },
+    { img:"img/foto-sonrisa.png",  foto:true, mov:"st-dormir", en:"p8", tam:160, giro: 3,
+      quien:"Su sonrisa" },
 
-    // --- los pequeños, asomándose por los bordes ---
-    { img:"img/melody-acostada.png",      mov:"st-dormir", en:"der", y:"6%",  tam:72, giro: 6,
-      quien:"My Melody con las manitas en la cara" },
-    { img:"img/cinnamoroll-cafe.png",     mov:"st-beber",  en:"izq", y:"14%", tam:76, giro:-6,
-      quien:"Cinnamoroll con su bebida" },
-    { img:"img/pompompurin-cafe.png",     mov:"st-beber",  en:"der", y:"22%", tam:72, giro: 5,
-      quien:"Pompompurin con su bubble tea" },
-    { img:"img/pochacco-sabritas.png",    mov:"st-brinco", en:"izq", y:"30%", tam:74, giro:-5,
-      quien:"Pochacco con su bolsa de snacks" },
-    { img:"img/melody-papitas.png",       mov:"st-cargar", en:"der", y:"39%", tam:72, giro: 6,
-      quien:"My Melody cargando las fresas" },
-    { img:"img/keroppi-cafe.png",         mov:"st-beber",  en:"izq", y:"47%", tam:76, giro:-6,
-      quien:"Keroppi con su bebida verde" },
-    { img:"img/cinnamoroll-sabritas.png", mov:"st-cargar", en:"der", y:"55%", tam:74, giro: 5,
-      quien:"Cinnamoroll cargando su bolsa" },
-    { img:"img/badtz-hamburguesa.png",    mov:"st-comer",  en:"izq", y:"63%", tam:72, giro:-5,
-      quien:"Badtz-Maru con su hamburguesa" },
-    { img:"img/melody-pastel.png",        mov:"st-comer",  en:"der", y:"71%", tam:72, giro: 6,
-      quien:"My Melody con su cupcake de fresa" },
-    { img:"img/pompompurin-mufin.png",    mov:"st-comer",  en:"izq", y:"79%", tam:72, giro:-6,
-      quien:"Pompompurin con su flan" },
-    { img:"img/cinnamoroll-pastel.png",   mov:"st-comer",  en:"der", y:"88%", tam:76, giro: 5,
-      quien:"Cinnamoroll con el pastel de fresa" }
+    // --- las pequeñas, asomándose por los bordes ---
+    { img:"img/foto-lentes.png",  foto:true, mov:"st-flotar", en:"der", y:"18%", tam:92, giro: 6,
+      quien:"Ella con lentes, haciendo cara" },
+    { img:"img/foto-selfie.png",  foto:true, mov:"st-dormir", en:"izq", y:"55%", tam:92, giro:-6,
+      quien:"Selfie con lentes" }
   ],
 
   /* --- Figuritas flotantes ---
@@ -1426,7 +1422,7 @@ const CARTA = {
       if (!s.img) return;
 
       const caja = document.createElement('span');
-      caja.className = 'sticker ' + (s.mov || 'st-dormir');
+      caja.className = 'sticker ' + (s.mov || 'st-dormir') + (s.foto ? ' foto' : '');
       caja.style.setProperty('--base', (s.giro || 0) + 'deg');
       caja.style.width = (s.tam || 130) + 'px';
       if (s.quien) caja.setAttribute('aria-label', s.quien);
