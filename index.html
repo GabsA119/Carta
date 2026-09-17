@@ -1441,19 +1441,11 @@ const CARTA = {
     return dibujo(nombre, color);
   }
 
-  /* --- las que flotan en el cielo, detrás de la hoja --- */
-  const CIELO = [
-    { fig:'gato',       col:BLANCO, x:'4%',  y:'10%', tam:62, prof:.10, rot:-8,  dur:6.5, del:0   },
-    { fig:'estrella',   col:CREMA,  x:'84%', y:'7%',  tam:38, prof:.20, rot:10,  dur:5.2, del:.6  },
-    { fig:'conejo',     col:BLANCO, x:'88%', y:'30%', tam:56, prof:.14, rot:6,   dur:7.1, del:1.2 },
-    { fig:'nube',       col:'#e4ddc4', x:'2%', y:'34%', tam:64, prof:.26, rot:-4, dur:8.0, del:.3  },
-    { fig:'corazon',    col:ROSA,   x:'92%', y:'54%', tam:32, prof:.30, rot:12,  dur:4.8, del:1.8 },
-    { fig:'luna',       col:CREMA,  x:'6%',  y:'60%', tam:44, prof:.17, rot:-10, dur:6.8, del:.9  },
-    { fig:'oso',        col:'#b8875a', x:'86%', y:'76%', tam:54, prof:.12, rot:8, dur:7.6, del:1.5 },
-    { fig:'flor',       col:LILA,   x:'3%',  y:'82%', tam:40, prof:.24, rot:14,  dur:5.6, del:.4  },
-    { fig:'gatoDormido',col:LILA,   x:'78%', y:'92%', tam:50, prof:.09, rot:-6,  dur:8.4, del:2.1 },
-    { fig:'cupcake',    col:ROSA,   x:'10%', y:'96%', tam:42, prof:.22, rot:5,   dur:6.1, del:1.1 }
-  ];
+  /* --- las que flotan en el cielo, detrás de la hoja ---
+     Vacío a propósito: eran figuritas kawaii (gato, conejo, oso...) que no
+     pegan con la temática Pocahontas. Si luego se quieren figuras nuevas
+     (pluma, hoja, sol) van aquí con el mismo formato. */
+  const CIELO = [];
 
   /* --- las que se asoman por el borde del papel ---
      Pocas y pequeñas: el borde es ahora sitio de los stickers. */
@@ -1980,7 +1972,7 @@ const CARTA = {
     const w = cv.width, h = cv.height;
     const datos = cx.getImageData(0, 0, w, h).data;
     const puntos = [];
-    const paso = Math.max(2, Math.round(escala * 1.5));
+    const paso = Math.max(1, Math.round(escala * 0.9));
     for (let y = 0; y < h; y += paso){
       for (let x = 0; x < w; x += paso){
         if (datos[(y * w + x) * 4 + 3] > 128) puntos.push({ x: x / escala, y: y / escala });
@@ -2002,15 +1994,17 @@ const CARTA = {
     const offX = centroX - ancho / 2;
     const offY = centroY - alto / 2;
 
-    const N = Math.min(280, Math.max(60, puntos.length));
-    const stride = Math.max(1, Math.floor(puntos.length / N));
-    const elegidos = [];
-    for (let i = 0; i < puntos.length && elegidos.length < N; i += stride) elegidos.push(puntos[i]);
+    // objetivo fijo de pedazos: si el texto midió menos puntos que esto,
+    // se reparten con repetición (con un poco de jitter cada uno) para
+    // que la frase se vea llena y se lea bien, no punteada.
+    const OBJETIVO_N = 700;
+    const coloresLetra = ['#f6ead2', '#e8b74f', '#ffe9b8', '#c97f3f', '#f0dba0'];
 
     const x1 = destinoSobre.left + destinoSobre.width / 2;
     const y1 = destinoSobre.top + destinoSobre.height / 2;
 
-    elegidos.forEach(pt => {
+    for (let n = 0; n < OBJETIVO_N; n++){
+      const pt = puntos[n % puntos.length];
       const p = document.createElement('span');
       p.className = 'pedazo letra';
 
@@ -2018,9 +2012,10 @@ const CARTA = {
       const x0 = origenHoja.left + Math.random() * origenHoja.width;
       const y0 = origenHoja.top + Math.random() * origenHoja.height;
 
-      // fase 2: el punto exacto de la letra que le toca formar
-      const xt = offX + pt.x;
-      const yt = offY + pt.y;
+      // fase 2: el punto exacto de la letra que le toca formar (con un
+      // jitter mínimo para que las repeticiones no queden exactas encima)
+      const xt = offX + pt.x + (Math.random() - 0.5) * 2;
+      const yt = offY + pt.y + (Math.random() - 0.5) * 2;
 
       // fase 3: estalla otra vez antes de convertirse en el sobre
       const ang = Math.random() * Math.PI * 2;
@@ -2040,13 +2035,13 @@ const CARTA = {
       p.style.setProperty('--ye', ye + 'px');
       p.style.setProperty('--x1', (x1 + jx) + 'px');
       p.style.setProperty('--y1', (y1 + jy) + 'px');
-      p.style.setProperty('--w', (3 + Math.random() * 5) + 'px');
-      p.style.setProperty('--h', (3 + Math.random() * 5) + 'px');
-      p.style.setProperty('--c', ['#e8b74f', '#c97f3f', '#a8541f', '#f6ead2', '#5fa88f'][Math.floor(Math.random() * 5)]);
+      p.style.setProperty('--w', (1.6 + Math.random() * 1.8) + 'px');
+      p.style.setProperty('--h', (1.6 + Math.random() * 1.8) + 'px');
+      p.style.setProperty('--c', coloresLetra[Math.floor(Math.random() * coloresLetra.length)]);
       p.style.setProperty('--del', (Math.random() * 0.15) + 's');
 
       capa.appendChild(p);
-    });
+    }
 
     setTimeout(() => { capa.remove(); cb(); }, DUR_CIERRE + 150);
   }
