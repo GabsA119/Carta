@@ -1127,7 +1127,8 @@ const CARTA = {
   textoMagico: [
     "Las 11:11 no son la hora mágica solo porque a ti te encante buscarlas. Son la hora mágica porque tú naciste un <strong>11 de noviembre</strong>. Once, once.",
     "<em>Tú</em> eres la hora mágica.",
-    "Por eso eres la chica más increíble, más fantástica, más bella y más divina de todas. Eres la chica que cumple los deseos."
+    "Por eso eres la chica más increíble, más fantástica, más bella y más divina de todas. Eres la chica que cumple los deseos.",
+    "Y como dice la canción: Once Once, siempre te deseo."
   ],
 
   // --- Primera parte: lo romántico ---
@@ -1994,17 +1995,25 @@ const CARTA = {
     const offX = centroX - ancho / 2;
     const offY = centroY - alto / 2;
 
-    // objetivo fijo de pedazos: si el texto midió menos puntos que esto,
-    // se reparten con repetición (con un poco de jitter cada uno) para
-    // que la frase se vea llena y se lea bien, no punteada.
+    // objetivo fijo de pedazos: si el texto midió más puntos que esto, se
+    // toman parejos por todo el muestreo (no solo los primeros, o solo se
+    // ve el borde de arriba de las letras); si midió menos, se repiten
+    // con jitter para que la frase se vea llena y no punteada.
     const OBJETIVO_N = 700;
     const coloresLetra = ['#f3ecd9', '#5ec9bc', '#ffffff', '#8fe0d2', '#e3d3a4'];
+
+    let base = puntos;
+    if (puntos.length > OBJETIVO_N){
+      base = [];
+      const pasoSel = puntos.length / OBJETIVO_N;
+      for (let i = 0; i < OBJETIVO_N; i++) base.push(puntos[Math.floor(i * pasoSel)]);
+    }
 
     const x1 = destinoSobre.left + destinoSobre.width / 2;
     const y1 = destinoSobre.top + destinoSobre.height / 2;
 
     for (let n = 0; n < OBJETIVO_N; n++){
-      const pt = puntos[n % puntos.length];
+      const pt = base[n % base.length];
       const p = document.createElement('span');
       p.className = 'pedazo letra';
 
