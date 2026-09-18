@@ -352,19 +352,25 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
   transition:opacity .75s ease, transform .95s cubic-bezier(.5,0,.75,0);
 }
 
-/* El borde carbonizado. Es un marco aparte, con un filtro de ruido que le
-   come el contorno: así el filo se ve mordido por el fuego en vez de
-   cortado con tijera, y como es un pseudo-elemento nunca toca el texto. */
+/* El borde carbonizado. Lo que hace que se lea como QUEMADO y no como un
+   marco oscuro es la rampa de color del papel hacia afuera:
+   crema → tostado → marrón → casi negro en el filo, igual que el papel
+   quemado de verdad. El filtro de ruido le ondula el contorno para que no
+   se vea recto, y al ser pseudo-elemento nunca toca el texto. */
 #hoja::after{
   content:'';
-  position:absolute;inset:-8px;
+  position:absolute;inset:-11px;
   pointer-events:none;z-index:4;
-  /* 13px de borde a 8px hacia afuera: el filo carbonizado entra como
-     mucho ~17px, y el texto empieza a los 24px de padding */
-  border:13px solid rgba(34,14,3,.92);
-  border-radius:5px;
-  filter:url(#quemadura) blur(.6px);
-  opacity:.9;
+  background:
+    linear-gradient(to bottom, rgba(22,10,2,.97) 0px, rgba(66,30,7,.93) 8px,
+      rgba(146,88,34,.72) 15px, rgba(212,172,108,.4) 21px, rgba(226,196,140,0) 30px),
+    linear-gradient(to top,    rgba(22,10,2,.97) 0px, rgba(66,30,7,.93) 8px,
+      rgba(146,88,34,.72) 15px, rgba(212,172,108,.4) 21px, rgba(226,196,140,0) 30px),
+    linear-gradient(to right,  rgba(22,10,2,.97) 0px, rgba(66,30,7,.93) 8px,
+      rgba(146,88,34,.72) 15px, rgba(212,172,108,.4) 21px, rgba(226,196,140,0) 30px),
+    linear-gradient(to left,   rgba(22,10,2,.97) 0px, rgba(66,30,7,.93) 8px,
+      rgba(146,88,34,.72) 15px, rgba(212,172,108,.4) 21px, rgba(226,196,140,0) 30px);
+  filter:url(#quemadura);
 }
 
 /* ============================================================
@@ -410,19 +416,25 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
   .frase-fuego.ver{animation:none;}
 }
 
-/* manchas de quemadura sueltas: van debajo de las fotos, nunca sobre el texto */
+/* Agujeros quemados: van debajo de las fotos, nunca sobre el texto.
+   La clave para que no parezcan manchas de café es el centro casi NEGRO
+   (como si el fuego hubiera traspasado el papel) con el aro ámbar/tostado
+   alrededor, en vez de un marrón suave y parejo. */
 .quemadura{
   display:block;
-  width:var(--ancho,60%);
-  height:clamp(30px,8vw,52px);
-  margin:10px auto 0;
+  width:var(--ancho,52%);
+  height:clamp(26px,7vw,46px);
+  margin:16px auto 4px;
   transform:rotate(var(--gira,0deg));
   background:
-    radial-gradient(58% 100% at 50% 50%,
-      rgba(16,7,1,.9) 0%, rgba(54,24,7,.82) 38%,
-      rgba(116,58,18,.5) 66%, rgba(150,90,40,0) 100%);
-  filter:url(#quemadura) blur(.5px);
-  opacity:.85;
+    radial-gradient(52% 62% at 50% 50%,
+      rgba(8,3,0,.97) 0%,
+      rgba(12,5,1,.95) 32%,
+      rgba(78,34,7,.92) 50%,
+      rgba(168,104,40,.7) 66%,
+      rgba(218,182,120,.35) 82%,
+      rgba(226,196,140,0) 100%);
+  filter:url(#quemadura);
   pointer-events:none;
 }
 
@@ -779,9 +791,10 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
 }
 #llamas.ver{opacity:1;}
 
-/* lo que arde no se aclara: se carboniza y se deshace */
+/* lo que arde no se aclara: se carboniza y se deshace. Dura ~1s porque
+   justo después estalla en trozos (ver lanzarTrozos). */
 .ardiendo{
-  animation:arder 1.9s ease-in forwards;
+  animation:arder 1.05s ease-in forwards;
 }
 @keyframes arder{
   0%{filter:none;}
@@ -792,6 +805,55 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
 }
 @media (prefers-reduced-motion: reduce){
   .ardiendo{animation:none;}
+}
+
+/* ============================================================
+   LOS TROZOS · el sobre (o la hoja) se rompe en pedazos de papel
+   quemado que vuelan, giran y se vuelven a juntar formando lo otro.
+   Cada trozo es un polígono irregular con la rampa del papel quemado:
+   crema por dentro, tostado y casi negro en el filo, con brasa.
+   ============================================================ */
+.trozos{
+  position:fixed;inset:0;z-index:10;
+  pointer-events:none;overflow:hidden;
+}
+.trozo{
+  position:absolute;
+  left:var(--x0);top:var(--y0);
+  width:var(--w);height:var(--h);
+  background:
+    linear-gradient(var(--luz,150deg),
+      rgba(16,7,1,.96) 0%, rgba(74,33,8,.94) 14%,
+      rgba(168,108,44,.9) 30%, rgba(226,198,142,.96) 52%,
+      var(--papel) 78%);
+  box-shadow:0 0 9px rgba(255,120,20,.5), inset 0 0 7px rgba(52,22,4,.55);
+  clip-path:var(--forma);
+  opacity:0;
+  transform:translate(-50%,-50%) rotate(0deg) scale(.7);
+  animation:trozo-vuela var(--dur) cubic-bezier(.32,0,.25,1) var(--del) forwards;
+  will-change:transform,opacity,left,top;
+}
+@keyframes trozo-vuela{
+  0%{
+    left:var(--x0);top:var(--y0);
+    transform:translate(-50%,-50%) rotate(0deg) scale(.7);
+    opacity:0;
+  }
+  10%{opacity:1;transform:translate(-50%,-50%) rotate(40deg) scale(1);}
+  46%{
+    left:var(--xm);top:var(--ym);
+    transform:translate(-50%,-50%) rotate(var(--giro1)) scale(1);
+    opacity:1;
+  }
+  84%{opacity:.9;}
+  100%{
+    left:var(--x1);top:var(--y1);
+    transform:translate(-50%,-50%) rotate(var(--giro2)) scale(.5);
+    opacity:0;
+  }
+}
+@media (prefers-reduced-motion: reduce){
+  .trozo{animation:none;opacity:0;}
 }
 
 .brasas{
@@ -2004,6 +2066,85 @@ const CARTA = {
     pendientes.push(setTimeout(fn, ms));
   }
 
+  /* --- TROZOS ---
+     Lo que se quema se rompe en pedazos de papel quemado: salen de
+     `origen`, estallan hacia afuera girando y después se juntan sobre
+     `destino`, que es donde va a aparecer lo otro. Así se ve que el sobre
+     se convirtió en la carta (y al revés al cerrar), en vez de que una
+     cosa desaparezca y la otra salga de la nada. */
+  function formaTrozo(){
+    const n = 5 + Math.floor(Math.random() * 3);
+    const pts = [];
+    for (let i = 0; i < n; i++){
+      const a = (Math.PI * 2 * i) / n + Math.random() * 0.5;
+      const r = 32 + Math.random() * 18;
+      pts.push(Math.round(50 + Math.cos(a) * r) + '% ' + Math.round(50 + Math.sin(a) * r) + '%');
+    }
+    return 'polygon(' + pts.join(',') + ')';
+  }
+
+  function lanzarTrozos(origen, destino, opciones, cb){
+    const op = opciones || {};
+    if (menosMovimiento){ if (cb) cb(); return; }
+
+    const capa = document.createElement('div');
+    capa.className = 'trozos';
+    document.body.appendChild(capa);
+
+    const N = op.n || 74;
+    const base = op.dur || 1.5;
+    let fin = 0;
+
+    for (let i = 0; i < N; i++){
+      const t = document.createElement('span');
+      t.className = 'trozo';
+
+      const x0 = origen.left + Math.random() * origen.width;
+      const y0 = origen.top + Math.random() * origen.height;
+
+      // estalla hacia afuera, con un empujón hacia arriba (el fuego sube)
+      const ang = Math.random() * Math.PI * 2;
+      const radio = 80 + Math.random() * 170;
+      const xm = x0 + Math.cos(ang) * radio;
+      const ym = y0 + Math.sin(ang) * radio - 50;
+
+      // y termina repartido por donde va a estar lo otro
+      const x1 = destino.left + Math.random() * destino.width;
+      const y1 = destino.top + Math.random() * destino.height;
+
+      const lado = 11 + Math.random() * 17;
+      const dur = base + Math.random() * 0.5;
+      const del = Math.random() * (op.reparto || 0.4);
+      fin = Math.max(fin, dur + del);
+
+      t.style.setProperty('--x0', x0 + 'px');
+      t.style.setProperty('--y0', y0 + 'px');
+      t.style.setProperty('--xm', xm + 'px');
+      t.style.setProperty('--ym', ym + 'px');
+      t.style.setProperty('--x1', x1 + 'px');
+      t.style.setProperty('--y1', y1 + 'px');
+      t.style.setProperty('--w', lado + 'px');
+      t.style.setProperty('--h', (lado * (0.6 + Math.random() * 0.7)) + 'px');
+      t.style.setProperty('--giro1', (140 + Math.random() * 220) + 'deg');
+      t.style.setProperty('--giro2', (320 + Math.random() * 420) + 'deg');
+      t.style.setProperty('--luz', Math.round(Math.random() * 360) + 'deg');
+      t.style.setProperty('--forma', formaTrozo());
+      t.style.setProperty('--dur', dur + 's');
+      t.style.setProperty('--del', del + 's');
+
+      capa.appendChild(t);
+    }
+
+    setTimeout(() => { capa.remove(); if (cb) cb(); }, fin * 1000 + 140);
+  }
+
+  // dónde va a caer la hoja cuando aparezca (todavía no está en pantalla,
+  // así que se calcula igual que su CSS: centrada y arriba)
+  function zonaHoja(){
+    const w = Math.min(vw() * 0.88, 640);
+    return { left: (vw() - w) / 2, width: w, top: vh() * 0.1, height: vh() * 0.62 };
+  }
+
   /* --- BRASAS ---
      Chispas que suben desde el sobre (o la hoja) mientras arden,
      además del fuego del fondo. */
@@ -2078,12 +2219,19 @@ const CARTA = {
 
     agendar(() => $('#velo').classList.add('ver'), 900);
 
+    // el sobre, ya carbonizado, se rompe en pedazos que vuelan
     agendar(() => {
-      if (!menosMovimiento) apagarIncendio();
-      vibrar(16);
       escena.classList.add('fuera');
       escena.style.display = 'none';
       sobre.classList.remove('ardiendo');
+      lanzarTrozos(origenSobre, zonaHoja(), { dur: 1.5 });
+      vibrar(22);
+    }, 1450);
+
+    // ...y donde caen los pedazos, aparece la hoja armada
+    agendar(() => {
+      if (!menosMovimiento) apagarIncendio();
+      vibrar(16);
       hoja.classList.add('abierta');
       activarScroll();
       agendar(() => hoja.classList.add('ver'), 40);
@@ -2094,7 +2242,7 @@ const CARTA = {
         vigilarNumeros();
         $('#baja').classList.add('ver');
       }, 700);
-    }, 2350);
+    }, 2750);
 
     // Red de seguridad: pase lo que pase, la hoja se ve.
     agendar(() => {
@@ -2149,13 +2297,21 @@ const CARTA = {
       vibrar(18);
     }, 380);
 
-    // entre las llamas, cuando la hoja ya se consumió, sale la frase y se
-    // queda un par de segundos antes de que vuelva el sobre
-    const frase = $('#frase-fuego');
-    agendar(() => frase.classList.add('ver'), 1000);
-    agendar(() => frase.classList.remove('ver'), 3000);
+    // la hoja carbonizada se rompe en pedazos, que se van juntando sobre
+    // el sobre mientras la frase está en pantalla
+    const destinoSobre = sobre.getBoundingClientRect();
+    agendar(() => {
+      hoja.classList.remove('abierta', 'ver');
+      lanzarTrozos(origenHoja, destinoSobre, { dur: 2.3, n: 84, reparto: .7 });
+      vibrar(22);
+    }, 1400);
 
-    if (!menosMovimiento) bajarVolumen(3300);
+    // entre las llamas, mientras los pedazos vuelan, sale la frase
+    const frase = $('#frase-fuego');
+    agendar(() => frase.classList.add('ver'), 1750);
+    agendar(() => frase.classList.remove('ver'), 3550);
+
+    if (!menosMovimiento) bajarVolumen(3900);
     else pararMusica();
 
     agendar(() => {
@@ -2185,7 +2341,7 @@ const CARTA = {
         if (el) el.textContent = '0';
       });
       yaBajo = false;
-    }, 3450);
+    }, 4050);
   }
 
   sobre.addEventListener('click', abrir);
