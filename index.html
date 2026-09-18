@@ -303,6 +303,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
   100%{box-shadow:0 0 0 0 rgba(255,106,61,0);}
 }
 #escena.abriendo .pista{opacity:0;transition:opacity .35s ease;animation:none;}
+#escena.abriendo .intro{opacity:0;transition:opacity .9s ease .3s;animation:none;}
 
 /* ============================================================
    LA HOJA
@@ -314,23 +315,28 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
   margin:calc(var(--safe-t) + 30px) auto calc(var(--safe-b) + 48px);
   padding:clamp(34px,8vw,64px) clamp(24px,7vw,58px) clamp(52px,11vw,80px);
 
-  /* las manchas radiales son quemaduras en las esquinas, como si se
-     hubiera prendido y apagado a tiempo */
+  /* papel quemado: manchas de chamusquina por todo el borde + un tostado
+     general que sube desde las orillas. La silueta mordida la pone el JS
+     con un clip-path irregular (ver siluetaQuemada). */
   background:
-    radial-gradient(ellipse 46% 60px at 3% 0%, rgba(35,20,10,.4), transparent 70%),
-    radial-gradient(ellipse 34% 130px at 100% 6%, rgba(35,20,10,.3), transparent 72%),
-    radial-gradient(ellipse 42% 90px at 96% 100%, rgba(35,20,10,.32), transparent 70%),
-    radial-gradient(ellipse 30% 110px at 0% 96%, rgba(35,20,10,.26), transparent 70%),
+    radial-gradient(60% 34px at 12% 0%,   rgba(48,22,6,.6),  transparent 70%),
+    radial-gradient(48% 26px at 44% 0%,   rgba(48,22,6,.45), transparent 70%),
+    radial-gradient(58% 40px at 82% 0%,   rgba(48,22,6,.55), transparent 70%),
+    radial-gradient(56% 36px at 20% 100%, rgba(48,22,6,.58), transparent 70%),
+    radial-gradient(50% 28px at 62% 100%, rgba(48,22,6,.45), transparent 70%),
+    radial-gradient(40px 22% at 0% 22%,   rgba(48,22,6,.5),  transparent 72%),
+    radial-gradient(34px 16% at 0% 68%,   rgba(48,22,6,.42), transparent 72%),
+    radial-gradient(44px 20% at 100% 38%, rgba(48,22,6,.52), transparent 72%),
+    radial-gradient(30px 14% at 100% 82%, rgba(48,22,6,.4),  transparent 72%),
+    radial-gradient(125% 100% at 50% 50%, transparent 52%, rgba(62,30,10,.5) 100%),
     linear-gradient(to bottom, transparent 32.8%, rgba(196,69,28,.07) 33%, transparent 33.2%),
     linear-gradient(to bottom, transparent 66.3%, rgba(196,69,28,.055) 66.5%, transparent 66.7%),
-    linear-gradient(168deg, #f7f2e2 0%, var(--papel) 42%, #ecdfb8 100%);
+    linear-gradient(168deg, #f7f2e2 0%, var(--papel) 42%, #e9d9b4 100%);
 
   color:var(--texto);
-  border-radius:3px;
-  box-shadow:
-    0 1px 0 rgba(255,255,255,.8) inset,
-    0 34px 70px rgba(0,0,0,.5),
-    0 6px 18px rgba(30,15,8,.3);
+  /* la sombra va por filtro, no por box-shadow: así sigue la silueta
+     mordida del clip-path en vez de dibujar un rectángulo */
+  filter:drop-shadow(0 26px 46px rgba(0,0,0,.45)) drop-shadow(0 4px 10px rgba(40,18,4,.4));
 
   opacity:0;
   transform:translateY(46px) scale(.78);
@@ -346,14 +352,8 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
   transform:translateY(70px) scale(.7);
   transition:opacity .75s ease, transform .95s cubic-bezier(.5,0,.75,0);
 }
-/* El filo del papel va por DEBAJO de los stickers (z-index -2), para que
-   la línea no les pase por encima y parezcan pegados de verdad. */
-#hoja::before{
-  content:'';position:absolute;inset:0;
-  border:1px solid var(--papel-borde);
-  border-radius:3px;pointer-events:none;
-  z-index:-2;
-}
+/* Ya no hay filo recto de papel: el borde de la hoja es la mordida
+   irregular del clip-path, con el tostado del fondo haciendo de chamusquina. */
 
 .mono{display:block;width:clamp(56px,15vw,76px);margin:0 auto 18px;}
 
@@ -699,14 +699,25 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
    cerrar, la hoja arde y se transforma de vuelta en el sobre.
    El fondo (canvas #cielo) hace de grietas/lava mientras arde.
    ============================================================ */
+/* el lienzo de las llamas va POR ENCIMA del sobre y de la hoja:
+   así el fuego se ve delante, como si de verdad las estuviera quemando */
+#llamas{
+  position:fixed;left:0;top:0;
+  z-index:11;pointer-events:none;
+  opacity:0;transition:opacity .35s ease;
+}
+#llamas.ver{opacity:1;}
+
+/* lo que arde no se aclara: se carboniza y se deshace */
 .ardiendo{
-  animation:arder 1.15s ease-in forwards;
+  animation:arder 1.9s ease-in forwards;
 }
 @keyframes arder{
-  0%{filter:brightness(1) saturate(1) contrast(1);}
-  35%{filter:brightness(1.3) saturate(1.8) sepia(.5) hue-rotate(-10deg) contrast(1.1);}
-  75%{filter:brightness(1.9) saturate(2.2) sepia(.85) hue-rotate(-14deg) contrast(1.2);opacity:.75;}
-  100%{filter:brightness(2.6) saturate(0) sepia(0);opacity:0;transform:scale(.82);}
+  0%{filter:none;}
+  20%{filter:brightness(.92) sepia(.35) saturate(1.5) hue-rotate(-12deg);}
+  50%{filter:brightness(.55) sepia(.75) saturate(2) hue-rotate(-16deg) contrast(1.25);}
+  78%{filter:brightness(.25) sepia(1) saturate(2.4) contrast(1.5);opacity:.8;}
+  100%{filter:brightness(.04) contrast(2.2);opacity:0;transform:scale(.94);}
 }
 @media (prefers-reduced-motion: reduce){
   .ardiendo{animation:none;}
@@ -877,6 +888,7 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
 <body>
 
 <canvas id="cielo"></canvas>
+<canvas id="llamas"></canvas>
 <canvas id="fuegos"></canvas>
 <div class="halo"></div>
 <div class="velo" id="velo"></div>
@@ -1548,39 +1560,79 @@ const CARTA = {
 
   montarStickers();
 
+  /* --- SILUETA DE HOJA QUEMADA ---
+     El borde del papel no es recto: se le comen mordidas irregulares con
+     un clip-path. Las mordidas van en píxeles (no en %) porque la hoja es
+     larguísima y un % en vertical se volvería un boquete enorme. */
+  function siluetaQuemada(){
+    const pts = [];
+    const n = 26;
+    const mord = max => (Math.pow(Math.random(), 1.6) * max).toFixed(1);
+
+    for (let i = 0; i <= n; i++)  pts.push((i / n * 100).toFixed(2) + '% ' + mord(16) + 'px');
+    for (let i = 1; i <= n; i++)  pts.push('calc(100% - ' + mord(13) + 'px) ' + (i / n * 100).toFixed(2) + '%');
+    for (let i = 1; i <= n; i++)  pts.push((100 - i / n * 100).toFixed(2) + '% calc(100% - ' + mord(16) + 'px)');
+    for (let i = 1; i < n; i++)   pts.push(mord(13) + 'px ' + (100 - i / n * 100).toFixed(2) + '%');
+
+    return 'polygon(' + pts.join(',') + ')';
+  }
+  $('#hoja').style.clipPath = siluetaQuemada();
+
   /* ============================================================
-     3. FONDO Y FUEGO
-     El canvas está en blanco casi siempre. Al abrir y cerrar, hace de
-     grietas de lava: el incendio nace del sobre o de la hoja, se
-     extiende y todo se vuelve fuego (rojo, naranja, negro) antes de
-     apagarse otra vez a blanco. Es el algoritmo clásico de "fuego"
-     (cada pixel hereda, con decaimiento y deriva al azar, el de abajo)
-     sobre un buffer chico que se agranda al pintar, por rendimiento.
+     3. FONDO, LAVA Y FUEGO
+     Dos lienzos:
+       #cielo  (atrás)   → el suelo. Blanco; al abrir/cerrar se agrieta
+                           como lava (venas rojas + resplandor) y al final
+                           queda blanco con las grietas ya apagadas.
+       #llamas (delante) → las llamas de verdad, POR ENCIMA del sobre y de
+                           la hoja, para que se vea que se están quemando.
+     El fuego es el algoritmo clásico: cada celda hereda la de abajo con un
+     decaimiento al azar. El buffer tiene POCAS filas a propósito (cada
+     celda es alta), porque si no la llama solo alcanza el borde de abajo
+     de la pantalla y se ve como puntitos.
      ============================================================ */
   const canvas = $('#cielo');
   const ctx = canvas.getContext('2d', { alpha: false });
+  const cvLlamas = $('#llamas');
+  const ctxLlamas = cvLlamas.getContext('2d');
   let ancho = 0, alto = 0, altoLienzo = 0, animando = true;
 
-  const FW = 90;
-  let FH = 130;
-  let fuego = new Uint8Array(FW * FH);
+  const FW = 110, FH = 60;
+  const fuego = new Uint8Array(FW * FH);
   const fuegoCv = document.createElement('canvas');
-  fuegoCv.width = FW;
+  fuegoCv.width = FW; fuegoCv.height = FH;
   const fuegoCx = fuegoCv.getContext('2d');
+  const bufferRGBA = new Uint8ClampedArray(FW * FH * 4);
 
-  // de negro/transparente a blanco, pasando por los rojos/naranjas de la lava
-  const PALETA_FUEGO = [
-    [0,0,0,0], [60,10,0,64], [90,15,0,102], [120,20,0,140], [150,30,0,166],
-    [180,45,0,191], [204,60,0,209], [224,80,0,224], [240,105,0,235],
-    [255,130,0,242], [255,155,20,247], [255,175,50,255], [255,195,90,255],
-    [255,215,130,255], [255,232,170,255], [255,246,210,255], [255,255,255,255]
-  ];
+  // paleta de lava (40 tonos): apagado → rojo → naranja → amarillo → blanco
+  const PALETA_FUEGO = (function(){
+    const claves = [
+      [0,0,0,0], [46,6,2,110], [104,12,3,180], [158,28,5,215],
+      [208,56,8,238], [240,100,14,250], [255,146,28,255],
+      [255,192,72,255], [255,228,140,255], [255,250,224,255]
+    ];
+    const total = 40, salida = [];
+    for (let i = 0; i < total; i++){
+      const p = i / (total - 1) * (claves.length - 1);
+      const a = claves[Math.floor(p)];
+      const b = claves[Math.min(claves.length - 1, Math.ceil(p))];
+      const f = p - Math.floor(p);
+      salida.push([
+        Math.round(a[0] + (b[0] - a[0]) * f),
+        Math.round(a[1] + (b[1] - a[1]) * f),
+        Math.round(a[2] + (b[2] - a[2]) * f),
+        Math.round(a[3] + (b[3] - a[3]) * f)
+      ]);
+    }
+    return salida;
+  })();
   const MAXI = PALETA_FUEGO.length - 1;
-  let bufferRGBA = new Uint8ClampedArray(FW * FH * 4);
 
-  let modoFuego = 'blanco';   // 'blanco' | 'ardiendo' | 'apagando'
-  let origenFraccion = 0.5;   // 0..1: de dónde nace el incendio, a lo ancho
+  let modoFuego = 'limpio';   // 'limpio' | 'ardiendo' | 'enfriando' | 'cenizas'
   let tFuego = 0;
+  let grietas = [];           // las venas de lava del suelo
+  let zonaArde = null;        // el rect (px) de lo que se está quemando
+  let repintarFondo = true;
 
   function dimensionar(){
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -1598,72 +1650,219 @@ const CARTA = {
     canvas.style.height = altoLienzo + 'px';
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-    FH = Math.max(40, Math.round(FW * altoLienzo / ancho));
-    fuego = new Uint8Array(FW * FH);
-    bufferRGBA = new Uint8ClampedArray(FW * FH * 4);
-    fuegoCv.height = FH;
+    // el de las llamas va a menos resolución: igual se ve borroso al escalar
+    cvLlamas.width  = Math.floor(ancho * 0.7);
+    cvLlamas.height = Math.floor(altoLienzo * 0.7);
+    cvLlamas.style.width  = ancho + 'px';
+    cvLlamas.style.height = altoLienzo + 'px';
+    ctxLlamas.setTransform(0.7, 0, 0, 0.7, 0, 0);
+
+    repintarFondo = true;
   }
 
-  // fraccionX: 0..1, dónde nace el incendio (la posición del sobre o la hoja)
-  function iniciarIncendio(fraccionX){
+  /* --- las grietas de lava: ramas que salen de donde se prende --- */
+  function generarGrietas(cx0, cy0){
+    const lista = [];
+    const ramas = 9;
+    for (let r = 0; r < ramas; r++){
+      let ang = (Math.PI * 2 * r) / ramas + Math.random() * 0.7;
+      let x = cx0, y = cy0;
+      const pts = [{ x: x, y: y }];
+      const pasos = 16 + Math.floor(Math.random() * 10);
+      for (let i = 0; i < pasos; i++){
+        ang += (Math.random() - 0.5) * 0.85;
+        const largo = 22 + Math.random() * 48;
+        x += Math.cos(ang) * largo;
+        y += Math.sin(ang) * largo;
+        pts.push({ x: x, y: y });
+
+        // de vez en cuando la grieta se parte en dos
+        if (i > 2 && Math.random() < 0.22){
+          let ax = x, ay = y;
+          let aang = ang + (Math.random() < 0.5 ? 1 : -1) * (0.5 + Math.random() * 0.6);
+          const sub = [{ x: ax, y: ay }];
+          const subPasos = 4 + Math.floor(Math.random() * 7);
+          for (let j = 0; j < subPasos; j++){
+            aang += (Math.random() - 0.5) * 0.8;
+            ax += Math.cos(aang) * (16 + Math.random() * 34);
+            ay += Math.sin(aang) * (16 + Math.random() * 34);
+            sub.push({ x: ax, y: ay });
+          }
+          lista.push({ pts: sub, grosor: 0.55 });
+        }
+      }
+      lista.push({ pts: pts, grosor: 1 });
+    }
+    return lista;
+  }
+
+  /* Las grietas se pintan UNA vez en lienzos aparte (calientes y frías) y
+     después solo se copian: pintar ~100 trazos anchos en cada frame ahogaría
+     al teléfono. El "se van abriendo" se hace recortando con un círculo que
+     crece desde donde se prendió. */
+  let grietasCv = null, grietasFriasCv = null;
+
+  function pintarGrietasEn(cx2, capas){
+    cx2.lineCap = 'round';
+    cx2.lineJoin = 'round';
+    for (let k = 0; k < grietas.length; k++){
+      const g = grietas[k];
+      for (let c = 0; c < capas.length; c++){
+        cx2.beginPath();
+        cx2.moveTo(g.pts[0].x, g.pts[0].y);
+        for (let i = 1; i < g.pts.length; i++) cx2.lineTo(g.pts[i].x, g.pts[i].y);
+        cx2.lineWidth = capas[c][0] * g.grosor;
+        cx2.strokeStyle = capas[c][1];
+        cx2.stroke();
+      }
+    }
+  }
+
+  function prepararGrietas(){
+    const w = Math.max(1, Math.floor(ancho)), h = Math.max(1, Math.floor(altoLienzo));
+
+    grietasCv = document.createElement('canvas');
+    grietasCv.width = w; grietasCv.height = h;
+    pintarGrietasEn(grietasCv.getContext('2d'), [
+      [26,  'rgba(255,70,0,.2)'],
+      [11,  'rgba(255,120,10,.5)'],
+      [4.5, 'rgba(255,190,80,.85)'],
+      [1.6, 'rgba(255,245,215,.95)']
+    ]);
+
+    grietasFriasCv = document.createElement('canvas');
+    grietasFriasCv.width = w; grietasFriasCv.height = h;
+    pintarGrietasEn(grietasFriasCv.getContext('2d'), [
+      [3.4, 'rgba(78,44,26,.14)'],
+      [1.2, 'rgba(126,48,16,.26)']
+    ]);
+  }
+
+  // zona: el rect en pantalla de lo que se quema (sobre u hoja)
+  function iniciarIncendio(zona){
+    zonaArde = zona;
+    grietas = generarGrietas(zona.left + zona.width / 2, zona.top + zona.height * 0.72);
+    prepararGrietas();
     modoFuego = 'ardiendo';
-    origenFraccion = fraccionX;
     tFuego = 0;
     fuego.fill(0);
+    cvLlamas.classList.add('ver');
   }
+
   function apagarIncendio(){
-    modoFuego = 'apagando';
+    modoFuego = 'enfriando';
     tFuego = 0;
+    // la fila de abajo no la toca la propagación: hay que apagarla a mano
+    for (let x = 0; x < FW; x++) fuego[(FH - 1) * FW + x] = 0;
+    cvLlamas.classList.remove('ver');
   }
 
   function pasoFuego(){
     tFuego++;
 
     if (modoFuego === 'ardiendo'){
-      // la "semilla" empieza angosta, justo donde nace el fuego, y se
-      // ensancha rápido hasta cubrir todo el ancho: así se ve como si
-      // las grietas se extendieran desde el sobre/la hoja hacia afuera.
-      const colOrigen = Math.round(origenFraccion * FW);
-      const anchoSemilla = Math.min(FW, 4 + tFuego * 2.2);
-      const n = Math.round(anchoSemilla);
-      for (let i = 0; i < n; i++){
-        const x = colOrigen + Math.round((Math.random() - 0.5) * anchoSemilla);
-        if (x >= 0 && x < FW) fuego[(FH - 1) * FW + x] = MAXI;
+      // 1) lo que se está quemando: banda caliente en su base, para que
+      //    la llama salga justo de ahí y lo envuelva
+      if (zonaArde){
+        const x1 = Math.max(0, Math.floor(zonaArde.left / ancho * FW));
+        const x2 = Math.min(FW - 1, Math.ceil((zonaArde.left + zonaArde.width) / ancho * FW));
+        const yb = Math.min(FH - 1, Math.max(1,
+          Math.round((zonaArde.top + zonaArde.height) / altoLienzo * FH)));
+        for (let x = x1; x <= x2; x++){
+          if (Math.random() < 0.92) fuego[yb * FW + x] = MAXI;
+        }
+      }
+      // 2) el suelo: la lava prende abajo y se va ensanchando. Solo al
+      //    principio: si siguiera, la pantalla se queda tapada de fuego y
+      //    ya no se ve nada de lo que se está quemando.
+      if (tFuego < 46){
+        const cx0 = zonaArde ? (zonaArde.left + zonaArde.width / 2) / ancho * FW : FW / 2;
+        const abarca = Math.min(FW, 12 + tFuego * 3);
+        for (let i = 0; i < abarca; i++){
+          const x = Math.round(cx0 + (Math.random() - 0.5) * abarca);
+          if (x >= 0 && x < FW) fuego[(FH - 1) * FW + x] = MAXI;
+        }
       }
     }
 
     for (let x = 0; x < FW; x++){
       for (let y = 1; y < FH; y++){
-        const src = y * FW + x;
-        const decay = Math.floor(Math.random() * 3);
-        const val = Math.max(0, fuego[src] - decay);
-        const dx = Math.floor(Math.random() * 3) - 1;
+        const val = Math.max(0, fuego[y * FW + x] - (Math.random() < 0.8 ? 1 : 0));
+        const dx = Math.random() < 0.5 ? 0 : (Math.random() < 0.5 ? -1 : 1);
         const dstX = Math.min(FW - 1, Math.max(0, x + dx));
         fuego[(y - 1) * FW + dstX] = val;
       }
     }
   }
 
-  function dibujarFuego(){
-    // el blanco de fondo se oscurece mientras arde, como si se hiciera
-    // ceniza, y se aclara de vuelta a blanco cuando se apaga.
-    const factor = modoFuego === 'ardiendo'
-      ? Math.min(1, tFuego / 40)
-      : Math.max(0, 1 - tFuego / 30);
-    const c = Math.round(251 - factor * 236);
-    ctx.fillStyle = 'rgb(' + c + ',' + Math.round(c * 0.94) + ',' + Math.round(c * 0.9) + ')';
-    ctx.fillRect(0, 0, ancho, altoLienzo);
-
+  function dibujarLlamas(){
+    ctxLlamas.clearRect(0, 0, ancho, altoLienzo);
     for (let i = 0, n = FW * FH; i < n; i++){
       const col = PALETA_FUEGO[fuego[i]];
       const o = i * 4;
-      bufferRGBA[o] = col[0]; bufferRGBA[o + 1] = col[1]; bufferRGBA[o + 2] = col[2]; bufferRGBA[o + 3] = col[3];
+      bufferRGBA[o] = col[0]; bufferRGBA[o + 1] = col[1];
+      bufferRGBA[o + 2] = col[2]; bufferRGBA[o + 3] = col[3];
     }
     fuegoCx.putImageData(new ImageData(bufferRGBA, FW, FH), 0, 0);
-    ctx.imageSmoothingEnabled = true;
-    ctx.drawImage(fuegoCv, 0, 0, FW, FH, 0, 0, ancho, altoLienzo);
+    ctxLlamas.imageSmoothingEnabled = true;
+    ctxLlamas.drawImage(fuegoCv, 0, 0, FW, FH, 0, 0, ancho, altoLienzo);
+  }
 
-    if (modoFuego === 'apagando' && tFuego > 30) modoFuego = 'blanco';
+  function dibujarFondo(){
+    if (modoFuego === 'ardiendo' || modoFuego === 'enfriando'){
+      // el suelo blanco se vuelve casi negro (con tinte rojo, no café)
+      const p = modoFuego === 'ardiendo'
+        ? Math.min(1, tFuego / 26)
+        : Math.max(0, 1 - tFuego / 45);
+      ctx.fillStyle = 'rgb(' + Math.round(251 - p * 227) + ',' +
+                               Math.round(250 - p * 240) + ',' +
+                               Math.round(246 - p * 240) + ')';
+      ctx.fillRect(0, 0, ancho, altoLienzo);
+
+      // el resplandor de la lava, saliendo de donde se prendió
+      if (zonaArde && p > 0.04){
+        const gx = zonaArde.left + zonaArde.width / 2;
+        const gy = zonaArde.top + zonaArde.height * 0.72;
+        const g = ctx.createRadialGradient(gx, gy, 0, gx, gy, Math.max(ancho, altoLienzo) * 0.85);
+        g.addColorStop(0,    'rgba(255,95,10,' + (0.4 * p) + ')');
+        g.addColorStop(0.45, 'rgba(178,32,4,'  + (0.2 * p) + ')');
+        g.addColorStop(1,    'rgba(60,8,0,0)');
+        ctx.fillStyle = g;
+        ctx.fillRect(0, 0, ancho, altoLienzo);
+      }
+
+      // las grietas se revelan con un círculo que crece desde el origen
+      if (grietasCv && zonaArde){
+        const gx2 = zonaArde.left + zonaArde.width / 2;
+        const gy2 = zonaArde.top + zonaArde.height * 0.72;
+        const avance = modoFuego === 'ardiendo' ? Math.min(1, tFuego / 20) : 1;
+        const brillo = modoFuego === 'ardiendo'
+          ? Math.min(1, tFuego / 12)
+          : Math.max(0, 1 - tFuego / 40);
+
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(gx2, gy2, avance * Math.max(ancho, altoLienzo) * 1.2, 0, 6.2832);
+        ctx.clip();
+        ctx.globalAlpha = brillo;
+        ctx.drawImage(grietasCv, 0, 0, ancho, altoLienzo);
+        ctx.restore();
+        ctx.globalAlpha = 1;
+      }
+
+      if (modoFuego === 'enfriando' && tFuego > 46){
+        modoFuego = 'cenizas';
+        repintarFondo = true;
+      }
+    } else {
+      ctx.fillStyle = '#fbfaf6';
+      ctx.fillRect(0, 0, ancho, altoLienzo);
+      // quedan las marcas de por dónde pasó la lava
+      if (modoFuego === 'cenizas' && grietasFriasCv){
+        ctx.drawImage(grietasFriasCv, 0, 0, ancho, altoLienzo);
+      }
+      repintarFondo = false;
+    }
   }
 
   function dibujar(){
@@ -1675,12 +1874,13 @@ const CARTA = {
     // teléfono (cambia el ancho) o si el alto cambia muchísimo.
     if (Math.abs(vw() - ancho) > 2 || Math.abs(vh() - alto) > 140) dimensionar();
 
-    if (modoFuego === 'blanco'){
-      ctx.fillStyle = '#fbfaf6';
-      ctx.fillRect(0, 0, ancho, altoLienzo);
-    } else {
+    if (modoFuego === 'ardiendo' || modoFuego === 'enfriando'){
       pasoFuego();
-      dibujarFuego();
+      dibujarFondo();
+      dibujarLlamas();
+    } else if (repintarFondo){
+      dibujarFondo();
+      ctxLlamas.clearRect(0, 0, ancho, altoLienzo);
     }
 
     requestAnimationFrame(dibujar);
@@ -1765,7 +1965,6 @@ const CARTA = {
 
     // se mide antes de que el sobre empiece a arder
     const origenSobre = sobre.getBoundingClientRect();
-    const fraccionX = (origenSobre.left + origenSobre.width / 2) / vw();
 
     vibrar(12);
 
@@ -1774,19 +1973,23 @@ const CARTA = {
     rebobinarCancion();
     arrancarMusica();
 
+    // primero se abre la lava, y recién ahí se prende el sobre: así se ve
+    // que fue la lava la que lo quemó
     escena.classList.add('abriendo');
-    sobre.classList.add('ardiendo');
-    lanzarBrasas(origenSobre);
-    if (!menosMovimiento) iniciarIncendio(fraccionX);
+    if (!menosMovimiento) iniciarIncendio(origenSobre);
 
     agendar(() => {
-      escena.classList.add('fuera');
-      $('#velo').classList.add('ver');
-    }, 550);
+      sobre.classList.add('ardiendo');
+      lanzarBrasas(origenSobre);
+      vibrar(18);
+    }, 420);
+
+    agendar(() => $('#velo').classList.add('ver'), 900);
 
     agendar(() => {
       if (!menosMovimiento) apagarIncendio();
       vibrar(16);
+      escena.classList.add('fuera');
       escena.style.display = 'none';
       sobre.classList.remove('ardiendo');
       hoja.classList.add('abierta');
@@ -1799,7 +2002,7 @@ const CARTA = {
         vigilarNumeros();
         $('#baja').classList.add('ver');
       }, 700);
-    }, 1150);
+    }, 2350);
 
     // Red de seguridad: pase lo que pase, la hoja se ve.
     agendar(() => {
@@ -1810,7 +2013,7 @@ const CARTA = {
         hoja.style.opacity = '1';
         hoja.style.transform = 'none';
       }
-    }, 3200);
+    }, 4200);
   }
 
   /* --- CERRAR: la hoja arde y se transforma de vuelta en el sobre.
@@ -1832,19 +2035,29 @@ const CARTA = {
     $('#baja').classList.remove('ver');
     $('#respuesta').classList.remove('ver');
 
-    // se mide antes de que la hoja empiece a arder
-    const origenHoja = hoja.getBoundingClientRect();
-    const fraccionX = (origenHoja.left + origenHoja.width / 2) / vw();
+    // se mide antes de que la hoja empiece a arder; lo que se ve en
+    // pantalla, no la hoja entera (que es larguísima y sale del viewport)
+    const r = hoja.getBoundingClientRect();
+    const origenHoja = {
+      left: r.left,
+      width: r.width,
+      top: Math.max(0, r.top),
+      height: Math.min(r.bottom, vh()) - Math.max(0, r.top)
+    };
 
     // la escena queda lista (todavía invisible, por la clase "fuera")
     // para que aparezca el sobre en cuanto termine el incendio
     escena.style.display = '';
 
-    hoja.classList.add('ardiendo');
-    lanzarBrasas(origenHoja);
-    if (!menosMovimiento) iniciarIncendio(fraccionX);
+    if (!menosMovimiento) iniciarIncendio(origenHoja);
 
-    if (!menosMovimiento) bajarVolumen(1100);
+    agendar(() => {
+      hoja.classList.add('ardiendo');
+      lanzarBrasas(origenHoja);
+      vibrar(18);
+    }, 380);
+
+    if (!menosMovimiento) bajarVolumen(2200);
     else pararMusica();
 
     agendar(() => {
@@ -1873,7 +2086,7 @@ const CARTA = {
         if (el) el.textContent = '0';
       });
       yaBajo = false;
-    }, 1150);
+    }, 2350);
   }
 
   sobre.addEventListener('click', abrir);
