@@ -315,9 +315,10 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
   margin:calc(var(--safe-t) + 30px) auto calc(var(--safe-b) + 48px);
   padding:clamp(34px,8vw,64px) clamp(24px,7vw,58px) clamp(52px,11vw,80px);
 
-  /* papel quemado: manchas de chamusquina por todo el borde + un tostado
-     general que sube desde las orillas. La silueta mordida la pone el JS
-     con un clip-path irregular (ver siluetaQuemada). */
+  /* papel quemado: chamusquina por todo el borde + un tostado general que
+     sube desde las orillas. El borde comido lo pone #hoja::after con un
+     filtro de ruido — a propósito NO se recorta la hoja con clip-path,
+     porque los cortes rectos se veían como tijeretazos, no como quemado. */
   background:
     radial-gradient(60% 34px at 12% 0%,   rgba(48,22,6,.6),  transparent 70%),
     radial-gradient(48% 26px at 44% 0%,   rgba(48,22,6,.45), transparent 70%),
@@ -334,9 +335,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
     linear-gradient(168deg, #f7f2e2 0%, var(--papel) 42%, #e9d9b4 100%);
 
   color:var(--texto);
-  /* la sombra va por filtro, no por box-shadow: así sigue la silueta
-     mordida del clip-path en vez de dibujar un rectángulo */
-  filter:drop-shadow(0 26px 46px rgba(0,0,0,.45)) drop-shadow(0 4px 10px rgba(40,18,4,.4));
+  box-shadow:0 26px 46px rgba(0,0,0,.45), 0 4px 10px rgba(40,18,4,.35);
 
   opacity:0;
   transform:translateY(46px) scale(.78);
@@ -352,8 +351,80 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
   transform:translateY(70px) scale(.7);
   transition:opacity .75s ease, transform .95s cubic-bezier(.5,0,.75,0);
 }
-/* Ya no hay filo recto de papel: el borde de la hoja es la mordida
-   irregular del clip-path, con el tostado del fondo haciendo de chamusquina. */
+
+/* El borde carbonizado. Es un marco aparte, con un filtro de ruido que le
+   come el contorno: así el filo se ve mordido por el fuego en vez de
+   cortado con tijera, y como es un pseudo-elemento nunca toca el texto. */
+#hoja::after{
+  content:'';
+  position:absolute;inset:-8px;
+  pointer-events:none;z-index:4;
+  /* 13px de borde a 8px hacia afuera: el filo carbonizado entra como
+     mucho ~17px, y el texto empieza a los 24px de padding */
+  border:13px solid rgba(34,14,3,.92);
+  border-radius:5px;
+  filter:url(#quemadura) blur(.6px);
+  opacity:.9;
+}
+
+/* ============================================================
+   LA FRASE ENTRE LAS LLAMAS · sale al cerrar, antes de que vuelva
+   el sobre. Va por encima del lienzo de llamas (z-index 11).
+   ============================================================ */
+.frase-fuego{
+  position:fixed;left:50%;top:44%;
+  z-index:12;
+  width:min(86vw,560px);
+  transform:translate(-50%,-50%) scale(.9);
+  text-align:center;
+  font-family:var(--serif);
+  font-size:clamp(1.9rem,8.6vw,3.1rem);
+  font-weight:600;
+  line-height:1.16;
+  letter-spacing:.01em;
+  color:#fff6e2;
+  text-shadow:
+    0 0 5px  rgba(255,228,160,.95),
+    0 0 16px rgba(255,150,40,.9),
+    0 0 40px rgba(255,80,0,.8),
+    0 0 80px rgba(255,40,0,.55);
+  opacity:0;pointer-events:none;
+  transition:opacity .55s ease, transform 1s cubic-bezier(.2,.8,.3,1);
+}
+/* un halo oscuro detrás, para que la frase se lea encima del fuego */
+.frase-fuego::before{
+  content:'';position:absolute;inset:-30% -12%;
+  z-index:-1;border-radius:50%;
+  background:radial-gradient(60% 60% at 50% 50%, rgba(18,5,0,.72), rgba(18,5,0,0) 72%);
+}
+.frase-fuego.ver{
+  opacity:1;
+  transform:translate(-50%,-50%) scale(1);
+  animation:latido-fuego 1.7s ease-in-out infinite;
+}
+@keyframes latido-fuego{
+  0%,100%{filter:brightness(1);}
+  45%{filter:brightness(1.18);}
+}
+@media (prefers-reduced-motion: reduce){
+  .frase-fuego.ver{animation:none;}
+}
+
+/* manchas de quemadura sueltas: van debajo de las fotos, nunca sobre el texto */
+.quemadura{
+  display:block;
+  width:var(--ancho,60%);
+  height:clamp(30px,8vw,52px);
+  margin:10px auto 0;
+  transform:rotate(var(--gira,0deg));
+  background:
+    radial-gradient(58% 100% at 50% 50%,
+      rgba(16,7,1,.9) 0%, rgba(54,24,7,.82) 38%,
+      rgba(116,58,18,.5) 66%, rgba(150,90,40,0) 100%);
+  filter:url(#quemadura) blur(.5px);
+  opacity:.85;
+  pointer-events:none;
+}
 
 .mono{display:block;width:clamp(56px,15vw,76px);margin:0 auto 18px;}
 
@@ -887,12 +958,25 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
 
 <body>
 
+<!-- el ruido que le come el contorno a las quemaduras, para que se vean
+     mordidas por el fuego y no recortadas -->
+<svg width="0" height="0" aria-hidden="true" style="position:absolute">
+  <filter id="quemadura" x="-25%" y="-25%" width="150%" height="150%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="4" seed="9" result="ruido"/>
+    <feDisplacementMap in="SourceGraphic" in2="ruido" scale="12"
+                       xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+</svg>
+
 <canvas id="cielo"></canvas>
 <canvas id="llamas"></canvas>
 <canvas id="fuegos"></canvas>
 <div class="halo"></div>
 <div class="velo" id="velo"></div>
 <div class="decor" id="decor"></div>
+
+<!-- la frase que aparece entre las llamas justo antes de volver el sobre -->
+<div class="frase-fuego" id="frase-fuego"></div>
 
 <!-- ══════════ PORTADA ══════════ -->
 <section id="escena">
@@ -1112,6 +1196,10 @@ const CARTA = {
     '<span class="rs-media">mi bonita, mi persona favorita</span>' +
     '<span class="rs-nombre">Judith Alejandra<br>Arcoamarillo Soto</span>' +
     '<span class="rs-cierre">Gracias por leer hasta el final, otra vez.</span>',
+
+  // La frase que aparece entre las llamas al cerrar la carta,
+  // justo antes de que se vuelva a formar el sobre
+  fraseCierre: "Tú siempre eres mi 11:11",
 
   // --- Opcional: tu WhatsApp ---
   whatsapp:    "",
@@ -1511,6 +1599,7 @@ const CARTA = {
   $('#btn-perdon').textContent      = CARTA.textoBoton;
   $('#respuesta').innerHTML         = CARTA.respuesta;
   $('#tiempo-pie').textContent      = CARTA.piePagina;
+  $('#frase-fuego').textContent     = CARTA.fraseCierre || '';
   $('#hora-magica').textContent     = CARTA.horaMagica;
   $('#hora-cumple').textContent     = CARTA.horaCumple;
   $('#magica-texto').innerHTML      = CARTA.textoMagico.map(t => '<p>' + t + '</p>').join('');
@@ -1560,23 +1649,23 @@ const CARTA = {
 
   montarStickers();
 
-  /* --- SILUETA DE HOJA QUEMADA ---
-     El borde del papel no es recto: se le comen mordidas irregulares con
-     un clip-path. Las mordidas van en píxeles (no en %) porque la hoja es
-     larguísima y un % en vertical se volvería un boquete enorme. */
-  function siluetaQuemada(){
-    const pts = [];
-    const n = 26;
-    const mord = max => (Math.pow(Math.random(), 1.6) * max).toFixed(1);
-
-    for (let i = 0; i <= n; i++)  pts.push((i / n * 100).toFixed(2) + '% ' + mord(16) + 'px');
-    for (let i = 1; i <= n; i++)  pts.push('calc(100% - ' + mord(13) + 'px) ' + (i / n * 100).toFixed(2) + '%');
-    for (let i = 1; i <= n; i++)  pts.push((100 - i / n * 100).toFixed(2) + '% calc(100% - ' + mord(16) + 'px)');
-    for (let i = 1; i < n; i++)   pts.push(mord(13) + 'px ' + (100 - i / n * 100).toFixed(2) + '%');
-
-    return 'polygon(' + pts.join(',') + ')';
+  /* --- QUEMADURAS DE LA HOJA ---
+     Van DESPUÉS de cada foto (dentro de los puntos p1..p8), nunca sobre
+     el texto: son manchas de chamusquina con un filtro de ruido que les
+     come el contorno, así se ven quemadas y no recortadas. */
+  function ponerQuemaduras(){
+    const puntos = ['p2', 'p4', 'p6', 'p8'];
+    puntos.forEach((id, i) => {
+      const zona = document.getElementById(id);
+      if (!zona || !zona.children.length) return;   // solo donde hay foto
+      const q = document.createElement('div');
+      q.className = 'quemadura';
+      q.style.setProperty('--gira', (i % 2 ? 4 : -5) + 'deg');
+      q.style.setProperty('--ancho', (52 + Math.random() * 26) + '%');
+      zona.appendChild(q);
+    });
   }
-  $('#hoja').style.clipPath = siluetaQuemada();
+  ponerQuemaduras();
 
   /* ============================================================
      3. FONDO, LAVA Y FUEGO
@@ -1768,8 +1857,11 @@ const CARTA = {
         const x2 = Math.min(FW - 1, Math.ceil((zonaArde.left + zonaArde.width) / ancho * FW));
         const yb = Math.min(FH - 1, Math.max(1,
           Math.round((zonaArde.top + zonaArde.height) / altoLienzo * FH)));
+        // fuerte mientras se consume, y después baja a una cama de fuego:
+        // si no, la pantalla queda tapada de llamas y no se lee la frase
+        const fuerza = tFuego < 75 ? 0.92 : 0.32;
         for (let x = x1; x <= x2; x++){
-          if (Math.random() < 0.92) fuego[yb * FW + x] = MAXI;
+          if (Math.random() < fuerza) fuego[yb * FW + x] = MAXI;
         }
       }
       // 2) el suelo: la lava prende abajo y se va ensanchando. Solo al
@@ -2057,11 +2149,18 @@ const CARTA = {
       vibrar(18);
     }, 380);
 
-    if (!menosMovimiento) bajarVolumen(2200);
+    // entre las llamas, cuando la hoja ya se consumió, sale la frase y se
+    // queda un par de segundos antes de que vuelva el sobre
+    const frase = $('#frase-fuego');
+    agendar(() => frase.classList.add('ver'), 1000);
+    agendar(() => frase.classList.remove('ver'), 3000);
+
+    if (!menosMovimiento) bajarVolumen(3300);
     else pararMusica();
 
     agendar(() => {
       if (!menosMovimiento) apagarIncendio();
+      frase.classList.remove('ver');
 
       hoja.style.transition = '';
       hoja.style.opacity = '';
@@ -2086,7 +2185,7 @@ const CARTA = {
         if (el) el.textContent = '0';
       });
       yaBajo = false;
-    }, 2350);
+    }, 3450);
   }
 
   sobre.addEventListener('click', abrir);
