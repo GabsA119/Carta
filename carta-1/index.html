@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
-<meta name="theme-color" content="#fbfaf6">
+<meta name="theme-color" content="#150a1c">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Para ti</title>
@@ -18,25 +18,25 @@
 
 <style>
 /* ============================================================
-   PALETA · noche bosque + papel amate, temática Pocahontas
+   PALETA · noche malva + papel rosa
    ============================================================ */
 :root{
-  --noche:#fbfaf6;
-  --tinta-clara:#2b2318;
-  --tinta-clara-suave:rgba(43,35,24,.65);
-  --rosa-luz:#ff6a3d;
-  --rosa-luz-suave:rgba(255,106,61,.35);
+  --noche:#150a1c;
+  --tinta-clara:#f7eef3;
+  --tinta-clara-suave:rgba(247,238,243,.68);
+  --rosa-luz:#f9a8c9;
+  --rosa-luz-suave:rgba(249,168,201,.35);
 
-  --papel:#f7f0e2;
-  --papel-borde:#c9a877;
-  --texto:#2b2318;
-  --texto-suave:#6b5c42;
-  --acento:#c4451c;
-  --acento-claro:#e0722f;
-  --renglon:rgba(196,69,28,.14);
+  --papel:#fdf3f7;
+  --papel-borde:#f6e2ea;
+  --texto:#3b2b33;
+  --texto-suave:#7c5f6b;
+  --acento:#c2447a;
+  --acento-claro:#e88aa8;
+  --renglon:rgba(194,68,122,.12);
 
-  --sobre:#3a2a22;
-  --sobre-osc:#1f1712;
+  --sobre:#f7dfe8;
+  --sobre-osc:#eec6d6;
 
   --serif:'Cormorant Garamond', Georgia, 'Times New Roman', serif;
   --mano:'Dancing Script', 'Segoe Script', cursive;
@@ -89,7 +89,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
   position:fixed;left:50%;top:42%;
   width:min(140vw,900px);height:min(140vw,900px);
   transform:translate(-50%,-50%);
-  background:radial-gradient(circle, rgba(255,106,61,.14) 0%, rgba(196,69,28,.05) 38%, transparent 68%);
+  background:radial-gradient(circle, rgba(249,168,201,.16) 0%, rgba(230,120,170,.06) 38%, transparent 68%);
   z-index:1;pointer-events:none;
   animation:respirar 9s ease-in-out infinite;
 }
@@ -100,7 +100,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
 
 .velo{
   position:fixed;inset:0;z-index:2;
-  background:rgba(20,10,6,.6);
+  background:rgba(12,5,17,.55);
   opacity:0;pointer-events:none;
   transition:opacity 1.2s ease;
 }
@@ -146,7 +146,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
   pointer-events:none;
 }
 .borde .baila{animation:flotar var(--dur,7s) ease-in-out infinite;animation-delay:var(--del,0s);display:block;}
-.borde svg{display:block;width:100%;height:auto;filter:drop-shadow(0 4px 9px rgba(15,45,42,.28));}
+.borde svg{display:block;width:100%;height:auto;filter:drop-shadow(0 4px 9px rgba(120,30,70,.28));}
 
 /* figuritas dentro del texto */
 .deco-linea{
@@ -199,13 +199,12 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
   position:absolute;inset:0;
   background:linear-gradient(160deg,var(--sobre) 0%, var(--sobre-osc) 100%);
   border-radius:5px;z-index:1;
-  box-shadow:inset 0 0 0 1px rgba(255,106,61,.28), inset 0 0 22px rgba(255,106,61,.1);
 }
 
 .hoja-mini{
   position:absolute;left:6%;bottom:5%;
   width:88%;height:86%;
-  background:linear-gradient(175deg,#f7f1de 0%, #e8dcb4 100%);
+  background:linear-gradient(175deg,#fffafc 0%, #f7e4ec 100%);
   border-radius:3px;z-index:2;
   transform:translateY(0);
   transition:transform 1.05s cubic-bezier(.34,1.15,.64,1) .5s;
@@ -215,35 +214,33 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
 .hoja-mini::before{
   content:'';position:absolute;inset:14% 13%;
   background:repeating-linear-gradient(to bottom,
-    rgba(196,69,28,.22) 0 1px, transparent 1px 10px);
+    rgba(194,68,122,.22) 0 1px, transparent 1px 10px);
   opacity:.55;
 }
 .sobre.abierto .hoja-mini{transform:translateY(-64%) scale(1.02);}
 
 .sobre-frente{
   position:absolute;inset:0;
-  background:linear-gradient(155deg,#2e2018 0%, #170f0a 100%);
+  background:linear-gradient(155deg,#fae7ee 0%, #edc4d5 100%);
   clip-path:polygon(0 0, 50% 46%, 100% 0, 100% 100%, 0 100%);
   border-radius:5px;z-index:3;
-  box-shadow:inset 1px 0 0 rgba(255,106,61,.22);
 }
 .sobre-frente::after{
   content:'';position:absolute;inset:0;
-  background:linear-gradient(105deg, rgba(255,106,61,.16) 0%, transparent 45%);
-  opacity:.8;
+  background:linear-gradient(105deg, rgba(255,255,255,.4) 0%, transparent 45%);
+  opacity:.7;
 }
 
 .solapa{
   position:absolute;top:0;left:0;
   width:100%;height:46%;
-  background:linear-gradient(180deg,#332419 0%, #170f0a 100%);
+  background:linear-gradient(180deg,#fbeaf1 0%, #eec9d8 100%);
   clip-path:polygon(0 0, 100% 0, 50% 100%);
   transform-origin:top center;
   transform:rotateX(0deg);
   transition:transform .85s cubic-bezier(.6,0,.3,1), z-index 0s .42s;
   z-index:5;border-radius:5px 5px 0 0;
   backface-visibility:hidden;
-  box-shadow:inset 0 1px 0 rgba(255,106,61,.25);
 }
 .sobre.abierto .solapa{transform:rotateX(-178deg);z-index:0;}
 
@@ -277,8 +274,8 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
 .pista{text-align:center;opacity:0;animation:aparecer 1.4s ease 2s forwards;}
 .pista .toca{
   font-size:.82rem;letter-spacing:.3em;text-transform:uppercase;
-  color:var(--acento);
-  text-shadow:0 0 18px rgba(255,106,61,.35);
+  color:#fff;
+  text-shadow:0 0 18px rgba(249,168,201,.55);
   display:inline-flex;align-items:center;gap:12px;
   animation:latir 3.4s ease-in-out infinite;
 }
@@ -298,12 +295,11 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
   animation:pulso 2.4s ease-out infinite;
 }
 @keyframes pulso{
-  0%{box-shadow:0 0 0 0 rgba(255,106,61,.45);}
-  70%{box-shadow:0 0 0 22px rgba(255,106,61,0);}
-  100%{box-shadow:0 0 0 0 rgba(255,106,61,0);}
+  0%{box-shadow:0 0 0 0 rgba(249,168,201,.45);}
+  70%{box-shadow:0 0 0 22px rgba(249,168,201,0);}
+  100%{box-shadow:0 0 0 0 rgba(249,168,201,0);}
 }
 #escena.abriendo .pista{opacity:0;transition:opacity .35s ease;animation:none;}
-#escena.abriendo .intro{opacity:0;transition:opacity .9s ease .3s;animation:none;}
 
 /* ============================================================
    LA HOJA
@@ -315,27 +311,17 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
   margin:calc(var(--safe-t) + 30px) auto calc(var(--safe-b) + 48px);
   padding:clamp(34px,8vw,64px) clamp(24px,7vw,58px) clamp(52px,11vw,80px);
 
-  /* papel quemado: chamusquina por todo el borde + un tostado general que
-     sube desde las orillas. El borde comido lo pone #hoja::after con un
-     filtro de ruido — a propósito NO se recorta la hoja con clip-path,
-     porque los cortes rectos se veían como tijeretazos, no como quemado. */
   background:
-    radial-gradient(60% 34px at 12% 0%,   rgba(48,22,6,.6),  transparent 70%),
-    radial-gradient(48% 26px at 44% 0%,   rgba(48,22,6,.45), transparent 70%),
-    radial-gradient(58% 40px at 82% 0%,   rgba(48,22,6,.55), transparent 70%),
-    radial-gradient(56% 36px at 20% 100%, rgba(48,22,6,.58), transparent 70%),
-    radial-gradient(50% 28px at 62% 100%, rgba(48,22,6,.45), transparent 70%),
-    radial-gradient(40px 22% at 0% 22%,   rgba(48,22,6,.5),  transparent 72%),
-    radial-gradient(34px 16% at 0% 68%,   rgba(48,22,6,.42), transparent 72%),
-    radial-gradient(44px 20% at 100% 38%, rgba(48,22,6,.52), transparent 72%),
-    radial-gradient(30px 14% at 100% 82%, rgba(48,22,6,.4),  transparent 72%),
-    radial-gradient(125% 100% at 50% 50%, transparent 52%, rgba(62,30,10,.5) 100%),
-    linear-gradient(to bottom, transparent 32.8%, rgba(196,69,28,.07) 33%, transparent 33.2%),
-    linear-gradient(to bottom, transparent 66.3%, rgba(196,69,28,.055) 66.5%, transparent 66.7%),
-    linear-gradient(168deg, #f7f2e2 0%, var(--papel) 42%, #e9d9b4 100%);
+    linear-gradient(to bottom, transparent 32.8%, rgba(194,68,122,.07) 33%, transparent 33.2%),
+    linear-gradient(to bottom, transparent 66.3%, rgba(194,68,122,.055) 66.5%, transparent 66.7%),
+    linear-gradient(168deg, #fffbfd 0%, var(--papel) 42%, #f8e6ee 100%);
 
   color:var(--texto);
-  box-shadow:0 26px 46px rgba(0,0,0,.45), 0 4px 10px rgba(40,18,4,.35);
+  border-radius:3px;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.8) inset,
+    0 34px 70px rgba(0,0,0,.5),
+    0 6px 18px rgba(120,20,60,.25);
 
   opacity:0;
   transform:translateY(46px) scale(.78);
@@ -351,91 +337,13 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
   transform:translateY(70px) scale(.7);
   transition:opacity .75s ease, transform .95s cubic-bezier(.5,0,.75,0);
 }
-
-/* El borde carbonizado. Lo que hace que se lea como QUEMADO y no como un
-   marco oscuro es la rampa de color del papel hacia afuera:
-   crema → tostado → marrón → casi negro en el filo, igual que el papel
-   quemado de verdad. El filtro de ruido le ondula el contorno para que no
-   se vea recto, y al ser pseudo-elemento nunca toca el texto. */
-#hoja::after{
-  content:'';
-  position:absolute;inset:-11px;
-  pointer-events:none;z-index:4;
-  background:
-    linear-gradient(to bottom, rgba(22,10,2,.97) 0px, rgba(66,30,7,.93) 8px,
-      rgba(146,88,34,.72) 15px, rgba(212,172,108,.4) 21px, rgba(226,196,140,0) 30px),
-    linear-gradient(to top,    rgba(22,10,2,.97) 0px, rgba(66,30,7,.93) 8px,
-      rgba(146,88,34,.72) 15px, rgba(212,172,108,.4) 21px, rgba(226,196,140,0) 30px),
-    linear-gradient(to right,  rgba(22,10,2,.97) 0px, rgba(66,30,7,.93) 8px,
-      rgba(146,88,34,.72) 15px, rgba(212,172,108,.4) 21px, rgba(226,196,140,0) 30px),
-    linear-gradient(to left,   rgba(22,10,2,.97) 0px, rgba(66,30,7,.93) 8px,
-      rgba(146,88,34,.72) 15px, rgba(212,172,108,.4) 21px, rgba(226,196,140,0) 30px);
-  filter:url(#quemadura);
-}
-
-/* ============================================================
-   LA FRASE ENTRE LAS LLAMAS · sale al cerrar, antes de que vuelva
-   el sobre. Va por encima del lienzo de llamas (z-index 11).
-   ============================================================ */
-.frase-fuego{
-  position:fixed;left:50%;top:44%;
-  z-index:12;
-  width:min(86vw,560px);
-  transform:translate(-50%,-50%) scale(.9);
-  text-align:center;
-  font-family:var(--serif);
-  font-size:clamp(1.9rem,8.6vw,3.1rem);
-  font-weight:600;
-  line-height:1.16;
-  letter-spacing:.01em;
-  color:#fff6e2;
-  text-shadow:
-    0 0 5px  rgba(255,228,160,.95),
-    0 0 16px rgba(255,150,40,.9),
-    0 0 40px rgba(255,80,0,.8),
-    0 0 80px rgba(255,40,0,.55);
-  opacity:0;pointer-events:none;
-  transition:opacity .55s ease, transform 1s cubic-bezier(.2,.8,.3,1);
-}
-/* un halo oscuro detrás, para que la frase se lea encima del fuego */
-.frase-fuego::before{
-  content:'';position:absolute;inset:-30% -12%;
-  z-index:-1;border-radius:50%;
-  background:radial-gradient(60% 60% at 50% 50%, rgba(18,5,0,.72), rgba(18,5,0,0) 72%);
-}
-.frase-fuego.ver{
-  opacity:1;
-  transform:translate(-50%,-50%) scale(1);
-  animation:latido-fuego 1.7s ease-in-out infinite;
-}
-@keyframes latido-fuego{
-  0%,100%{filter:brightness(1);}
-  45%{filter:brightness(1.18);}
-}
-@media (prefers-reduced-motion: reduce){
-  .frase-fuego.ver{animation:none;}
-}
-
-/* Agujeros quemados: van debajo de las fotos, nunca sobre el texto.
-   La clave para que no parezcan manchas de café es el centro casi NEGRO
-   (como si el fuego hubiera traspasado el papel) con el aro ámbar/tostado
-   alrededor, en vez de un marrón suave y parejo. */
-.quemadura{
-  display:block;
-  width:var(--ancho,52%);
-  height:clamp(26px,7vw,46px);
-  margin:16px auto 4px;
-  transform:rotate(var(--gira,0deg));
-  background:
-    radial-gradient(52% 62% at 50% 50%,
-      rgba(8,3,0,.97) 0%,
-      rgba(12,5,1,.95) 32%,
-      rgba(78,34,7,.92) 50%,
-      rgba(168,104,40,.7) 66%,
-      rgba(218,182,120,.35) 82%,
-      rgba(226,196,140,0) 100%);
-  filter:url(#quemadura);
-  pointer-events:none;
+/* El filo del papel va por DEBAJO de los stickers (z-index -2), para que
+   la línea no les pase por encima y parezcan pegados de verdad. */
+#hoja::before{
+  content:'';position:absolute;inset:0;
+  border:1px solid var(--papel-borde);
+  border-radius:3px;pointer-events:none;
+  z-index:-2;
 }
 
 .mono{display:block;width:clamp(56px,15vw,76px);margin:0 auto 18px;}
@@ -509,6 +417,28 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
 }
 .lista li:last-child{border-bottom:none;}
 
+.tarjetas{display:flex;flex-direction:column;gap:12px;}
+.tarjeta{
+  position:relative;
+  border:1px solid var(--renglon);
+  border-radius:16px;
+  padding:16px 18px;
+  background:linear-gradient(160deg, rgba(255,255,255,.65), rgba(249,214,228,.3));
+}
+.tarjeta .icono{
+  position:absolute;top:-14px;right:12px;width:34px;
+  animation:mecer 5s ease-in-out infinite;
+}
+.tarjeta .quien{
+  font-size:.58rem;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--acento);margin-bottom:7px;padding-right:34px;
+}
+.tarjeta p{
+  font-family:var(--serif);
+  font-size:clamp(1.04rem,4.2vw,1.16rem);
+  line-height:1.62;color:var(--texto);
+}
+
 /* --- la hora mágica --- */
 .magica{
   position:relative;
@@ -517,7 +447,7 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
   padding:clamp(30px,7vw,46px) clamp(20px,5vw,32px);
   text-align:center;
   border-radius:22px;
-  background:linear-gradient(165deg, rgba(255,255,255,.8), rgba(224,114,47,.16));
+  background:linear-gradient(165deg, rgba(255,255,255,.72), rgba(249,214,228,.4));
   border:1px solid var(--renglon);
 }
 .magica::before{
@@ -526,7 +456,7 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
   left:50%;top:30%;
   width:min(70%,260px);aspect-ratio:1;
   transform:translate(-50%,-50%);
-  background:radial-gradient(circle, rgba(196,69,28,.2), transparent 66%);
+  background:radial-gradient(circle, rgba(226,97,143,.2), transparent 66%);
   animation:resplandor 4.5s ease-in-out infinite;
   pointer-events:none;
 }
@@ -555,8 +485,8 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
 }
 .magica .hora .chispa:last-child{animation-delay:1.4s;}
 @keyframes titilar{
-  0%,100%{opacity:.92;text-shadow:0 0 18px rgba(196,69,28,.25);}
-  50%{opacity:1;text-shadow:0 0 30px rgba(196,69,28,.5);}
+  0%,100%{opacity:.92;text-shadow:0 0 18px rgba(226,97,143,.25);}
+  50%{opacity:1;text-shadow:0 0 30px rgba(226,97,143,.5);}
 }
 @keyframes chispear{
   0%,100%{opacity:.4;transform:scale(.85) rotate(0deg);}
@@ -582,13 +512,6 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
 }
 .magica p strong{font-weight:600;color:var(--acento);}
 .magica p em{font-style:italic;color:#241a1e;}
-.magica-foto{
-  display:block;
-  width:min(78%,260px);
-  margin:1.3em auto 0;
-  border-radius:14px;
-  box-shadow:0 12px 26px rgba(15,45,42,.4);
-}
 
 .tiempo{
   margin:clamp(34px,7vw,50px) 0;
@@ -628,7 +551,7 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
 .firma .yo{
   font-family:var(--mano);
   font-size:clamp(2.2rem,10vw,2.9rem);
-  font-weight:600;color:#c4451c;line-height:1.2;
+  font-weight:600;color:#a82a5c;line-height:1.2;
 }
 .firma .raya{
   width:110px;height:1px;background:rgba(168,42,92,.35);
@@ -642,16 +565,16 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
 .btn{
   width:100%;max-width:18rem;
   padding:15px 24px;
-  border:1px solid rgba(196,69,28,.45);
+  border:1px solid rgba(194,68,122,.45);
   border-radius:100px;
   font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;
   color:var(--acento);text-align:center;text-decoration:none;
   transition:background .3s ease, transform .15s ease;
   display:block;
 }
-.btn:active{transform:scale(.97);background:rgba(196,69,28,.1);}
-.btn.principal{background:rgba(196,69,28,.12);border-color:rgba(196,69,28,.7);}
-.btn.tenue{border-color:rgba(59,42,26,.16);color:var(--texto-suave);}
+.btn:active{transform:scale(.97);background:rgba(194,68,122,.1);}
+.btn.principal{background:rgba(194,68,122,.12);border-color:rgba(194,68,122,.7);}
+.btn.tenue{border-color:rgba(59,43,51,.16);color:var(--texto-suave);}
 
 .respuesta{
   margin-top:28px;text-align:center;
@@ -671,7 +594,7 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
   font-weight:600;
   line-height:1.15;
   color:var(--acento);
-  text-shadow:0 2px 14px rgba(196,69,28,.3);
+  text-shadow:0 2px 14px rgba(226,97,143,.3);
   margin-bottom:14px;
   opacity:0;
 }
@@ -735,12 +658,11 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
 .controles.ver{display:flex;}
 .ctrl{
   width:38px;height:38px;border-radius:50%;
-  border:1px solid rgba(43,35,24,.15);
-  background:rgba(255,255,255,.75);
+  border:1px solid rgba(247,238,243,.18);
+  background:rgba(21,10,28,.62);
   -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
   display:flex;align-items:center;justify-content:center;
-  font-size:.92rem;color:var(--texto-suave);
-  box-shadow:0 4px 14px rgba(43,35,24,.1);
+  font-size:.92rem;color:var(--tinta-clara-suave);
   transition:color .3s ease, border-color .3s ease, transform .15s ease;
 }
 .ctrl:active{transform:scale(.9);}
@@ -778,107 +700,6 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
 }
 
 /* ============================================================
-   FUEGO · el sobre arde y se transforma en la hoja abierta; al
-   cerrar, la hoja arde y se transforma de vuelta en el sobre.
-   El fondo (canvas #cielo) hace de grietas/lava mientras arde.
-   ============================================================ */
-/* el lienzo de las llamas va POR ENCIMA del sobre y de la hoja:
-   así el fuego se ve delante, como si de verdad las estuviera quemando */
-#llamas{
-  position:fixed;left:0;top:0;
-  z-index:11;pointer-events:none;
-  opacity:0;transition:opacity .35s ease;
-}
-#llamas.ver{opacity:1;}
-
-/* lo que arde no se aclara: se carboniza y se deshace. Dura ~1s porque
-   justo después estalla en trozos (ver lanzarTrozos). */
-.ardiendo{
-  animation:arder 1.05s ease-in forwards;
-}
-@keyframes arder{
-  0%{filter:none;}
-  20%{filter:brightness(.92) sepia(.35) saturate(1.5) hue-rotate(-12deg);}
-  50%{filter:brightness(.55) sepia(.75) saturate(2) hue-rotate(-16deg) contrast(1.25);}
-  78%{filter:brightness(.25) sepia(1) saturate(2.4) contrast(1.5);opacity:.8;}
-  100%{filter:brightness(.04) contrast(2.2);opacity:0;transform:scale(.94);}
-}
-@media (prefers-reduced-motion: reduce){
-  .ardiendo{animation:none;}
-}
-
-/* ============================================================
-   LOS TROZOS · el sobre (o la hoja) se rompe en pedazos de papel
-   quemado que vuelan, giran y se vuelven a juntar formando lo otro.
-   Cada trozo es un polígono irregular con la rampa del papel quemado:
-   crema por dentro, tostado y casi negro en el filo, con brasa.
-   ============================================================ */
-.trozos{
-  position:fixed;inset:0;z-index:10;
-  pointer-events:none;overflow:hidden;
-}
-.trozo{
-  position:absolute;
-  left:var(--x0);top:var(--y0);
-  width:var(--w);height:var(--h);
-  background:
-    linear-gradient(var(--luz,150deg),
-      rgba(16,7,1,.96) 0%, rgba(74,33,8,.94) 14%,
-      rgba(168,108,44,.9) 30%, rgba(226,198,142,.96) 52%,
-      var(--papel) 78%);
-  box-shadow:0 0 9px rgba(255,120,20,.5), inset 0 0 7px rgba(52,22,4,.55);
-  clip-path:var(--forma);
-  opacity:0;
-  transform:translate(-50%,-50%) rotate(0deg) scale(.7);
-  animation:trozo-vuela var(--dur) cubic-bezier(.32,0,.25,1) var(--del) forwards;
-  will-change:transform,opacity,left,top;
-}
-@keyframes trozo-vuela{
-  0%{
-    left:var(--x0);top:var(--y0);
-    transform:translate(-50%,-50%) rotate(0deg) scale(.7);
-    opacity:0;
-  }
-  10%{opacity:1;transform:translate(-50%,-50%) rotate(40deg) scale(1);}
-  46%{
-    left:var(--xm);top:var(--ym);
-    transform:translate(-50%,-50%) rotate(var(--giro1)) scale(1);
-    opacity:1;
-  }
-  84%{opacity:.9;}
-  100%{
-    left:var(--x1);top:var(--y1);
-    transform:translate(-50%,-50%) rotate(var(--giro2)) scale(.5);
-    opacity:0;
-  }
-}
-@media (prefers-reduced-motion: reduce){
-  .trozo{animation:none;opacity:0;}
-}
-
-.brasas{
-  position:fixed;inset:0;z-index:9;
-  pointer-events:none;overflow:hidden;
-}
-.brasa{
-  position:absolute;
-  left:var(--x0);top:var(--y0);
-  width:var(--w);height:var(--w);
-  border-radius:50%;
-  background:radial-gradient(circle, var(--c) 0%, rgba(255,106,61,0) 75%);
-  opacity:0;
-  transform:translate(-50%,-50%) scale(.4);
-  animation:brasa-sube var(--dur) ease-out forwards;
-  animation-delay:var(--del);
-  will-change:transform,opacity;
-}
-@keyframes brasa-sube{
-  0%{transform:translate(-50%,-50%) scale(.4);opacity:0;}
-  14%{opacity:1;transform:translate(-50%,-50%) scale(1);}
-  100%{transform:translate(calc(-50% + var(--dx)), calc(-50% - var(--dy))) scale(.15);opacity:0;}
-}
-
-/* ============================================================
    STICKERS · cada personaje, recortado de su viñeta
    El recorte se hace aquí, con la imagen dentro de una ventana
    redonda: no hace falta editar ninguna foto.
@@ -892,26 +713,11 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
   display:block;
   width:100%;
   height:auto;
-  filter:drop-shadow(0 9px 18px rgba(15,45,42,.3));
+  filter:drop-shadow(0 9px 18px rgba(120,30,70,.3));
   opacity:0;
   transition:opacity .6s ease;
 }
 .sticker img.puesta{opacity:1;}
-
-/* variante "foto": fotos reales con marco tipo polaroid, en vez del
-   recorte de personaje con blanco ya incluido en el PNG */
-.sticker.foto{
-  background:#fff;
-  padding:8px 8px 22px;
-  border-radius:2px;
-  box-shadow:0 10px 22px rgba(15,45,42,.28), 0 1px 2px rgba(0,0,0,.12);
-}
-.sticker.foto img{
-  filter:none;
-  aspect-ratio:1/1;
-  object-fit:cover;
-  border-radius:1px;
-}
 
 /* los que van entre el texto */
 .sticker.centro{
@@ -1020,25 +826,11 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
 
 <body>
 
-<!-- el ruido que le come el contorno a las quemaduras, para que se vean
-     mordidas por el fuego y no recortadas -->
-<svg width="0" height="0" aria-hidden="true" style="position:absolute">
-  <filter id="quemadura" x="-25%" y="-25%" width="150%" height="150%">
-    <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="4" seed="9" result="ruido"/>
-    <feDisplacementMap in="SourceGraphic" in2="ruido" scale="12"
-                       xChannelSelector="R" yChannelSelector="G"/>
-  </filter>
-</svg>
-
 <canvas id="cielo"></canvas>
-<canvas id="llamas"></canvas>
 <canvas id="fuegos"></canvas>
 <div class="halo"></div>
 <div class="velo" id="velo"></div>
 <div class="decor" id="decor"></div>
-
-<!-- la frase que aparece entre las llamas justo antes de volver el sobre -->
-<div class="frase-fuego" id="frase-fuego"></div>
 
 <!-- ══════════ PORTADA ══════════ -->
 <section id="escena">
@@ -1048,46 +840,68 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
   </div>
 
   <div class="sobre-zona">
+    <div class="guardia izq" id="guardia-izq" style="--dur:5.6s;--del:.2s"></div>
+    <div class="guardia der" id="guardia-der" style="--dur:6.4s;--del:1.1s"></div>
+
     <div class="sobre" id="sobre" role="button" tabindex="0" aria-label="Toca para abrir la carta">
       <div class="sobre-fondo"></div>
       <div class="hoja-mini"></div>
       <div class="sobre-frente"></div>
       <div class="solapa"></div>
 
-      <!-- sello de cera: una llama, con las iniciales debajo -->
+      <!-- sello de cera: una rosa roja con las iniciales -->
       <div class="sello" id="sello">
         <svg viewBox="0 0 100 100" aria-hidden="true">
           <defs>
-            <radialGradient id="ceraFondo" cx="42%" cy="36%" r="72%">
-              <stop offset="0%"   stop-color="#3a2013"/>
-              <stop offset="55%"  stop-color="#20120a"/>
-              <stop offset="100%" stop-color="#0d0603"/>
+            <radialGradient id="petaloFuera" cx="50%" cy="72%" r="78%">
+              <stop offset="0%"   stop-color="#c4173a"/>
+              <stop offset="60%"  stop-color="#a01029"/>
+              <stop offset="100%" stop-color="#6e0817"/>
             </radialGradient>
-            <linearGradient id="llamaFuera" x1="0" y1="100%" x2="0" y2="0%">
-              <stop offset="0%"   stop-color="#7a1a00"/>
-              <stop offset="40%"  stop-color="#d9480c"/>
-              <stop offset="75%"  stop-color="#ff8c00"/>
-              <stop offset="100%" stop-color="#ffdd55"/>
-            </linearGradient>
-            <linearGradient id="llamaDentro" x1="0" y1="100%" x2="0" y2="0%">
-              <stop offset="0%"   stop-color="#ff7a00"/>
-              <stop offset="55%"  stop-color="#ffcf5c"/>
-              <stop offset="100%" stop-color="#fff3c4"/>
-            </linearGradient>
+            <radialGradient id="petaloMedio" cx="50%" cy="80%" r="80%">
+              <stop offset="0%"   stop-color="#e04058"/>
+              <stop offset="65%"  stop-color="#bb1839"/>
+              <stop offset="100%" stop-color="#8a0e22"/>
+            </radialGradient>
+            <radialGradient id="corazonRosa" cx="38%" cy="32%" r="76%">
+              <stop offset="0%"   stop-color="#ec5f74"/>
+              <stop offset="55%"  stop-color="#c01935"/>
+              <stop offset="100%" stop-color="#8c0f22"/>
+            </radialGradient>
           </defs>
 
-          <circle cx="50" cy="50" r="47" fill="url(#ceraFondo)" stroke="#050201" stroke-width="1"/>
-          <ellipse cx="36" cy="28" rx="20" ry="11" fill="#fff" opacity=".05" transform="rotate(-25 36 28)"/>
+          <!-- corona de fuera: 8 pétalos abiertos -->
+          <g fill="url(#petaloFuera)" stroke="#5f0714" stroke-width=".7" stroke-linejoin="round">
+            <path d="M50 34 C 33 29, 27 11, 50 3 C 73 11, 67 29, 50 34 Z"/>
+            <path d="M50 34 C 33 29, 27 11, 50 3 C 73 11, 67 29, 50 34 Z" transform="rotate(45 50 50)"/>
+            <path d="M50 34 C 33 29, 27 11, 50 3 C 73 11, 67 29, 50 34 Z" transform="rotate(90 50 50)"/>
+            <path d="M50 34 C 33 29, 27 11, 50 3 C 73 11, 67 29, 50 34 Z" transform="rotate(135 50 50)"/>
+            <path d="M50 34 C 33 29, 27 11, 50 3 C 73 11, 67 29, 50 34 Z" transform="rotate(180 50 50)"/>
+            <path d="M50 34 C 33 29, 27 11, 50 3 C 73 11, 67 29, 50 34 Z" transform="rotate(225 50 50)"/>
+            <path d="M50 34 C 33 29, 27 11, 50 3 C 73 11, 67 29, 50 34 Z" transform="rotate(270 50 50)"/>
+            <path d="M50 34 C 33 29, 27 11, 50 3 C 73 11, 67 29, 50 34 Z" transform="rotate(315 50 50)"/>
+          </g>
 
-          <path d="M50,20 C58,32 70,40 70,55 C70,70 60,82 50,82 C40,82 30,70 30,55 C30,47 34,41 40,37 C38,45 41,50 45,49 C43,40 45,30 50,20 Z"
-                fill="url(#llamaFuera)" stroke="#4a0f00" stroke-width=".6" stroke-linejoin="round"/>
-          <path d="M50,40 C55,48 61,54 60,63 C59,72 54,78 49,76 C44,74 41,69 43,63 C44,66 46,67 48,65 C46,58 47,49 50,40 Z"
-                fill="url(#llamaDentro)"/>
+          <!-- corona de en medio: intercalada con la de fuera -->
+          <g fill="url(#petaloMedio)" stroke="#6d0a1a" stroke-width=".6" stroke-linejoin="round">
+            <path d="M50 40 C 38 36, 33 21, 50 13 C 67 21, 62 36, 50 40 Z" transform="rotate(22.5 50 50)"/>
+            <path d="M50 40 C 38 36, 33 21, 50 13 C 67 21, 62 36, 50 40 Z" transform="rotate(67.5 50 50)"/>
+            <path d="M50 40 C 38 36, 33 21, 50 13 C 67 21, 62 36, 50 40 Z" transform="rotate(112.5 50 50)"/>
+            <path d="M50 40 C 38 36, 33 21, 50 13 C 67 21, 62 36, 50 40 Z" transform="rotate(157.5 50 50)"/>
+            <path d="M50 40 C 38 36, 33 21, 50 13 C 67 21, 62 36, 50 40 Z" transform="rotate(202.5 50 50)"/>
+            <path d="M50 40 C 38 36, 33 21, 50 13 C 67 21, 62 36, 50 40 Z" transform="rotate(247.5 50 50)"/>
+            <path d="M50 40 C 38 36, 33 21, 50 13 C 67 21, 62 36, 50 40 Z" transform="rotate(292.5 50 50)"/>
+            <path d="M50 40 C 38 36, 33 21, 50 13 C 67 21, 62 36, 50 40 Z" transform="rotate(337.5 50 50)"/>
+          </g>
 
-          <text id="sello-texto" x="50" y="92" text-anchor="middle"
+          <!-- el capullo, donde van las iniciales -->
+          <circle cx="50" cy="50" r="19" fill="url(#corazonRosa)" stroke="#7d0c1e" stroke-width=".8"/>
+          <ellipse cx="43" cy="42" rx="9" ry="6" fill="#fff" opacity=".15" transform="rotate(-30 43 42)"/>
+
+          <text id="sello-texto" x="50" y="57" text-anchor="middle"
                 font-family="Cormorant Garamond, Georgia, serif"
-                font-size="12" font-weight="600" letter-spacing="1"
-                fill="#e0722f">PH</text>
+                font-size="20" font-weight="600" letter-spacing=".5"
+                fill="#f8e3b6">PH</text>
         </svg>
       </div>
     </div>
@@ -1115,8 +929,13 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
 
   <header class="encabezado">
     <svg class="mono" viewBox="0 0 100 58" aria-hidden="true">
-      <path d="M50,6 C58,15 70,21 70,32 C70,42 60,50 50,50 C40,50 30,42 30,32 C30,26 34,22 40,19 C38,25 41,29 45,28 C43,22 45,15 50,6 Z" fill="#c4451c"/>
-      <path d="M50,20 C55,26 61,30 60,37 C59,44 54,48 49,47 C44,46 41,42 43,37 C44,39 46,40 48,39 C46,33 47,26 50,20 Z" fill="#ffb347"/>
+      <path d="M50 29 C 32 7, 9 11, 13 27 C 16 41, 37 37, 50 29 Z" fill="#f2a7c3"/>
+      <path d="M50 29 C 68 7, 91 11, 87 27 C 84 41, 63 37, 50 29 Z" fill="#f2a7c3"/>
+      <path d="M50 29 C 38 12, 18 15, 16 27 C 22 20, 38 20, 50 29 Z" fill="#f8c6d9"/>
+      <path d="M50 29 C 62 12, 82 15, 84 27 C 78 20, 62 20, 50 29 Z" fill="#f8c6d9"/>
+      <path d="M44 33 L 36 52 L 47 45 Z" fill="#e88aa8"/>
+      <path d="M56 33 L 64 52 L 53 45 Z" fill="#e88aa8"/>
+      <ellipse cx="50" cy="29" rx="8" ry="7" fill="#d2447c"/>
     </svg>
     <div class="fecha" id="fecha-hoy"></div>
     <h1 id="nombre-carta">Mi amor</h1>
@@ -1133,6 +952,8 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
   <ul class="lista" id="lista-cosas"></ul>
   <div class="punto" id="p3"></div>
 
+  <div class="titulo-seccion" id="titulo-tarjetas"></div>
+  <div class="tarjetas" id="tarjetas"></div>
   <div class="punto" id="p4"></div>
 
   <section class="magica">
@@ -1151,7 +972,7 @@ p.parrafo strong{font-weight:600;color:var(--acento);}
   </div>
   <div class="punto" id="p5"></div>
 
-  <div class="separador"></div>
+  <div class="separador"><span class="fig-sep" id="sep-fig"></span></div>
 
   <div id="cuerpo-2"></div>
   <div class="punto" id="p6"></div>
@@ -1190,7 +1011,7 @@ const CARTA = {
 
   // La fecha que sale arriba de la carta, siempre la misma.
   // Si lo dejas vacío ("") pondrá la del día en que ella la abra.
-  fecha:       "",
+  fecha:       "25 de agosto de 2026",
 
   // --- Las fechas de ustedes ---
   // Los días se calculan solos hasta el día en que ella abra la carta. Mes: 1 = enero.
@@ -1199,7 +1020,7 @@ const CARTA = {
     { anio:2025, mes:10, dia:20, que:"desde que hablamos por primera vez" },
     { anio:2025, mes:11, dia:6,  que:"desde nuestra primera cita, el día que me le declaré" }
   ],
-  piePagina: "y sigo contando cada uno como si fuera el primero",
+  piePagina: "y cada uno de esos días me sigue pareciendo poco",
 
   /* --- LA HORA MÁGICA --- */
   horaMagica:  "11:11",
@@ -1207,61 +1028,73 @@ const CARTA = {
   textoMagico: [
     "Las 11:11 no son la hora mágica solo porque a ti te encante buscarlas. Son la hora mágica porque tú naciste un <strong>11 de noviembre</strong>. Once, once.",
     "<em>Tú</em> eres la hora mágica.",
-    "Por eso eres la chica más increíble, más fantástica, más bella y más divina de todas. Eres la chica que cumple los deseos.",
-    "<img class=\"magica-foto\" src=\"img/foto-once-once.jpg\" alt=\"Once:Once, Jay Wheeler\">",
-    "Y como dice la canción: Once Once, siempre te deseo."
+    "Por eso eres la chica más increíble, más fantástica, más bella y más divina de todas. Eres la chica que cumple los deseos."
   ],
 
   // --- Primera parte: lo romántico ---
   cuerpo1: [
-    "Te vuelvo a escribir sin que sea ningún día especial, solo porque me dieron ganas de decirte cosas y no quería guardármelas. A veces el amor no necesita una fecha, solo un rato de silencio y la persona correcta en la cabeza.",
-    "Hoy pensé en lo fácil que se volvió todo desde que estás tú. No hablo de que la vida sea perfecta, sino de que contigo hasta lo complicado se siente manejable. Eso no me lo esperaba de nadie, y menos así, tan rápido.",
-    "Sigo aprendiendo cosas de ti que me gustan más de lo que ya te quería, y eso que pensé que no se podía querer más. Contigo se puede. Siempre se puede un poco más."
+    "Te escribo esto de noche, que es cuando pienso mejor y cuando más te extraño. No sé escribir cartas bonitas, pero sé exactamente lo que siento, y quería que lo tuvieras en algún lugar al que pudieras volver siempre que quieras.",
+    "Antes de ti mis días eran de un color aburrido. Llegaste tú y los pintaste de <strong>rosa</strong>, que es tu color, y ya no supe cómo devolverlos a como estaban. Ni quiero.",
+    "Me acostumbré a tu risa, a cómo dices mi nombre cuando estás contenta, a que me mandes cosas a media noche, a la forma en que ves el mundo y me obligas a verlo mejor. Eres lo más bonito que me ha pasado, y no lo digo como frase: lo digo como quien reconoce un hecho."
   ],
 
-  cita1: "No necesito una razón para quererte. Tú eres la razón.",
+  cita1: "Eres mi lugar favorito, incluso cuando estamos lejos.",
 
   // --- Lista: cosas que amas de ella ---
   cosas: [
     "Tu risa, sobre todo cuando se te escapa sin querer.",
-    "Que sigas siendo terca aunque yo tenga razón, porque así te reconozco.",
-    "Cómo te ilusionas por las cosas pequeñas, sin que te dé pena.",
-    "Que cuides de todos antes de cuidarte a ti.",
-    "Esa mirada que me lanzas cuando crees que no me doy cuenta.",
-    "Que hasta un día normal se vuelva especial si estás tú.",
-    "Lo fácil que es quererte, aunque a veces se me note torpe haciéndolo."
+    "Lo terca que eres cuando tienes razón.",
+    "Cómo te emocionas con las cosas que te gustan, sin pena.",
+    "Que te preocupes por todos, incluso cuando nadie te lo pide.",
+    "La manera en que me miras cuando crees que no me doy cuenta.",
+    "Que contigo hasta lo aburrido se vuelve bonito.",
+    "Tu forma de perdonar, que es justo la que estoy necesitando hoy."
   ],
 
-  // --- Segunda parte: seguir queriéndote ---
+  // --- Sección de sus personajes ---
+  tituloTarjetas: "Tú, en las cosas que te gustan",
+  tarjetas: [
+    { quien:"Hello Kitty", icono:"gato",
+      texto:"A Hello Kitty nunca le dibujaron la boca y aun así se le entiende todo. A mí me pasa igual contigo: no necesitas decirme nada para que yo sepa exactamente cómo estás." },
+    { quien:"My Melody y Kuromi", icono:"conejo",
+      texto:"Tienes el corazón de My Melody y el carácter de Kuromi cuando alguien se mete con lo tuyo. Me gustan las dos. A las dos las quiero." },
+    { quien:"Pucca", icono:"corazon",
+      texto:"Si yo fuera Garu, tú me alcanzarías igual. Aunque, para ser sincero, yo tampoco correría muy rápido." },
+    { quien:"Mulán", icono:"flor",
+      texto:"Mulán se fue a la guerra por los suyos sin que nadie se lo pidiera. Tú haces lo mismo todos los días, sin espada y sin caballo, y nadie te lo aplaude lo suficiente." },
+    { quien:"Pocahontas", icono:"arcoiris",
+      texto:"Pocahontas veía colores donde los demás solo veían árboles. Tú haces eso conmigo: me enseñas a ver cosas que yo solo no habría visto nunca." },
+    { quien:"Barbie y las Bratz", icono:"estrella",
+      texto:"Barbie puede ser lo que quiera. Tú también, y encima de verdad. Y arreglada no hay Bratz que te alcance." }
+  ],
+
+  // --- Segunda parte: la disculpa ---
   cuerpo2: [
-    "No tengo una ocasión para justificar esta carta, y eso me gusta. Significa que no la escribo porque deba algo, sino porque quiero.",
-    "Quiero seguir aprendiendo tus gestos, tus días buenos y los malos, lo que te hace reír y lo que te saca de quicio. Quiero seguir ahí para las dos cosas.",
-    "Si algún día se te olvida por qué estamos juntos, guarda esta carta. Aquí está la razón, escrita para que no se te olvide."
+    "Y justo por todo eso, tengo que decirte otra cosa.",
+    "<strong>Perdóname.</strong> No quiero adornarlo ni buscar excusas, porque las excusas son para el que se quiere sentir mejor, y aquí la que importa eres tú. Me equivoqué. Te fallé. Y sé que dolió, porque conozco tu cara cuando algo te duele y no quiero volver a vérsela por culpa mía.",
+    "Tú eres la que le pone color a todo, y yo fui el que te apagó el día. Eso es lo que más me pesa.",
+    "No te pido que hagas como si nada. Te pido que me dejes demostrártelo con hechos, con tiempo, con paciencia. Estoy dispuesto a esperar lo que haga falta, porque tú vales eso y más."
   ],
 
-  cita2: "Contigo no busco perfecto, busco siempre.",
+  cita2: "No quiero tener la razón. Te quiero a ti.",
 
   // --- Tercera parte: el cierre ---
   cuerpo3: [
-    "No sé qué tan bien se escriban estas cosas, pero sé que las siento de verdad.",
-    "Gracias por dejarme quedarme en tu vida sin pedirme nada a cambio, más que ser honesto contigo.",
-    "Te amo, sin ocasión especial, solo porque hoy también te tocó ser el motivo."
+    "Si algo aprendí es que el amor no se mide en los días fáciles, sino en los que uno decide quedarse y arreglar lo que rompió.",
+    "Yo me quiero quedar. Contigo. Aunque me toque ganármelo otra vez desde el principio.",
+    "Te amo. Hoy más que ayer, y con mucho más cuidado que antes."
   ],
 
-  despedida:   "Tuyo, hoy y siempre,",
+  despedida:   "Siempre tuyo,",
 
   textoBoton:  "Te amo",
 
   // Lo que sale al tocar el botón, junto con los fuegos artificiales
   respuesta:
     '<span class="rs-grande">Te amo, flaquita</span>' +
-    '<span class="rs-media">y esto no se apaga</span>' +
+    '<span class="rs-media">mi preciosa, hermosa</span>' +
     '<span class="rs-nombre">Judith Alejandra<br>Arcoamarillo Soto</span>' +
-    '<span class="rs-cierre">Once, once. Siempre.</span>',
-
-  // La frase que aparece entre las llamas al cerrar la carta,
-  // justo antes de que se vuelva a formar el sobre
-  fraseCierre: "Tú siempre eres mi 11:11",
+    '<span class="rs-cierre">Gracias por leerme hasta el final.</span>',
 
   // --- Opcional: tu WhatsApp ---
   whatsapp:    "",
@@ -1272,7 +1105,7 @@ const CARTA = {
      desde que ella toca el sobre.
      Para cambiarla, mete otro MP3 en la carpeta y escribe aquí su nombre.
      Déjalo vacío ("") si prefieres que no haya música.  */
-  cancion: "img/Jay Wheeler - Once Once.mp3",
+  cancion: "img/FRANKY STYLE - PUCCA.mp3",
 
   /* --- LOS STICKERS ---
      Cada uno se mueve haciendo lo que hace en su dibujo:
@@ -1282,36 +1115,52 @@ const CARTA = {
           st-brinco, st-desliza, st-flotar o st-brilla.
      en:  "p1" a "p8" para que vaya entre el texto,
           "izq" o "der" para que se asome por el borde de la hoja
-          (con "y" a qué altura) — solo para personajes recortados,
-          nunca para foto:true: una foto/video cortado a la mitad en
-          el borde se ve mal, así que las fotos siempre van en "p1"-"p8".
+          (con "y" a qué altura).
      tam: el tamaño en píxeles.  giro: la inclinación.
      Para quitar uno, borra su línea. Para cambiarle el movimiento,
      cambia el nombre de "mov".                                        */
   stickers: [
-    // --- las grandes, entre el texto: fotos reales con marco polaroid ---
-    { img:"img/foto-playa.jpg",    foto:true, mov:"st-flotar", en:"p1", tam:170, giro:-4,
-      quien:"Ustedes dos en la playa" },
-    { img:"img/foto-rosa.jpg",     foto:true, mov:"st-dormir", en:"p2", tam:150, giro: 3, lado:"der",
-      quien:"Ella con su suéter rosa" },
-    { img:"img/foto-vestido.jpg",  foto:true, mov:"st-flotar", en:"p3", tam:150, giro:-3, lado:"izq",
-      quien:"Ella con vestido vino tinto" },
-    { img:"img/foto-navidad.jpg",  foto:true, mov:"st-dormir", en:"p4", tam:150, giro: 4, lado:"der",
-      quien:"Ella en Navidad" },
-    { img:"img/foto-bebida.jpg",   foto:true, mov:"st-flotar", en:"p5", tam:150, giro:-3, lado:"izq",
-      quien:"Ella tomando su bebida" },
-    { img:"img/foto-call-1.jpg",   foto:true, mov:"st-dormir", en:"p6", tam:150, giro: 3, lado:"der",
-      quien:"Videollamada con filtro chistoso" },
-    { img:"img/foto-call-2.jpg",   foto:true, mov:"st-flotar", en:"p7", tam:150, giro:-4, lado:"izq",
-      quien:"Otra videollamada, tomando una Coca" },
-    { img:"img/foto-sonrisa.jpg",  foto:true, mov:"st-dormir", en:"p8", tam:160, giro: 3,
-      quien:"Su sonrisa" },
+    // --- los grandes, entre el texto ---
+    { img:"img/kitty-ballet.png",         mov:"st-ballet",  en:"p1", tam:150, giro:-3,
+      quien:"Hello Kitty haciendo ballet" },
+    { img:"img/melody-cafe.png",          mov:"st-beber",   en:"p2", tam:130, giro: 4, lado:"der",
+      quien:"My Melody tomando su bebida de fresa" },
+    { img:"img/cinnamoroll-nube.png",     mov:"st-flotar",  en:"p3", tam:150, giro:-4, lado:"izq",
+      quien:"Cinnamoroll en su nube" },
+    { img:"img/pochacco-sandwich.png",    mov:"st-comer",   en:"p4", tam:140, giro: 3, lado:"der",
+      quien:"Pochacco comiéndose el sándwich" },
+    { img:"img/pompompurin-sabritas.png", mov:"st-cargar",  en:"p5", tam:135, giro:-3, lado:"izq",
+      quien:"Pompompurin cargando su pudding cake" },
+    { img:"img/keroppi-hotcakes.png",     mov:"st-saltar",  en:"p6", tam:140, giro: 3, lado:"der",
+      quien:"Keroppi con su hamburguesa" },
+    { img:"img/badtz-cafe.png",           mov:"st-desliza", en:"p7", tam:130, giro:-3, lado:"izq",
+      quien:"Badtz-Maru con su bubble tea" },
+    { img:"img/kitty-letra.png",          mov:"st-brilla",  en:"p8", tam:150, giro: 3,
+      quien:"Hello Kitty con la letra de diamantes" },
 
-    // --- las pequeñas: también dentro de la hoja, nunca en el borde ---
-    { img:"img/foto-lentes.jpg",  foto:true, mov:"st-flotar", en:"p2", tam:92, giro: 6, lado:"izq",
-      quien:"Ella con lentes, haciendo cara" },
-    { img:"img/foto-selfie.jpg",  foto:true, mov:"st-dormir", en:"p6", tam:92, giro:-6, lado:"izq",
-      quien:"Selfie con lentes" }
+    // --- los pequeños, asomándose por los bordes ---
+    { img:"img/melody-acostada.png",      mov:"st-dormir", en:"der", y:"6%",  tam:72, giro: 6,
+      quien:"My Melody con las manitas en la cara" },
+    { img:"img/cinnamoroll-cafe.png",     mov:"st-beber",  en:"izq", y:"14%", tam:76, giro:-6,
+      quien:"Cinnamoroll con su bebida" },
+    { img:"img/pompompurin-cafe.png",     mov:"st-beber",  en:"der", y:"22%", tam:72, giro: 5,
+      quien:"Pompompurin con su bubble tea" },
+    { img:"img/pochacco-sabritas.png",    mov:"st-brinco", en:"izq", y:"30%", tam:74, giro:-5,
+      quien:"Pochacco con su bolsa de snacks" },
+    { img:"img/melody-papitas.png",       mov:"st-cargar", en:"der", y:"39%", tam:72, giro: 6,
+      quien:"My Melody cargando las fresas" },
+    { img:"img/keroppi-cafe.png",         mov:"st-beber",  en:"izq", y:"47%", tam:76, giro:-6,
+      quien:"Keroppi con su bebida verde" },
+    { img:"img/cinnamoroll-sabritas.png", mov:"st-cargar", en:"der", y:"55%", tam:74, giro: 5,
+      quien:"Cinnamoroll cargando su bolsa" },
+    { img:"img/badtz-hamburguesa.png",    mov:"st-comer",  en:"izq", y:"63%", tam:72, giro:-5,
+      quien:"Badtz-Maru con su hamburguesa" },
+    { img:"img/melody-pastel.png",        mov:"st-comer",  en:"der", y:"71%", tam:72, giro: 6,
+      quien:"My Melody con su cupcake de fresa" },
+    { img:"img/pompompurin-mufin.png",    mov:"st-comer",  en:"izq", y:"79%", tam:72, giro:-6,
+      quien:"Pompompurin con su flan" },
+    { img:"img/cinnamoroll-pastel.png",   mov:"st-comer",  en:"der", y:"88%", tam:76, giro: 5,
+      quien:"Cinnamoroll con el pastel de fresa" }
   ],
 
   /* --- Figuritas flotantes ---
@@ -1350,22 +1199,22 @@ const CARTA = {
     gato: (c) => `<svg viewBox="0 0 64 64">
       <path d="M13 24 L16 7 L31 17 Z" fill="${c}"/>
       <path d="M51 24 L48 7 L33 17 Z" fill="${c}"/>
-      <path d="M15.5 21 L17.5 12 L26 18 Z" fill="#d9b98a"/>
-      <path d="M48.5 21 L46.5 12 L38 18 Z" fill="#d9b98a"/>
+      <path d="M15.5 21 L17.5 12 L26 18 Z" fill="#f7b8ce"/>
+      <path d="M48.5 21 L46.5 12 L38 18 Z" fill="#f7b8ce"/>
       <ellipse cx="32" cy="35" rx="23" ry="20" fill="${c}"/>
       <ellipse cx="24" cy="33" rx="2.5" ry="3" fill="#4a3038"/>
       <ellipse cx="40" cy="33" rx="2.5" ry="3" fill="#4a3038"/>
       <circle cx="24.9" cy="32" r=".8" fill="#fff"/>
       <circle cx="40.9" cy="32" r=".8" fill="#fff"/>
-      <ellipse cx="32" cy="39" rx="2.6" ry="1.9" fill="#4fb8ac"/>
+      <ellipse cx="32" cy="39" rx="2.6" ry="1.9" fill="#e88aa8"/>
       <path d="M27.5 42.5 Q32 46.5 36.5 42.5" stroke="#4a3038" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-      <ellipse cx="16" cy="39" rx="3.6" ry="2.6" fill="#e8b48a" opacity=".85"/>
-      <ellipse cx="48" cy="39" rx="3.6" ry="2.6" fill="#e8b48a" opacity=".85"/>
+      <ellipse cx="16" cy="39" rx="3.6" ry="2.6" fill="#f9c2d8" opacity=".85"/>
+      <ellipse cx="48" cy="39" rx="3.6" ry="2.6" fill="#f9c2d8" opacity=".85"/>
       <path d="M8 33 L1 30 M8 36 L1 37 M56 33 L63 30 M56 36 L63 37"
-        stroke="#c9a877" stroke-width="1.2" stroke-linecap="round"/>
-      <path d="M49 16 l-8 -5 v10 z" fill="#8a4520"/>
-      <path d="M49 16 l8 -5 v10 z" fill="#8a4520"/>
-      <circle cx="49" cy="16" r="3" fill="#1f8f86"/>
+        stroke="#e0a9bf" stroke-width="1.2" stroke-linecap="round"/>
+      <path d="M49 16 l-8 -5 v10 z" fill="#e2618f"/>
+      <path d="M49 16 l8 -5 v10 z" fill="#e2618f"/>
+      <circle cx="49" cy="16" r="3" fill="#c2447a"/>
     </svg>`,
 
     gatoDormido: (c) => `<svg viewBox="0 0 64 64">
@@ -1374,43 +1223,43 @@ const CARTA = {
       <ellipse cx="32" cy="36" rx="22" ry="19" fill="${c}"/>
       <path d="M20 34 Q24 30 28 34" stroke="#4a3038" stroke-width="1.6" fill="none" stroke-linecap="round"/>
       <path d="M36 34 Q40 30 44 34" stroke="#4a3038" stroke-width="1.6" fill="none" stroke-linecap="round"/>
-      <ellipse cx="32" cy="40" rx="2.4" ry="1.7" fill="#4fb8ac"/>
-      <ellipse cx="15" cy="40" rx="3.4" ry="2.4" fill="#e8b48a" opacity=".85"/>
-      <ellipse cx="49" cy="40" rx="3.4" ry="2.4" fill="#e8b48a" opacity=".85"/>
-      <text x="47" y="16" font-size="11" fill="#2f9c93" font-family="sans-serif">z</text>
-      <text x="54" y="9" font-size="8" fill="#2f9c93" font-family="sans-serif">z</text>
+      <ellipse cx="32" cy="40" rx="2.4" ry="1.7" fill="#e88aa8"/>
+      <ellipse cx="15" cy="40" rx="3.4" ry="2.4" fill="#f9c2d8" opacity=".85"/>
+      <ellipse cx="49" cy="40" rx="3.4" ry="2.4" fill="#f9c2d8" opacity=".85"/>
+      <text x="47" y="16" font-size="11" fill="#f2a7c3" font-family="sans-serif">z</text>
+      <text x="54" y="9" font-size="8" fill="#f2a7c3" font-family="sans-serif">z</text>
     </svg>`,
 
     conejo: (c) => `<svg viewBox="0 0 64 64">
       <ellipse cx="23" cy="16" rx="6" ry="14" fill="${c}"/>
       <ellipse cx="41" cy="16" rx="6" ry="14" fill="${c}"/>
-      <ellipse cx="23" cy="17" rx="3" ry="9.5" fill="#d9b98a"/>
-      <ellipse cx="41" cy="17" rx="3" ry="9.5" fill="#d9b98a"/>
+      <ellipse cx="23" cy="17" rx="3" ry="9.5" fill="#f7b8ce"/>
+      <ellipse cx="41" cy="17" rx="3" ry="9.5" fill="#f7b8ce"/>
       <ellipse cx="32" cy="40" rx="20" ry="18" fill="${c}"/>
       <ellipse cx="25" cy="38" rx="2.4" ry="2.9" fill="#4a3038"/>
       <ellipse cx="39" cy="38" rx="2.4" ry="2.9" fill="#4a3038"/>
       <circle cx="25.8" cy="37" r=".8" fill="#fff"/>
       <circle cx="39.8" cy="37" r=".8" fill="#fff"/>
-      <path d="M32 43 l-2.6 -2.4 h5.2 z" fill="#8a4520"/>
+      <path d="M32 43 l-2.6 -2.4 h5.2 z" fill="#e2618f"/>
       <path d="M28 47 Q32 50 36 47" stroke="#4a3038" stroke-width="1.4" fill="none" stroke-linecap="round"/>
-      <ellipse cx="17" cy="44" rx="3.4" ry="2.4" fill="#e8b48a" opacity=".85"/>
-      <ellipse cx="47" cy="44" rx="3.4" ry="2.4" fill="#e8b48a" opacity=".85"/>
+      <ellipse cx="17" cy="44" rx="3.4" ry="2.4" fill="#f9c2d8" opacity=".85"/>
+      <ellipse cx="47" cy="44" rx="3.4" ry="2.4" fill="#f9c2d8" opacity=".85"/>
     </svg>`,
 
     oso: (c) => `<svg viewBox="0 0 64 64">
       <circle cx="17" cy="19" r="9" fill="${c}"/>
       <circle cx="47" cy="19" r="9" fill="${c}"/>
-      <circle cx="17" cy="19" r="4.6" fill="#d9b98a"/>
-      <circle cx="47" cy="19" r="4.6" fill="#d9b98a"/>
+      <circle cx="17" cy="19" r="4.6" fill="#f7b8ce"/>
+      <circle cx="47" cy="19" r="4.6" fill="#f7b8ce"/>
       <ellipse cx="32" cy="37" rx="21" ry="19" fill="${c}"/>
       <ellipse cx="24" cy="34" rx="2.4" ry="2.8" fill="#4a3038"/>
       <ellipse cx="40" cy="34" rx="2.4" ry="2.8" fill="#4a3038"/>
-      <ellipse cx="32" cy="43" rx="9" ry="7" fill="#f0dfc0"/>
+      <ellipse cx="32" cy="43" rx="9" ry="7" fill="#fdeaf1"/>
       <ellipse cx="32" cy="40" rx="3" ry="2.2" fill="#4a3038"/>
       <path d="M32 42 v3 M32 45 q-3 2.5 -5 .5 M32 45 q3 2.5 5 .5"
         stroke="#4a3038" stroke-width="1.3" fill="none" stroke-linecap="round"/>
-      <ellipse cx="15" cy="40" rx="3.4" ry="2.4" fill="#e8b48a" opacity=".8"/>
-      <ellipse cx="49" cy="40" rx="3.4" ry="2.4" fill="#e8b48a" opacity=".8"/>
+      <ellipse cx="15" cy="40" rx="3.4" ry="2.4" fill="#f9c2d8" opacity=".8"/>
+      <ellipse cx="49" cy="40" rx="3.4" ry="2.4" fill="#f9c2d8" opacity=".8"/>
     </svg>`,
 
     estrella: (c) => `<svg viewBox="0 0 64 64">
@@ -1418,8 +1267,8 @@ const CARTA = {
       <ellipse cx="26" cy="31" rx="2.1" ry="2.6" fill="#4a3038"/>
       <ellipse cx="38" cy="31" rx="2.1" ry="2.6" fill="#4a3038"/>
       <path d="M28 37 Q32 41 36 37" stroke="#4a3038" stroke-width="1.4" fill="none" stroke-linecap="round"/>
-      <ellipse cx="20" cy="36" rx="3" ry="2.1" fill="#d99a5a" opacity=".7"/>
-      <ellipse cx="44" cy="36" rx="3" ry="2.1" fill="#d99a5a" opacity=".7"/>
+      <ellipse cx="20" cy="36" rx="3" ry="2.1" fill="#f28cb1" opacity=".7"/>
+      <ellipse cx="44" cy="36" rx="3" ry="2.1" fill="#f28cb1" opacity=".7"/>
     </svg>`,
 
     corazon: (c) => `<svg viewBox="0 0 64 64">
@@ -1436,8 +1285,8 @@ const CARTA = {
       <ellipse cx="29" cy="28" rx="2.1" ry="2.6" fill="#4a3038"/>
       <ellipse cx="43" cy="28" rx="2.1" ry="2.6" fill="#4a3038"/>
       <path d="M32 33 Q36 36 40 33" stroke="#4a3038" stroke-width="1.3" fill="none" stroke-linecap="round"/>
-      <ellipse cx="23" cy="32" rx="3" ry="2" fill="#e0b06a" opacity=".8"/>
-      <ellipse cx="49" cy="32" rx="3" ry="2" fill="#e0b06a" opacity=".8"/>
+      <ellipse cx="23" cy="32" rx="3" ry="2" fill="#f6a9c6" opacity=".8"/>
+      <ellipse cx="49" cy="32" rx="3" ry="2" fill="#f6a9c6" opacity=".8"/>
     </svg>`,
 
     luna: (c) => `<svg viewBox="0 0 64 64">
@@ -1445,7 +1294,7 @@ const CARTA = {
       <ellipse cx="26" cy="27" rx="2.1" ry="2.6" fill="#4a3038"/>
       <ellipse cx="38" cy="27" rx="2.1" ry="2.6" fill="#4a3038"/>
       <path d="M28 34 Q32 37 36 34" stroke="#4a3038" stroke-width="1.3" fill="none" stroke-linecap="round"/>
-      <ellipse cx="21" cy="33" rx="2.8" ry="2" fill="#d99a5a" opacity=".65"/>
+      <ellipse cx="21" cy="33" rx="2.8" ry="2" fill="#f28cb1" opacity=".65"/>
     </svg>`,
 
     flor: (c) => `<svg viewBox="0 0 64 64">
@@ -1463,17 +1312,17 @@ const CARTA = {
     </svg>`,
 
     cupcake: (c) => `<svg viewBox="0 0 64 64">
-      <path d="M16 34 h32 l-4 24 h-24 Z" fill="#ecdfb8"/>
-      <path d="M20 34 l-1.5 24 M32 34 v24 M44 34 l1.5 24" stroke="#dcc38a" stroke-width="1.6"/>
+      <path d="M16 34 h32 l-4 24 h-24 Z" fill="#f8d9e6"/>
+      <path d="M20 34 l-1.5 24 M32 34 v24 M44 34 l1.5 24" stroke="#eebdd2" stroke-width="1.6"/>
       <path d="M14 34 A18 15 0 0 1 50 34 Z" fill="${c}"/>
-      <circle cx="32" cy="14" r="4.5" fill="#8a4520"/>
+      <circle cx="32" cy="14" r="4.5" fill="#e2618f"/>
       <ellipse cx="26" cy="27" rx="2" ry="2.5" fill="#4a3038"/>
       <ellipse cx="38" cy="27" rx="2" ry="2.5" fill="#4a3038"/>
       <path d="M29 31 Q32 34 35 31" stroke="#4a3038" stroke-width="1.3" fill="none" stroke-linecap="round"/>
     </svg>`,
 
     arcoiris: () => `<svg viewBox="0 0 72 44">
-      <path d="M6 40 A30 30 0 0 1 66 40" stroke="#2f9c93" stroke-width="6" fill="none" stroke-linecap="round"/>
+      <path d="M6 40 A30 30 0 0 1 66 40" stroke="#f2a7c3" stroke-width="6" fill="none" stroke-linecap="round"/>
       <path d="M13 40 A23 23 0 0 1 59 40" stroke="#f9c98a" stroke-width="6" fill="none" stroke-linecap="round"/>
       <path d="M20 40 A16 16 0 0 1 52 40" stroke="#bfe3c0" stroke-width="6" fill="none" stroke-linecap="round"/>
       <path d="M27 40 A9 9 0 0 1 45 40" stroke="#b7d4f2" stroke-width="6" fill="none" stroke-linecap="round"/>
@@ -1484,13 +1333,13 @@ const CARTA = {
     lazo: (c) => `<svg viewBox="0 0 64 40">
       <path d="M32 20 C 20 5, 5 8, 8 19 C 10 29, 24 26, 32 20 Z" fill="${c}"/>
       <path d="M32 20 C 44 5, 59 8, 56 19 C 54 29, 40 26, 32 20 Z" fill="${c}"/>
-      <path d="M28 23 L22 38 L31 32 Z" fill="#8a4520"/>
-      <path d="M36 23 L42 38 L33 32 Z" fill="#8a4520"/>
-      <ellipse cx="32" cy="20" rx="5.5" ry="5" fill="#1f8f86"/>
+      <path d="M28 23 L22 38 L31 32 Z" fill="#e2618f"/>
+      <path d="M36 23 L42 38 L33 32 Z" fill="#e2618f"/>
+      <ellipse cx="32" cy="20" rx="5.5" ry="5" fill="#c2447a"/>
     </svg>`
   };
 
-  const BLANCO = '#fdf6e8', ROSA = '#b8935f', LILA = '#5ec9bc', CREMA = '#f0dba0';
+  const BLANCO = '#fffafc', ROSA = '#f6b6d0', LILA = '#d9b8f0', CREMA = '#fde9c8';
 
   function dibujo(nombre, color){
     const f = FIGURAS[nombre];
@@ -1510,15 +1359,61 @@ const CARTA = {
     return dibujo(nombre, color);
   }
 
-  /* --- las que flotan en el cielo, detrás de la hoja ---
-     Vacío a propósito: eran figuritas kawaii (gato, conejo, oso...) que no
-     pegan con la temática Pocahontas. Si luego se quieren figuras nuevas
-     (pluma, hoja, sol) van aquí con el mismo formato. */
-  const CIELO = [];
+  /* --- las que flotan en el cielo, detrás de la hoja --- */
+  const CIELO = [
+    { fig:'gato',       col:BLANCO, x:'4%',  y:'10%', tam:62, prof:.10, rot:-8,  dur:6.5, del:0   },
+    { fig:'estrella',   col:CREMA,  x:'84%', y:'7%',  tam:38, prof:.20, rot:10,  dur:5.2, del:.6  },
+    { fig:'conejo',     col:BLANCO, x:'88%', y:'30%', tam:56, prof:.14, rot:6,   dur:7.1, del:1.2 },
+    { fig:'nube',       col:'#f9d3e4', x:'2%', y:'34%', tam:64, prof:.26, rot:-4, dur:8.0, del:.3  },
+    { fig:'corazon',    col:ROSA,   x:'92%', y:'54%', tam:32, prof:.30, rot:12,  dur:4.8, del:1.8 },
+    { fig:'luna',       col:CREMA,  x:'6%',  y:'60%', tam:44, prof:.17, rot:-10, dur:6.8, del:.9  },
+    { fig:'oso',        col:'#f6dcc4', x:'86%', y:'76%', tam:54, prof:.12, rot:8, dur:7.6, del:1.5 },
+    { fig:'flor',       col:LILA,   x:'3%',  y:'82%', tam:40, prof:.24, rot:14,  dur:5.6, del:.4  },
+    { fig:'gatoDormido',col:LILA,   x:'78%', y:'92%', tam:50, prof:.09, rot:-6,  dur:8.4, del:2.1 },
+    { fig:'cupcake',    col:ROSA,   x:'10%', y:'96%', tam:42, prof:.22, rot:5,   dur:6.1, del:1.1 }
+  ];
 
-  // Ya no hay figuritas flotando (gato, conejo, moños...): no pegaban con
-  // el diseño nuevo. CIELO se deja vacío por si algún día se quiere poner
-  // algo ahí; dibujo()/pieza()/FIGURAS quedan sin usar por ahora.
+  /* --- las que se asoman por el borde del papel ---
+     Pocas y pequeñas: el borde es ahora sitio de los stickers. */
+  const BORDES = [
+    { fig:'lazo',     col:ROSA,  lado:'der', y:'16%', tam:40, rot:8,   dur:5.4, del:.9 },
+    { fig:'estrella', col:CREMA, lado:'izq', y:'44%', tam:30, rot:-12, dur:5.0, del:1.4 },
+    { fig:'corazon',  col:ROSA,  lado:'der', y:'59%', tam:28, rot:9,   dur:4.6, del:.7 },
+    { fig:'flor',     col:LILA,  lado:'izq', y:'72%', tam:34, rot:11,  dur:5.8, del:.5 }
+  ];
+
+  function montarDecoracion(){
+    const capa = $('#decor');
+
+    capa.innerHTML = CIELO.map(d =>
+      '<div class="fig" data-prof="' + d.prof + '" style="left:' + d.x + ';top:' + d.y +
+      ';width:' + d.tam + 'px">' +
+        '<span class="baila" style="--dur:' + d.dur + 's;--del:' + d.del + 's;--rot:' + d.rot + 'deg">' +
+          pieza(d.fig, d.col) +
+        '</span>' +
+      '</div>'
+    ).join('');
+
+    const hoja = $('#hoja');
+    BORDES.forEach(d => {
+      const el = document.createElement('div');
+      el.className = 'borde';
+      el.style.top = d.y;
+      el.style.width = d.tam + 'px';
+      if (d.lado === 'izq') el.style.left  = 'calc(-' + d.tam + 'px * 0.55)';
+      else                  el.style.right = 'calc(-' + d.tam + 'px * 0.55)';
+      el.innerHTML = '<span class="baila" style="--dur:' + d.dur + 's;--del:' + d.del +
+                     's;--rot:' + d.rot + 'deg">' + pieza(d.fig, d.col) + '</span>';
+      hoja.appendChild(el);
+    });
+
+    $('#guardia-izq').innerHTML = '<span class="baila" style="--dur:5.6s;--del:.2s;--rot:-9deg">' +
+                                  pieza('gato', BLANCO) + '</span>';
+    $('#guardia-der').innerHTML = '<span class="baila" style="--dur:6.4s;--del:1.1s;--rot:8deg">' +
+                                  pieza('conejo', ROSA) + '</span>';
+
+    $('#sep-fig').innerHTML = dibujo('lazo', ROSA);
+  }
 
   /* --- los stickers ---
      Vienen ya recortados y con su borde blanco, así que se ponen
@@ -1531,7 +1426,7 @@ const CARTA = {
       if (!s.img) return;
 
       const caja = document.createElement('span');
-      caja.className = 'sticker ' + (s.mov || 'st-dormir') + (s.foto ? ' foto' : '');
+      caja.className = 'sticker ' + (s.mov || 'st-dormir');
       caja.style.setProperty('--base', (s.giro || 0) + 'deg');
       caja.style.width = (s.tam || 130) + 'px';
       if (s.quien) caja.setAttribute('aria-label', s.quien);
@@ -1660,8 +1555,8 @@ const CARTA = {
   $('#cita-2').textContent          = CARTA.cita2;
   $('#btn-perdon').textContent      = CARTA.textoBoton;
   $('#respuesta').innerHTML         = CARTA.respuesta;
+  $('#titulo-tarjetas').textContent = CARTA.tituloTarjetas;
   $('#tiempo-pie').textContent      = CARTA.piePagina;
-  $('#frase-fuego').textContent     = CARTA.fraseCierre || '';
   $('#hora-magica').textContent     = CARTA.horaMagica;
   $('#hora-cumple').textContent     = CARTA.horaCumple;
   $('#magica-texto').innerHTML      = CARTA.textoMagico.map(t => '<p>' + t + '</p>').join('');
@@ -1671,6 +1566,14 @@ const CARTA = {
   pintar('#cuerpo-3', CARTA.cuerpo3);
 
   $('#lista-cosas').innerHTML = CARTA.cosas.map(c => '<li>' + c + '</li>').join('');
+
+  const coloresIcono = [BLANCO, ROSA, '#f18cb0', LILA, ROSA, CREMA];
+  $('#tarjetas').innerHTML = CARTA.tarjetas.map((t, i) =>
+    '<div class="tarjeta">' +
+      '<span class="icono">' + dibujo(t.icono || 'corazon', coloresIcono[i % coloresIcono.length]) + '</span>' +
+      '<div class="quien">' + t.quien + '</div><p>' + t.texto + '</p>' +
+    '</div>'
+  ).join('');
 
   const meses = ['enero','febrero','marzo','abril','mayo','junio','julio',
                  'agosto','septiembre','octubre','noviembre','diciembre'];
@@ -1709,81 +1612,15 @@ const CARTA = {
     a.style.display = 'block';
   }
 
+  montarDecoracion();
   montarStickers();
 
-  /* --- QUEMADURAS DE LA HOJA ---
-     Van DESPUÉS de cada foto (dentro de los puntos p1..p8), nunca sobre
-     el texto: son manchas de chamusquina con un filtro de ruido que les
-     come el contorno, así se ven quemadas y no recortadas. */
-  function ponerQuemaduras(){
-    const puntos = ['p2', 'p4', 'p6', 'p8'];
-    puntos.forEach((id, i) => {
-      const zona = document.getElementById(id);
-      if (!zona || !zona.children.length) return;   // solo donde hay foto
-      const q = document.createElement('div');
-      q.className = 'quemadura';
-      q.style.setProperty('--gira', (i % 2 ? 4 : -5) + 'deg');
-      q.style.setProperty('--ancho', (52 + Math.random() * 26) + '%');
-      zona.appendChild(q);
-    });
-  }
-  ponerQuemaduras();
-
   /* ============================================================
-     3. FONDO, LAVA Y FUEGO
-     Dos lienzos:
-       #cielo  (atrás)   → el suelo. Blanco; al abrir/cerrar se agrieta
-                           como lava (venas rojas + resplandor) y al final
-                           queda blanco con las grietas ya apagadas.
-       #llamas (delante) → las llamas de verdad, POR ENCIMA del sobre y de
-                           la hoja, para que se vea que se están quemando.
-     El fuego es el algoritmo clásico: cada celda hereda la de abajo con un
-     decaimiento al azar. El buffer tiene POCAS filas a propósito (cada
-     celda es alta), porque si no la llama solo alcanza el borde de abajo
-     de la pantalla y se ve como puntitos.
+     3. CIELO ESTRELLADO
      ============================================================ */
   const canvas = $('#cielo');
   const ctx = canvas.getContext('2d', { alpha: false });
-  const cvLlamas = $('#llamas');
-  const ctxLlamas = cvLlamas.getContext('2d');
-  let ancho = 0, alto = 0, altoLienzo = 0, animando = true;
-
-  const FW = 110, FH = 60;
-  const fuego = new Uint8Array(FW * FH);
-  const fuegoCv = document.createElement('canvas');
-  fuegoCv.width = FW; fuegoCv.height = FH;
-  const fuegoCx = fuegoCv.getContext('2d');
-  const bufferRGBA = new Uint8ClampedArray(FW * FH * 4);
-
-  // paleta de lava (40 tonos): apagado → rojo → naranja → amarillo → blanco
-  const PALETA_FUEGO = (function(){
-    const claves = [
-      [0,0,0,0], [46,6,2,110], [104,12,3,180], [158,28,5,215],
-      [208,56,8,238], [240,100,14,250], [255,146,28,255],
-      [255,192,72,255], [255,228,140,255], [255,250,224,255]
-    ];
-    const total = 40, salida = [];
-    for (let i = 0; i < total; i++){
-      const p = i / (total - 1) * (claves.length - 1);
-      const a = claves[Math.floor(p)];
-      const b = claves[Math.min(claves.length - 1, Math.ceil(p))];
-      const f = p - Math.floor(p);
-      salida.push([
-        Math.round(a[0] + (b[0] - a[0]) * f),
-        Math.round(a[1] + (b[1] - a[1]) * f),
-        Math.round(a[2] + (b[2] - a[2]) * f),
-        Math.round(a[3] + (b[3] - a[3]) * f)
-      ]);
-    }
-    return salida;
-  })();
-  const MAXI = PALETA_FUEGO.length - 1;
-
-  let modoFuego = 'limpio';   // 'limpio' | 'ardiendo' | 'enfriando' | 'cenizas'
-  let tFuego = 0;
-  let grietas = [];           // las venas de lava del suelo
-  let zonaArde = null;        // el rect (px) de lo que se está quemando
-  let repintarFondo = true;
+  let estrellas = [], fugaz = null, ancho = 0, alto = 0, altoLienzo = 0, animando = true;
 
   function dimensionar(){
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -1800,241 +1637,86 @@ const CARTA = {
     canvas.style.width  = ancho + 'px';
     canvas.style.height = altoLienzo + 'px';
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-    // el de las llamas va a menos resolución: igual se ve borroso al escalar
-    cvLlamas.width  = Math.floor(ancho * 0.7);
-    cvLlamas.height = Math.floor(altoLienzo * 0.7);
-    cvLlamas.style.width  = ancho + 'px';
-    cvLlamas.style.height = altoLienzo + 'px';
-    ctxLlamas.setTransform(0.7, 0, 0, 0.7, 0, 0);
-
-    repintarFondo = true;
+    crearEstrellas();
   }
 
-  /* --- las grietas de lava: ramas que salen de donde se prende --- */
-  function generarGrietas(cx0, cy0){
-    const lista = [];
-    const ramas = 9;
-    for (let r = 0; r < ramas; r++){
-      let ang = (Math.PI * 2 * r) / ramas + Math.random() * 0.7;
-      let x = cx0, y = cy0;
-      const pts = [{ x: x, y: y }];
-      const pasos = 16 + Math.floor(Math.random() * 10);
-      for (let i = 0; i < pasos; i++){
-        ang += (Math.random() - 0.5) * 0.85;
-        const largo = 22 + Math.random() * 48;
-        x += Math.cos(ang) * largo;
-        y += Math.sin(ang) * largo;
-        pts.push({ x: x, y: y });
-
-        // de vez en cuando la grieta se parte en dos
-        if (i > 2 && Math.random() < 0.22){
-          let ax = x, ay = y;
-          let aang = ang + (Math.random() < 0.5 ? 1 : -1) * (0.5 + Math.random() * 0.6);
-          const sub = [{ x: ax, y: ay }];
-          const subPasos = 4 + Math.floor(Math.random() * 7);
-          for (let j = 0; j < subPasos; j++){
-            aang += (Math.random() - 0.5) * 0.8;
-            ax += Math.cos(aang) * (16 + Math.random() * 34);
-            ay += Math.sin(aang) * (16 + Math.random() * 34);
-            sub.push({ x: ax, y: ay });
-          }
-          lista.push({ pts: sub, grosor: 0.55 });
-        }
-      }
-      lista.push({ pts: pts, grosor: 1 });
-    }
-    return lista;
-  }
-
-  /* Las grietas se pintan UNA vez en lienzos aparte (calientes y frías) y
-     después solo se copian: pintar ~100 trazos anchos en cada frame ahogaría
-     al teléfono. El "se van abriendo" se hace recortando con un círculo que
-     crece desde donde se prendió. */
-  let grietasCv = null, grietasFriasCv = null;
-
-  function pintarGrietasEn(cx2, capas){
-    cx2.lineCap = 'round';
-    cx2.lineJoin = 'round';
-    for (let k = 0; k < grietas.length; k++){
-      const g = grietas[k];
-      for (let c = 0; c < capas.length; c++){
-        cx2.beginPath();
-        cx2.moveTo(g.pts[0].x, g.pts[0].y);
-        for (let i = 1; i < g.pts.length; i++) cx2.lineTo(g.pts[i].x, g.pts[i].y);
-        cx2.lineWidth = capas[c][0] * g.grosor;
-        cx2.strokeStyle = capas[c][1];
-        cx2.stroke();
-      }
+  function crearEstrellas(){
+    const cantidad = Math.round(Math.min(180, (ancho * altoLienzo) / 5600));
+    estrellas = [];
+    for (let i = 0; i < cantidad; i++){
+      estrellas.push({
+        x: Math.random() * ancho,
+        y: Math.random() * altoLienzo,
+        r: Math.random() * 1.25 + 0.25,
+        base: Math.random() * 0.5 + 0.25,
+        vel: Math.random() * 0.014 + 0.004,
+        fase: Math.random() * Math.PI * 2,
+        rosa: Math.random() > 0.72
+      });
     }
   }
 
-  function prepararGrietas(){
-    const w = Math.max(1, Math.floor(ancho)), h = Math.max(1, Math.floor(altoLienzo));
-
-    grietasCv = document.createElement('canvas');
-    grietasCv.width = w; grietasCv.height = h;
-    pintarGrietasEn(grietasCv.getContext('2d'), [
-      [26,  'rgba(255,70,0,.2)'],
-      [11,  'rgba(255,120,10,.5)'],
-      [4.5, 'rgba(255,190,80,.85)'],
-      [1.6, 'rgba(255,245,215,.95)']
-    ]);
-
-    grietasFriasCv = document.createElement('canvas');
-    grietasFriasCv.width = w; grietasFriasCv.height = h;
-    pintarGrietasEn(grietasFriasCv.getContext('2d'), [
-      [3.4, 'rgba(78,44,26,.14)'],
-      [1.2, 'rgba(126,48,16,.26)']
-    ]);
+  function lanzarFugaz(){
+    if (menosMovimiento) return;
+    fugaz = {
+      x: Math.random() * ancho * 0.75,
+      y: Math.random() * alto * 0.4,
+      largo: 90 + Math.random() * 80,
+      vel: 7 + Math.random() * 4,
+      vida: 1
+    };
   }
 
-  // zona: el rect en pantalla de lo que se quema (sobre u hoja)
-  function iniciarIncendio(zona){
-    zonaArde = zona;
-    grietas = generarGrietas(zona.left + zona.width / 2, zona.top + zona.height * 0.72);
-    prepararGrietas();
-    modoFuego = 'ardiendo';
-    tFuego = 0;
-    fuego.fill(0);
-    cvLlamas.classList.add('ver');
-  }
-
-  function apagarIncendio(){
-    modoFuego = 'enfriando';
-    tFuego = 0;
-    // la fila de abajo no la toca la propagación: hay que apagarla a mano
-    for (let x = 0; x < FW; x++) fuego[(FH - 1) * FW + x] = 0;
-    cvLlamas.classList.remove('ver');
-  }
-
-  function pasoFuego(){
-    tFuego++;
-
-    if (modoFuego === 'ardiendo'){
-      // 1) lo que se está quemando: banda caliente en su base, para que
-      //    la llama salga justo de ahí y lo envuelva
-      if (zonaArde){
-        const x1 = Math.max(0, Math.floor(zonaArde.left / ancho * FW));
-        const x2 = Math.min(FW - 1, Math.ceil((zonaArde.left + zonaArde.width) / ancho * FW));
-        const yb = Math.min(FH - 1, Math.max(1,
-          Math.round((zonaArde.top + zonaArde.height) / altoLienzo * FH)));
-        // fuerte mientras se consume, y después baja a una cama de fuego:
-        // si no, la pantalla queda tapada de llamas y no se lee la frase
-        const fuerza = tFuego < 75 ? 0.92 : 0.32;
-        for (let x = x1; x <= x2; x++){
-          if (Math.random() < fuerza) fuego[yb * FW + x] = MAXI;
-        }
-      }
-      // 2) el suelo: la lava prende abajo y se va ensanchando. Solo al
-      //    principio: si siguiera, la pantalla se queda tapada de fuego y
-      //    ya no se ve nada de lo que se está quemando.
-      if (tFuego < 46){
-        const cx0 = zonaArde ? (zonaArde.left + zonaArde.width / 2) / ancho * FW : FW / 2;
-        const abarca = Math.min(FW, 12 + tFuego * 3);
-        for (let i = 0; i < abarca; i++){
-          const x = Math.round(cx0 + (Math.random() - 0.5) * abarca);
-          if (x >= 0 && x < FW) fuego[(FH - 1) * FW + x] = MAXI;
-        }
-      }
-    }
-
-    for (let x = 0; x < FW; x++){
-      for (let y = 1; y < FH; y++){
-        const val = Math.max(0, fuego[y * FW + x] - (Math.random() < 0.8 ? 1 : 0));
-        const dx = Math.random() < 0.5 ? 0 : (Math.random() < 0.5 ? -1 : 1);
-        const dstX = Math.min(FW - 1, Math.max(0, x + dx));
-        fuego[(y - 1) * FW + dstX] = val;
-      }
-    }
-  }
-
-  function dibujarLlamas(){
-    ctxLlamas.clearRect(0, 0, ancho, altoLienzo);
-    for (let i = 0, n = FW * FH; i < n; i++){
-      const col = PALETA_FUEGO[fuego[i]];
-      const o = i * 4;
-      bufferRGBA[o] = col[0]; bufferRGBA[o + 1] = col[1];
-      bufferRGBA[o + 2] = col[2]; bufferRGBA[o + 3] = col[3];
-    }
-    fuegoCx.putImageData(new ImageData(bufferRGBA, FW, FH), 0, 0);
-    ctxLlamas.imageSmoothingEnabled = true;
-    ctxLlamas.drawImage(fuegoCv, 0, 0, FW, FH, 0, 0, ancho, altoLienzo);
-  }
-
-  function dibujarFondo(){
-    if (modoFuego === 'ardiendo' || modoFuego === 'enfriando'){
-      // el suelo blanco se vuelve casi negro (con tinte rojo, no café)
-      const p = modoFuego === 'ardiendo'
-        ? Math.min(1, tFuego / 26)
-        : Math.max(0, 1 - tFuego / 45);
-      ctx.fillStyle = 'rgb(' + Math.round(251 - p * 227) + ',' +
-                               Math.round(250 - p * 240) + ',' +
-                               Math.round(246 - p * 240) + ')';
-      ctx.fillRect(0, 0, ancho, altoLienzo);
-
-      // el resplandor de la lava, saliendo de donde se prendió
-      if (zonaArde && p > 0.04){
-        const gx = zonaArde.left + zonaArde.width / 2;
-        const gy = zonaArde.top + zonaArde.height * 0.72;
-        const g = ctx.createRadialGradient(gx, gy, 0, gx, gy, Math.max(ancho, altoLienzo) * 0.85);
-        g.addColorStop(0,    'rgba(255,95,10,' + (0.4 * p) + ')');
-        g.addColorStop(0.45, 'rgba(178,32,4,'  + (0.2 * p) + ')');
-        g.addColorStop(1,    'rgba(60,8,0,0)');
-        ctx.fillStyle = g;
-        ctx.fillRect(0, 0, ancho, altoLienzo);
-      }
-
-      // las grietas se revelan con un círculo que crece desde el origen
-      if (grietasCv && zonaArde){
-        const gx2 = zonaArde.left + zonaArde.width / 2;
-        const gy2 = zonaArde.top + zonaArde.height * 0.72;
-        const avance = modoFuego === 'ardiendo' ? Math.min(1, tFuego / 20) : 1;
-        const brillo = modoFuego === 'ardiendo'
-          ? Math.min(1, tFuego / 12)
-          : Math.max(0, 1 - tFuego / 40);
-
-        ctx.save();
-        ctx.beginPath();
-        ctx.arc(gx2, gy2, avance * Math.max(ancho, altoLienzo) * 1.2, 0, 6.2832);
-        ctx.clip();
-        ctx.globalAlpha = brillo;
-        ctx.drawImage(grietasCv, 0, 0, ancho, altoLienzo);
-        ctx.restore();
-        ctx.globalAlpha = 1;
-      }
-
-      if (modoFuego === 'enfriando' && tFuego > 46){
-        modoFuego = 'cenizas';
-        repintarFondo = true;
-      }
-    } else {
-      ctx.fillStyle = '#fbfaf6';
-      ctx.fillRect(0, 0, ancho, altoLienzo);
-      // quedan las marcas de por dónde pasó la lava
-      if (modoFuego === 'cenizas' && grietasFriasCv){
-        ctx.drawImage(grietasFriasCv, 0, 0, ancho, altoLienzo);
-      }
-      repintarFondo = false;
-    }
-  }
-
+  let t = 0;
   function dibujar(){
     if (!animando) return;
+    t += 0.016;
 
     // OJO: en iPhone, al deslizar, Safari esconde y saca la barra de direcciones
     // y eso cambia la altura de la ventana. Si redibujáramos por cada cambio,
-    // el fondo daría un tirón en cada scroll. Solo se rehace si gira el
+    // el cielo daría un tirón en cada scroll. Solo se rehace si gira el
     // teléfono (cambia el ancho) o si el alto cambia muchísimo.
     if (Math.abs(vw() - ancho) > 2 || Math.abs(vh() - alto) > 140) dimensionar();
 
-    if (modoFuego === 'ardiendo' || modoFuego === 'enfriando'){
-      pasoFuego();
-      dibujarFondo();
-      dibujarLlamas();
-    } else if (repintarFondo){
-      dibujarFondo();
-      ctxLlamas.clearRect(0, 0, ancho, altoLienzo);
+    const g = ctx.createLinearGradient(0, 0, 0, altoLienzo);
+    g.addColorStop(0, '#221033');
+    g.addColorStop(0.55, '#150a1c');
+    g.addColorStop(1, '#0d0512');
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, ancho, altoLienzo);
+
+    for (let i = 0; i < estrellas.length; i++){
+      const e = estrellas[i];
+      const brillo = e.base + Math.sin(t * e.vel * 60 + e.fase) * 0.32;
+      const a = Math.max(0.06, Math.min(1, brillo));
+      ctx.beginPath();
+      ctx.arc(e.x, e.y, e.r, 0, 6.2832);
+      ctx.fillStyle = e.rosa
+        ? 'rgba(252, 180, 210,' + a + ')'
+        : 'rgba(255, 255, 255,' + a + ')';
+      ctx.fill();
+    }
+
+    if (fugaz){
+      ctx.save();
+      const grad = ctx.createLinearGradient(
+        fugaz.x, fugaz.y, fugaz.x - fugaz.largo, fugaz.y + fugaz.largo * 0.5
+      );
+      grad.addColorStop(0, 'rgba(255,225,240,' + (0.9 * fugaz.vida) + ')');
+      grad.addColorStop(1, 'rgba(255,225,240,0)');
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = 1.6;
+      ctx.lineCap = 'round';
+      ctx.beginPath();
+      ctx.moveTo(fugaz.x, fugaz.y);
+      ctx.lineTo(fugaz.x - fugaz.largo, fugaz.y + fugaz.largo * 0.5);
+      ctx.stroke();
+      ctx.restore();
+
+      fugaz.x += fugaz.vel;
+      fugaz.y -= fugaz.vel * 0.5;
+      fugaz.vida -= 0.012;
+      if (fugaz.vida <= 0 || fugaz.x > ancho + 200) fugaz = null;
     }
 
     requestAnimationFrame(dibujar);
@@ -2043,10 +1725,14 @@ const CARTA = {
   dimensionar();
   dibujar();
 
+  // el mismo filtro que arriba: la barra de Safari también dispara "resize"
   window.addEventListener('resize', () => {
     if (Math.abs(vw() - ancho) > 2 || Math.abs(vh() - alto) > 140) dimensionar();
   });
   window.addEventListener('orientationchange', () => setTimeout(dimensionar, 250));
+
+  setInterval(() => { if (!fugaz && Math.random() > 0.45) lanzarFugaz(); }, 5200);
+  setTimeout(lanzarFugaz, 2600);
 
   document.addEventListener('visibilitychange', () => {
     if (document.hidden){ animando = false; }
@@ -2066,125 +1752,6 @@ const CARTA = {
     pendientes.push(setTimeout(fn, ms));
   }
 
-  /* --- TROZOS ---
-     Lo que se quema se rompe en pedazos de papel quemado: salen de
-     `origen`, estallan hacia afuera girando y después se juntan sobre
-     `destino`, que es donde va a aparecer lo otro. Así se ve que el sobre
-     se convirtió en la carta (y al revés al cerrar), en vez de que una
-     cosa desaparezca y la otra salga de la nada. */
-  function formaTrozo(){
-    const n = 5 + Math.floor(Math.random() * 3);
-    const pts = [];
-    for (let i = 0; i < n; i++){
-      const a = (Math.PI * 2 * i) / n + Math.random() * 0.5;
-      const r = 32 + Math.random() * 18;
-      pts.push(Math.round(50 + Math.cos(a) * r) + '% ' + Math.round(50 + Math.sin(a) * r) + '%');
-    }
-    return 'polygon(' + pts.join(',') + ')';
-  }
-
-  function lanzarTrozos(origen, destino, opciones, cb){
-    const op = opciones || {};
-    if (menosMovimiento){ if (cb) cb(); return; }
-
-    const capa = document.createElement('div');
-    capa.className = 'trozos';
-    document.body.appendChild(capa);
-
-    const N = op.n || 74;
-    const base = op.dur || 1.5;
-    let fin = 0;
-
-    for (let i = 0; i < N; i++){
-      const t = document.createElement('span');
-      t.className = 'trozo';
-
-      const x0 = origen.left + Math.random() * origen.width;
-      const y0 = origen.top + Math.random() * origen.height;
-
-      // estalla hacia afuera, con un empujón hacia arriba (el fuego sube)
-      const ang = Math.random() * Math.PI * 2;
-      const radio = 80 + Math.random() * 170;
-      const xm = x0 + Math.cos(ang) * radio;
-      const ym = y0 + Math.sin(ang) * radio - 50;
-
-      // y termina repartido por donde va a estar lo otro
-      const x1 = destino.left + Math.random() * destino.width;
-      const y1 = destino.top + Math.random() * destino.height;
-
-      const lado = 11 + Math.random() * 17;
-      const dur = base + Math.random() * 0.5;
-      const del = Math.random() * (op.reparto || 0.4);
-      fin = Math.max(fin, dur + del);
-
-      t.style.setProperty('--x0', x0 + 'px');
-      t.style.setProperty('--y0', y0 + 'px');
-      t.style.setProperty('--xm', xm + 'px');
-      t.style.setProperty('--ym', ym + 'px');
-      t.style.setProperty('--x1', x1 + 'px');
-      t.style.setProperty('--y1', y1 + 'px');
-      t.style.setProperty('--w', lado + 'px');
-      t.style.setProperty('--h', (lado * (0.6 + Math.random() * 0.7)) + 'px');
-      t.style.setProperty('--giro1', (140 + Math.random() * 220) + 'deg');
-      t.style.setProperty('--giro2', (320 + Math.random() * 420) + 'deg');
-      t.style.setProperty('--luz', Math.round(Math.random() * 360) + 'deg');
-      t.style.setProperty('--forma', formaTrozo());
-      t.style.setProperty('--dur', dur + 's');
-      t.style.setProperty('--del', del + 's');
-
-      capa.appendChild(t);
-    }
-
-    setTimeout(() => { capa.remove(); if (cb) cb(); }, fin * 1000 + 140);
-  }
-
-  // dónde va a caer la hoja cuando aparezca (todavía no está en pantalla,
-  // así que se calcula igual que su CSS: centrada y arriba)
-  function zonaHoja(){
-    const w = Math.min(vw() * 0.88, 640);
-    return { left: (vw() - w) / 2, width: w, top: vh() * 0.1, height: vh() * 0.62 };
-  }
-
-  /* --- BRASAS ---
-     Chispas que suben desde el sobre (o la hoja) mientras arden,
-     además del fuego del fondo. */
-  function lanzarBrasas(origen){
-    if (menosMovimiento) return;
-
-    const capa = document.createElement('div');
-    capa.className = 'brasas';
-    document.body.appendChild(capa);
-
-    const colores = ['#ff6a3d', '#ffb347', '#ff3d1f', '#ffe08a', '#c4451c'];
-    const N = 70;
-    let maxFin = 0;
-
-    for (let i = 0; i < N; i++){
-      const b = document.createElement('span');
-      b.className = 'brasa';
-
-      const x0 = origen.left + Math.random() * origen.width;
-      const y0 = origen.top + Math.random() * origen.height;
-      const dur = 0.9 + Math.random() * 0.6;
-      const del = Math.random() * 0.35;
-      maxFin = Math.max(maxFin, dur + del);
-
-      b.style.setProperty('--x0', x0 + 'px');
-      b.style.setProperty('--y0', y0 + 'px');
-      b.style.setProperty('--dx', ((Math.random() - 0.5) * 70) + 'px');
-      b.style.setProperty('--dy', (60 + Math.random() * 150) + 'px');
-      b.style.setProperty('--w', (4 + Math.random() * 7) + 'px');
-      b.style.setProperty('--c', colores[Math.floor(Math.random() * colores.length)]);
-      b.style.setProperty('--dur', dur + 's');
-      b.style.setProperty('--del', del + 's');
-
-      capa.appendChild(b);
-    }
-
-    setTimeout(() => capa.remove(), maxFin * 1000 + 150);
-  }
-
-  /* --- ABRIR: el sobre arde y se transforma en la hoja --- */
   function abrir(){
     if (abierto) return;
     abierto = true;
@@ -2196,9 +1763,8 @@ const CARTA = {
     hoja.classList.remove('guardando');
     sobre.classList.remove('cerrando');
 
-    // se mide antes de que el sobre empiece a arder
-    const origenSobre = sobre.getBoundingClientRect();
-
+    escena.classList.add('abriendo');
+    sobre.classList.add('abierto');
     vibrar(12);
 
     // El toque de ella es el gesto que iOS exige para dejar sonar el audio.
@@ -2206,65 +1772,53 @@ const CARTA = {
     rebobinarCancion();
     arrancarMusica();
 
-    // primero se abre la lava, y recién ahí se prende el sobre: así se ve
-    // que fue la lava la que lo quemó
-    escena.classList.add('abriendo');
-    if (!menosMovimiento) iniciarIncendio(origenSobre);
-
-    agendar(() => {
-      sobre.classList.add('ardiendo');
-      lanzarBrasas(origenSobre);
-      vibrar(18);
-    }, 420);
-
-    agendar(() => $('#velo').classList.add('ver'), 900);
-
-    // el sobre, ya carbonizado, se rompe en pedazos que vuelan
     agendar(() => {
       escena.classList.add('fuera');
-      escena.style.display = 'none';
-      sobre.classList.remove('ardiendo');
-      lanzarTrozos(origenSobre, zonaHoja(), { dur: 1.5 });
-      vibrar(22);
+      $('#velo').classList.add('ver');
+      $('#decor').classList.add('ver');
+      lanzarFugaz();
     }, 1450);
 
-    // ...y donde caen los pedazos, aparece la hoja armada
     agendar(() => {
-      if (!menosMovimiento) apagarIncendio();
-      vibrar(16);
       hoja.classList.add('abierta');
       activarScroll();
       agendar(() => hoja.classList.add('ver'), 40);
       $('#controles').classList.add('ver');
       montarParallax();
+    }, 1900);
 
-      agendar(() => {
-        vigilarNumeros();
-        $('#baja').classList.add('ver');
-      }, 700);
-    }, 2750);
+    agendar(() => {
+      escena.style.display = 'none';
+      vigilarNumeros();
+      $('#baja').classList.add('ver');
+    }, 3100);
 
     // Red de seguridad: pase lo que pase, la hoja se ve.
     agendar(() => {
       hoja.classList.add('abierta', 'ver');
       activarScroll();
+      $('#decor').classList.add('ver');
       if (parseFloat(getComputedStyle(hoja).opacity) < 0.95){
         hoja.style.transition = 'none';
         hoja.style.opacity = '1';
         hoja.style.transform = 'none';
       }
-    }, 4200);
+    }, 4500);
   }
 
-  /* --- CERRAR: la hoja arde y se transforma de vuelta en el sobre.
-     La música se va apagando durante el mismo incendio, no de golpe. */
+  /* --- cerrar la carta y dejar el sobre listo para abrirlo otra vez --- */
   function cerrar(){
     if (!abierto) return;
     abierto = false;
 
+    // cancelar lo que quedara a medias de la apertura
     pendientes.forEach(clearTimeout);
     pendientes = [];
     if (soltarNumeros) soltarNumeros();
+
+    // la canción se calla y vuelve al principio
+    pararMusica();
+    rebobinarCancion();
 
     vibrar(10);
     apagarFuegos();
@@ -2275,64 +1829,36 @@ const CARTA = {
     $('#baja').classList.remove('ver');
     $('#respuesta').classList.remove('ver');
 
-    // se mide antes de que la hoja empiece a arder; lo que se ve en
-    // pantalla, no la hoja entera (que es larguísima y sale del viewport)
-    const r = hoja.getBoundingClientRect();
-    const origenHoja = {
-      left: r.left,
-      width: r.width,
-      top: Math.max(0, r.top),
-      height: Math.min(r.bottom, vh()) - Math.max(0, r.top)
-    };
+    // --- Se cierra al revés de como se abrió, como si la guardara ---
 
-    // la escena queda lista (todavía invisible, por la clase "fuera")
-    // para que aparezca el sobre en cuanto termine el incendio
-    escena.style.display = '';
+    // 1) la hoja se encoge y baja, buscando el sobre
+    hoja.style.transition = '';
+    hoja.style.opacity = '';
+    hoja.style.transform = '';
+    hoja.classList.remove('ver');
+    hoja.classList.add('guardando');
 
-    if (!menosMovimiento) iniciarIncendio(origenHoja);
-
+    // 2) vuelve la escena, con el sobre todavía abierto y la hoja asomando
     agendar(() => {
-      hoja.classList.add('ardiendo');
-      lanzarBrasas(origenHoja);
-      vibrar(18);
-    }, 380);
-
-    // la hoja carbonizada se rompe en pedazos, que se van juntando sobre
-    // el sobre mientras la frase está en pantalla
-    const destinoSobre = sobre.getBoundingClientRect();
-    agendar(() => {
-      hoja.classList.remove('abierta', 'ver');
-      lanzarTrozos(origenHoja, destinoSobre, { dur: 2.3, n: 84, reparto: .7 });
-      vibrar(22);
-    }, 1400);
-
-    // entre las llamas, mientras los pedazos vuelan, sale la frase
-    const frase = $('#frase-fuego');
-    agendar(() => frase.classList.add('ver'), 1750);
-    agendar(() => frase.classList.remove('ver'), 3550);
-
-    if (!menosMovimiento) bajarVolumen(3900);
-    else pararMusica();
-
-    agendar(() => {
-      if (!menosMovimiento) apagarIncendio();
-      frase.classList.remove('ver');
-
-      hoja.style.transition = '';
-      hoja.style.opacity = '';
-      hoja.style.transform = '';
-      hoja.classList.remove('ardiendo', 'abierta', 'ver', 'guardando');
-
-      // el sobre "aparece" ya cerrado, justo cuando termina el incendio
+      escena.style.display = '';
+      sobre.classList.add('abierto', 'cerrando');
+      void escena.offsetHeight;              // que registre el estado inicial
       escena.classList.remove('fuera', 'abriendo');
-      sobre.classList.remove('abierto', 'cerrando');
+      $('#decor').classList.remove('ver');
+    }, 620);
 
+    // 3) el sobre se cierra: la hoja entra, la solapa baja y vuelve el sello
+    agendar(() => {
+      sobre.classList.remove('abierto');
+      vibrar(14);
+    }, 1500);
+
+    // 4) a limpiar, ya con el sobre cerrado
+    agendar(() => {
+      sobre.classList.remove('cerrando');
+      hoja.classList.remove('abierta', 'guardando');
       document.documentElement.classList.remove('leyendo');
       window.scrollTo(0, 0);
-      vibrar(14);
-
-      pararMusica();
-      rebobinarCancion();
 
       // los días vuelven a cero, para que se cuenten otra vez al reabrir
       numerosHechos = false;
@@ -2341,7 +1867,7 @@ const CARTA = {
         if (el) el.textContent = '0';
       });
       yaBajo = false;
-    }, 4050);
+    }, 2500);
   }
 
   sobre.addEventListener('click', abrir);
@@ -2531,7 +2057,7 @@ const CARTA = {
       requestAnimationFrame(pintarFuegos);
     }
 
-    const colores = ['#ff6a3d', '#c4451c', '#ffb347', '#ffffff', '#ff3d1f', '#e0722f', '#ffe08a'];
+    const colores = ['#f9a8c9', '#e2618f', '#ffd9a0', '#ffffff', '#d9b8f0', '#ff8fb1', '#ffc4dd'];
 
     // once explosiones, una detrás de otra, por toda la pantalla
     for (let k = 0; k < 11; k++){
@@ -2556,8 +2082,8 @@ const CARTA = {
   function lluviaDeCorazones(){
     if (menosMovimiento) return;
     const simbolos = ['♥','♡','✿','❥','✦'];
-    const colores = ['rgba(255,106,61,.95)','rgba(196,69,28,.9)',
-                     'rgba(255,255,255,.85)','rgba(255,179,71,.95)'];
+    const colores = ['rgba(242,167,195,.95)','rgba(210,68,124,.9)',
+                     'rgba(255,255,255,.85)','rgba(248,198,217,.95)'];
     for (let i = 0; i < 26; i++){
       setTimeout(() => {
         const c = document.createElement('div');
@@ -2644,26 +2170,6 @@ const CARTA = {
   function pararMusica(){
     try { audio.pause(); } catch(e){}
     marcar(false);
-  }
-
-  // el reverso de subirVolumen: se usa al cerrar la carta, para que la
-  // música se vaya apagando en vez de cortarse de golpe. En iPhone el
-  // volumen no se puede cambiar por código (igual que en subirVolumen),
-  // así que ahí simplemente sigue sonando hasta que pararMusica() la corta.
-  function bajarVolumen(ms){
-    const v0 = audio.volume;
-    const pasos = Math.max(1, Math.round(ms / 80));
-    let i = 0;
-    const paso = setInterval(() => {
-      i++;
-      try { audio.volume = Math.max(0, v0 * (1 - i / pasos)); } catch(e){}
-      if (i >= pasos) clearInterval(paso);
-    }, ms / pasos);
-    setTimeout(() => {
-      clearInterval(paso);
-      pararMusica();
-      try { audio.volume = 1; } catch(e){}   // lista para la próxima vez que abra
-    }, ms + 40);
   }
 
   // deja la canción lista para volver a empezar desde el principio
